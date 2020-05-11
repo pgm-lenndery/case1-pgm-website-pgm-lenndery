@@ -1,6 +1,41 @@
 
 [data-label="casesHighlight"] .salvatore {
-    .column:first-child {
-        @extend .mr-8;
+    .column:not(:last-child) {
+        @extend .mr-6;
+    }
+    
+    .card {
+        &-body {
+            position: relative;
+            
+            &-overlay {
+                position: absolute;
+                left: 0px;
+                right: 0px;
+                top: 0px;
+                bottom: 0px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+        }
+        
+        &-title {
+            position: relative;
+            z-index: 2;
+            max-width: 60%;
+        }
+    }
+    
+    .card:hover {
+        .filter-purple-rain {
+            &::before {
+                background: $purple000;  
+            }
+            
+            img {
+                filter: grayscale(0);
+            }
+        }
     }
 }

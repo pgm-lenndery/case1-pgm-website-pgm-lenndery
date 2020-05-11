@@ -18,11 +18,38 @@
 
 .filter {
     &-purple-rain {
-        background: $purple500;
+        display: block;
+
+        &::before {
+            content: ' ';
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: $purple500;
+            mix-blend-mode: multiply;
+            z-index: 1;
+        }
         
         img {
-            filter: grayscale(1) brightness(150%);
-            mix-blend-mode: multiply;
+            filter: grayscale(1);
         }
     }
+}
+
+.animate {
+    &.fastest {
+        --animation-duration: .2s;
+    }
+    &.lightspeed {
+        --animation-duration: .1s;
+    }
+}
+
+.box-lazy:not(.box-lazy-ready) {
+    // visibility: hidden;
+    opacity: 0;
 }
