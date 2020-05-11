@@ -1,0 +1,56 @@
+
+.salvatore {
+    display: flex;
+	&[data-columns]::before {
+		content: '1 .column.size-1of1';
+	}
+	
+	/* These are the classes that are going to be applied: */
+	.column { 
+		// float: left;
+		// padding: 15px;
+			
+		&:first-child {
+			padding-left: 0px;
+		}
+		
+		&:last-child {
+			padding-right: 0px;
+		}
+	}
+	
+	.size-1of1 { width: 100%; }
+	.size-1of2 { width: 50%; }
+	.size-1of3 { width: 33.333%; }
+}
+
+@media screen and (max-width: 576px){
+	.salvatore-grid[data-columns]::before {
+		content: '1 .column.size-1of1';
+	}
+}
+
+@media screen and (min-width: 576px) and (max-width: 768px) {
+	.salvatore-grid[data-columns]::before {
+		content: '1 .column.size-1of1';
+	}
+}
+
+@media screen and (min-width: 769px) and (max-width: 992px) {
+	.salvatore {
+		&[data-columns]::before {
+			content: '2 .column.size-1of2';
+		}
+	}
+}
+
+@media screen and (min-width: 993px) {
+	.salvatore {
+		&[data-columns]::before {
+			content: '2 .column.size-1of2';
+		}
+	}
+}
+
+
+/* Again, you’re free to use and define the classes: */

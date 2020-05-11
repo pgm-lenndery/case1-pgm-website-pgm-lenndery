@@ -1,0 +1,11 @@
+* {
+    @include font-poppins;
+}
+
+h3, h4 {
+    line-height: 2.5rem;
+}
+
+p.text-modern {
+    font-weight: 600;
+}

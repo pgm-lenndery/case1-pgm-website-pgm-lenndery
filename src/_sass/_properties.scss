@@ -1,0 +1,28 @@
+.font-poppins {
+    @include font-poppins;
+}
+
+.font-rhode {
+    @include font-rhode;
+    // line-height: 4.7rem;
+    line-height: 108%;
+}
+
+.text-modern {
+    @include text-modern
+}
+
+.word-joint {
+    margin: 0px 21px;
+}
+
+.filter {
+    &-purple-rain {
+        background: $purple500;
+        
+        img {
+            filter: grayscale(1) brightness(150%);
+            mix-blend-mode: multiply;
+        }
+    }
+}

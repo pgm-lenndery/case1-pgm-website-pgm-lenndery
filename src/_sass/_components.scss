@@ -1,0 +1,163 @@
+.box {
+    border-width: 0px;
+    border-style: solid;
+    border-color: white;
+    
+    &-all {
+        @extend .box;
+        border-width: 2px;
+    }
+    
+    &-x {
+        @extend .box;
+        border-left-width: 2px;
+        border-right-width: 2px;
+    }
+    
+    &-y {
+        @extend .box;
+        border-top-width: 2px;
+        border-bottom-width: 2px;
+    }
+    
+    &-t {
+        @extend .box;
+        border-top-width: 2px;
+    }
+    
+    &-b {
+        @extend .box;
+        border-bottom-width: 2px;
+    }
+    
+    &-l {
+        @extend .box;
+        border-left-width: 2px;
+    }
+    
+    &-r {
+        @extend .box;
+        border-right-width: 2px;
+    }
+    
+    &-offset-t {
+        margin-top: -2px;
+    }
+    
+    &-offset-y {
+        margin-top: -2px;
+        margin-bottom: -2px;
+    }
+}
+
+.container {
+    &-fluid {
+        padding-left: $spacer * 6;
+        padding-right: $spacer * 6;
+    }
+    
+    &-xxl {
+        max-width: 1600px;
+    }
+}
+
+.cta-section {
+    .row .col {
+        @extend .py-5
+    }
+    
+    &-title {
+        margin-bottom: .5rem;
+    }
+    
+    h4 {
+        @include text-modern;
+    }
+    
+    h4#{&}-title + p#{&}-subtitle {
+        margin-bottom: 0;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+        @extend .font-weight-light;
+    }
+    
+    &-static {
+        padding-left: 0px;
+        
+        img {
+            height: 180px;
+        }
+    }
+    
+    &-cta {   
+        display: flex;
+        align-items: center;
+        padding-left: 6rem;
+        padding-right: 0;
+        @include text-modern;
+        
+        h3 {
+            margin-bottom: 0;
+            margin-right: 2.5rem;
+            text-align: right;
+        }
+        
+        svg {
+            width: 70px;
+            height: 70px;
+            stroke-width: 1px;
+            
+            * {
+                stroke-width: 1px;
+            }
+        }
+    }
+}
+
+.header-section {
+    .row .col {
+        @extend .py-4
+    }
+}
+
+.filter-section {
+    display: grid;
+    grid-template-columns: min-content auto;
+    
+    &-title {
+        grid-column-start: 1;
+        grid-column-end: 2;
+        white-space: nowrap;
+    }
+    
+    &-options {
+        display: flex;
+        align-content: center;
+        
+        .options-el {
+            input {
+                display: none;
+            }
+            
+            label {
+                @include font-rhode;
+                margin-bottom: 0px;
+                padding-left: 17px;
+                padding-right: 17px;
+                text-transform: lowercase;
+                @extend .box-y;
+                @extend .py-3;
+                transition: all .3s ease;
+            }
+            
+            input:checked + label {
+                border-color: $purple500;
+                color: $purple500;
+            }
+            
+            .word-joint {
+                margin: 0px 8px;
+            }
+        }
+    }
+}

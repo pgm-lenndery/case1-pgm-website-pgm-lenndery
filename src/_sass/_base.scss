@@ -1,0 +1,126 @@
+*::selection {
+    background-color: $purple500;
+}
+
+body {
+    background-color: black;
+    color: white;
+}
+
+img {
+    object-fit: cover;
+    object-position: center;
+}
+
+svg.feather * {
+    stroke-width: 2px;
+    stroke-linecap: butt;
+    stroke-linejoin: miter;
+}
+
+.btn-arrow {
+    @include text-modern;
+    --letter-spacing: 4px;
+    position: relative;
+    padding: 13px 17px 9px 20px;
+    appearance: none;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: white;
+    user-select: none;
+    outline: none !important;
+    
+    * {
+        @include transition;
+        --transition-time: .2s;
+    }
+    
+    &::before {
+        @include transition;
+        content: ' ';
+        position: absolute;
+        left: 0%;
+        right: 100%;
+        top: calc(50% - 1px);
+        height: 2px;
+        background-color: white;
+    }
+    
+    &::after {
+        --h: 2px;
+        @include transition;
+        content: ' ';
+        position: absolute;
+        left: 0%;
+        right: 0%;
+        top: calc(50% - (var(--h)/2));
+        height: var(--h);
+        background-color: $purple500;
+        z-index: -1;
+    }
+    
+    svg {
+        --d: 24px;
+        position: absolute;
+        top: calc(50% - (var(--d)/2));
+        transform-origin: center;
+        
+        polyline {
+            stroke-width: 2px;
+        }
+        
+        &.feather-chevron-right:last-child {
+            right: calc(0% - (var(--d)/2) + 2px);
+            transform: scale(0);
+            
+            polyline {
+                stroke: white;
+            }
+        }
+        
+        &.feather-chevron-right:first-child {
+            right: calc(0% - (var(--d)/2) + 2px);
+            transform: scale(1);
+            
+            polyline {
+                stroke: $purple500;
+            }
+        }
+    }
+    
+    &:hover {      
+        * {
+            @include transition;
+        }
+        
+        svg.feather-chevron-right:last-child {
+            transform: scale(1);
+        }
+        
+        svg.feather-chevron-right:first-child {
+            transform: scale(0);
+        }
+        
+        &::before {
+            right: 0%;
+        }
+        
+        &::after {
+            right: 100%;
+        }
+    }
+}
+
+
+.marquee {
+    @include font-rhode;
+    padding: 0.5rem;
+    background-color: white;
+    color: black;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: lowercase;
+}

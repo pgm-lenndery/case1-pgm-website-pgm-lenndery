@@ -1,0 +1,26 @@
+:root {
+    --transition-prop: all;
+    --transition-time: .3s;
+    --transition-bezier: ease;
+}
+
+@mixin font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+@mixin font-rhode {
+    font-family: rhode-wide,sans-serif;
+    // 500, 600, 700, 800
+}
+
+@mixin transition {
+    transition: var(--transition-prop) var(--transition-time) var(--transition-bezier);
+}
+
+@mixin text-modern {
+    --letter-spacing: 7px;
+    @include font-poppins;
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+}
+
