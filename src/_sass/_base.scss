@@ -113,6 +113,38 @@ svg.feather * {
     }
 }
 
+a {
+    display: inline-flex;
+    align-items: center;
+    align-content: center;
+    position: relative;
+    margin: auto;
+    width: fit-content;
+    text-decoration: none;
+    color: white;
+    
+    &:hover {
+        color: inherit;
+        text-decoration: inherit;
+    }
+    
+    &::after {
+        --h: 2px;
+        content: ' ';
+        position: absolute;
+        left: 0%;
+        width: 100%;
+        top: calc(50% - (var(--h)/2));
+        height: var(--h);
+        background-color: $purple500;
+        z-index: -1;
+    }
+    
+    svg {
+        margin: 0 -10px;
+        stroke: $purple500
+    }
+}
 
 .marquee {
     @include font-rhode;

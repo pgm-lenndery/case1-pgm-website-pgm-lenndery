@@ -4,7 +4,8 @@
   "description": "case1-pgm-website-pgm-lenndery created by GitHub Classroom",
   "main": "index.js",
   "scripts": {
-    "code:baas": "code ../01-case-1-baas",
+    "baas:edit": "code ../01-case-1-baas",
+    "baas:open": "open 'https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/'",
     "11ty:build": "npx @11ty/eleventy",
     "11ty:dev": "npx @11ty/eleventy --serve --quiet",
     "sass:build": "sass --style=compressed --no-source-map src/_sass:src/_static/css",

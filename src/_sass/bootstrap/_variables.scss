@@ -139,7 +139,7 @@ $spacers: (
   6: ($spacer * 4.5),
   7: ($spacer * 5),
   8: ($spacer * 6),
-  9: ($spacer * 8.5)
+  9: (calc(6rem + 15px))
 ) !default;
 // stylelint-disable-next-line scss/dollar-variable-default
 $spacers: map-merge(

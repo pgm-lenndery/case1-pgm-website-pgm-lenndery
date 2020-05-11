@@ -53,3 +53,9 @@
     // visibility: hidden;
     opacity: 0;
 }
+
+.bg-color {
+    &-purple {
+        background-color: $purple500;
+    }
+}

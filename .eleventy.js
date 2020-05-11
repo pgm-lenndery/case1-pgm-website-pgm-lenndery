@@ -13,7 +13,7 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addLayoutAlias('default', 'default.html');
     
     return {
-        pathPrefix: '',
+        pathPrefix: '/case1-pgm-website-pgm-lenndery',
         dir: {
             output: 'docs',
             input: 'src/',

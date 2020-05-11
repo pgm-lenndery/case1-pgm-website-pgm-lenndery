@@ -58,6 +58,9 @@ const site = {
                 <div class="card-body">
                     <div class="card-body-overlay px-4">
                         <h2 class="card-title font-rhode">${i.title}</h2>
+                        <p>
+                            ${i.about}
+                        </p>
                     </div>
                     <div class="filter-purple-rain">
                         <img class="w-100" src="${i.img.tumbnail}" alt="">
@@ -77,7 +80,7 @@ const site = {
         
         // source: https://medium.com/@filipvitas/lazy-load-images-with-zero-javascript-2c5bcb691274
         
-        let lazyBoxes = [...document.querySelectorAll('.box-lazy')]
+        let lazyBoxes = document.querySelectorAll('.box-lazy');
 
         const interactSettings = {
             // root: document.querySelector('.center'),

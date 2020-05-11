@@ -1,10 +1,21 @@
 
 [data-label="casesHighlight"] .salvatore {
+    * {@include transition;}
+    clear: both;
+    
+    &:hover {
+        @include transition;
+        
+        .card {
+            filter: opacity(0.3);
+        }
+    }
+    
     .column:not(:last-child) {
         @extend .mr-6;
     }
     
-    .card {
+    .card {       
         &-body {
             position: relative;
             
@@ -15,15 +26,32 @@
                 top: 0px;
                 bottom: 0px;
                 display: flex;
+                width: 100%;
                 flex-direction: column;
                 justify-content: center;
+                z-index: 2;
+                
+                p {
+                    display: none;
+                    font-size: 1.5rem;
+                }
             }
         }
         
         &-title {
-            position: relative;
-            z-index: 2;
             max-width: 60%;
+        }
+        
+        &:hover {
+            filter: opacity(1);
+            overflow-x: visible;
+            
+            .card-body-overlay {
+                left: 100%;
+                z-index: 4;
+                
+                p {display: block;}
+            }
         }
     }
     
@@ -36,6 +64,15 @@
             img {
                 filter: grayscale(0);
             }
+        }
+    }
+    
+    .column:last-child .card:hover{
+        .card-body-overlay {
+            align-items: flex-end;
+            left: -100%;
+            
+            h2, p {text-align: right;}
         }
     }
 }
