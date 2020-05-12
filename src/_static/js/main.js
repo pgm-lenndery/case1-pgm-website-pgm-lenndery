@@ -6,7 +6,7 @@ const site = {
     initialize() {
         status.init();
         this.cache();
-        
+        this.listen();
         this.fillMarquee();
         this.addFilterOptions();
         this.renderCases();
@@ -18,6 +18,23 @@ const site = {
         this.marquee = document.querySelector('[data-label="marquee"]');
         this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options');
         this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore')
+        this.caseCardHoverTarget = '[data-label="casesHighlight"] .salvatore .card:hover';
+    },
+    
+    listen() {
+        status.add('listen');
+        document.body.addEventListener('mouseover', (event) => {
+            if (event.target.closest(this.caseCardHoverTarget) != null) {
+                this.casesHighlight.classList.add('hovering');
+            } else {
+                this.casesHighlight.classList.remove('hovering');
+            }
+        });
+        // document.body.addEventListener('mouseout', (event) => {
+        //     if (event.target.closest(this.caseCardHoverTarget) != null) {
+        //         this.casesHighlight.classList.remove('hovering');
+        //     }
+        // });
     },
     
     fillMarquee() {
@@ -46,7 +63,6 @@ const site = {
         const cases = 10;
         
         const apiData = await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json');
-        console.log(await apiData.cases);
         
         await apiData.cases.forEach(i => {
             const caseEl = document.createElement('div');
@@ -90,7 +106,6 @@ const site = {
 
         const onIntersection = (boxes) => {
             boxes.forEach(box => {
-                console.log(box)
                 if (box.isIntersecting) {
                     observer.unobserve(box.target);
                     box.target.classList.add('box-lazy-ready','zoomIn');

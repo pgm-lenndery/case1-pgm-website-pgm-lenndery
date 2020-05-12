@@ -3,8 +3,9 @@
     * {@include transition;}
     clear: both;
     
-    &:hover {
+    &.hovering {
         @include transition;
+        --transition-time: .5s;
         
         .card {
             filter: opacity(0.3);
