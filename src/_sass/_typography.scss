@@ -9,3 +9,9 @@ h3, h4 {
 p.text-modern {
     font-weight: 600;
 }
+
+small, .small {
+    &.text-modern {
+        --letter-spacing: 3px;
+    }
+}

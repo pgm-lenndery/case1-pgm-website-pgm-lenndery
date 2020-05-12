@@ -50,8 +50,12 @@
     </div>
 </header>
     <main>
-        <div data-label="marquee" class="marquee"></div>
-<section>
+        <div data-label="marquee" class="marquee">
+    <div class="marquee-content">
+        
+    </div>
+</div>
+<section class="box-lazy" data-lazy-animation="fadeInUp">
     <div class="container-fluid py-8">
         <h1 class="font-rhode display-3 mb-4">
             graduaat<br>programmeren<br>front end development
@@ -77,8 +81,8 @@
         </div>
     </div>
 </section>
-<section>
-    <div class="container-fluid box-y box-offset-t header-section">
+<section data-label="studentsHighlight">
+    <div class="container-fluid box-lazy animate-delay-04 box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col">
                 <h2 class="font-rhode display-4">
@@ -93,54 +97,58 @@
             </div>
         </div>
     </div>
-    
-</section>
-<section>
-    <div class="container-fluid box-y box-offset-t header-section">
-        <div class="row">
-            <div class="col">
-                <h2 class="font-rhode display-4">
-                    cases &<br>opdrachten
-                </h2>
-            </div>
-            <div class="col-3 box-l cta-section-cta">
-                <h3 class="text-modern">
-                    ontdek ze<br>allemaal
-                </h3>
-                <i data-feather="arrow-right"></i>
-            </div>
-        </div>
+    <div class="collection collection-horizontal py-5">
     </div>
 </section>
-<section data-label="casesHighlight">
-    <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases">
-        <div class="filter-section-title box-r py-3 pr-3">
-            <p class="text-modern mb-0">filter cases</p>
+<section data-label="casesHighlight" class="mb-8">
+    <div class="box-lazy" data-lazy-animation="fadeInUp">
+        <div class="container-fluid box-y box-offset-t header-section">
+            <div class="row">
+                <div class="col">
+                    <h2 class="font-rhode display-4">
+                        cases &<br>opdrachten
+                    </h2>
+                </div>
+                <div class="col-3 box-l cta-section-cta">
+                    <h3 class="text-modern">
+                        ontdek ze<br>allemaal
+                    </h3>
+                    <i data-feather="arrow-right"></i>
+                </div>
+            </div>
         </div>
-        <div class="filter-section-options box-offset-y d-flex pl-4"></div>
-    </div> 
+        <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases">
+            <div class="filter-section-title box-r py-3 pr-3">
+                <p class="text-modern mb-0">filter cases</p>
+            </div>
+            <div class="filter-section-options box-offset-y d-flex pl-4"></div>
+        </div> 
+    </div>
     <div class="container-fluid salvatore salvatore-grid" data-columns="3">
         <!-- highlighted cases -->
     </div>
 </section>
 
     </main>
-    <footer class="mt-8">
-    <div class="container-fluid px-0">
-        <div class="row box-y">
-            <div class="col-auto box-r bg-color-purple py-3 d-flex align-items-center">
-                <div class="pl-8 pr-3">
-                    <img width="200px" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_graduaat_programmeren.svg" alt="">
+    <footer class="box-lazy animate-delay-02" data-lazy-animation="fadeInUp">
+    <div class="container-fluid box-y">
+        <div class="row mx-0">
+            <div class="col-auto box-x py-3 d-flex align-items-center bg-color-purple">
+                <div class="px-1">
+                    <img height="40px" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_pgm_klein_paars.svg" alt="">
                 </div>
             </div>
-            <div class="col py-3 d-flex align-items-center">
-                <span class="px-2 font-rhode">
-                    pgm.gent is een website van de opleiding Programmeren van Arteveldehogeschool
+            <div class="col-auto py-3 d-flex align-items-center">
+                <span class="font-rhode px-4">
+                    pgm.gent is een website van de opleiding<br>Programmeren van Arteveldehogeschool
                 </span>
             </div>
+           
         </div>
+    </div>
+    <div class="container-fluid">
         <div class="row py-3">
-            <div class="col text-modern text-center">
+            <div class="col-auto py-2 mx-auto text-modern text-center small">
                 <span class="font-weight-bold">
                     <a class="text-center" href="https://www.google.com/maps/place/Campus+Mariakerke+Arteveldehogeschool/@51.0869464,3.6676795,17.21z/data=!4m5!3m4!1s0x47c370362705fc21:0x47f9e1d923e07a64!8m2!3d51.0873546!4d3.6686913">
                         Industrieweg 232, 9030 Mariakerke (Gent)
@@ -151,7 +159,7 @@
                     Alle rechten voorbehouden © Arteveldehogeschool 2019 - 2020
                 </span>
             </div>
-        </div>
+        </div> 
     </div>
 </footer>
 

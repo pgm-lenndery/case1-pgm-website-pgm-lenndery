@@ -2,6 +2,8 @@
     --transition-prop: all;
     --transition-time: .3s;
     --transition-bezier: ease;
+    --letter-spacing: 7px;
+    --object-position: center;
 }
 
 @mixin font-poppins {
@@ -18,9 +20,20 @@
 }
 
 @mixin text-modern {
-    --letter-spacing: 7px;
     @include font-poppins;
     letter-spacing: var(--letter-spacing);
     text-transform: uppercase;
+}
+
+@mixin object-fit {
+    object-fit: cover;
+    object-position: var(--object-position);
+}
+
+@mixin position-spread {
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
 }
 

@@ -8,17 +8,21 @@ const site = {
         this.cache();
         this.listen();
         this.fillMarquee();
+        this.fillMarquee();
+        this.fillMarquee();
         this.addFilterOptions();
         this.renderCases();
+        this.renderStudents();
         this.lazyLoadingBoxes();
     },
     
     cache() {
         status.add('cache');
-        this.marquee = document.querySelector('[data-label="marquee"]');
+        this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');
         this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options');
-        this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore')
+        this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore');
         this.caseCardHoverTarget = '[data-label="casesHighlight"] .salvatore .card:hover';
+        this.studentsHighlight = document.querySelector('[data-label="studentsHighlight"] .collection');
     },
     
     listen() {
@@ -30,17 +34,22 @@ const site = {
                 this.casesHighlight.classList.remove('hovering');
             }
         });
-        // document.body.addEventListener('mouseout', (event) => {
-        //     if (event.target.closest(this.caseCardHoverTarget) != null) {
-        //         this.casesHighlight.classList.remove('hovering');
-        //     }
-        // });
+        document.body.addEventListener('focusout', () => {
+            this.casesHighlight.classList.remove('hovering');
+        });
     },
     
     fillMarquee() {
         status.add('fillMarquee');
         const words = ['javascript','html','animation','webpack','Adobe Illustrator','react','typescript','wordpress','svg','git','sass','firebase','bootstrap','indexedDB','Adobe XD']
-        this.marquee.innerHTML = words.join('<span class="word-joint">・</span>')
+        words.forEach(word => {
+            const span = document.createElement('span');
+            span.classList.add('d-inline');
+            span.innerHTML = `
+                ${word}<span class="word-joint">・</span>
+            `;
+            this.marquee.appendChild(span);
+        })
     },
     
     addFilterOptions() {
@@ -65,9 +74,9 @@ const site = {
         const apiData = await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json');
         
         await apiData.cases.forEach(i => {
-            const caseEl = document.createElement('div');
-            caseEl.classList.add('salvatore-grid-item','card','box-all','mt-6','box-lazy');
-            caseEl.innerHTML = `
+            const card = document.createElement('div');
+            card.classList.add('salvatore-grid-item','card','box-all','mt-6','box-lazy');
+            card.innerHTML = `
                 <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
                     <div class="font-rhode py-3"> 2 maanden geleden<span class="word-joint">・</span>webpgm</div><i data-feather="arrow-right"></i>
                 </div>
@@ -83,11 +92,42 @@ const site = {
                     </div>
                 </div>
             `;
-            // this.casesHighlight.appendChild(caseEl);
-            salvattore.appendElements(this.casesHighlight, [caseEl]);
+            // this.casesHighlight.appendChild(card);
+            salvattore.appendElements(this.casesHighlight, [card]);
         })
         
         feather.replace();
+        this.lazyLoadingBoxes();
+    },
+    
+    async renderStudents() {
+        status.add('renderStudents');
+        const students = 10;
+        
+        const apiData = await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json');
+        status.log(apiData);
+        await apiData.records.forEach((i, index) => {
+            i = i.fields;
+            if (students >= index+1) {
+                const card = document.createElement('div');
+                card.classList.add('collection-item');
+                card.innerHTML = `
+                    ${index == 0 ? '<div class="card-joint box-lazy lightspeed" style="animation-delay: ${0.1*index}s;"></div>' : ''}
+                    <div class="card box-lazy lightspeed" style="animation-delay: ${0.1*index}s;">
+                        <div class="card-header p-4">
+                            <p class="font-rhode mb-0">${i.name_first}</p>
+                            <p class="text-modern small mb-0">${i.name_last}</p>
+                        </div>
+                        <div class="card-img filter-purple-rain">
+                            <img src="${i.img[0].thumbnails.large.url}" alt="">
+                        </div>
+                    </div>
+                    <div class="card-joint box-lazy lightspeed" style="animation-delay: ${0.1*index}s;"></div>
+                `;
+                this.studentsHighlight.appendChild(card);
+            }
+        });
+        
         this.lazyLoadingBoxes();
     },
     
@@ -108,7 +148,11 @@ const site = {
             boxes.forEach(box => {
                 if (box.isIntersecting) {
                     observer.unobserve(box.target);
-                    box.target.classList.add('box-lazy-ready','zoomIn');
+                    status.log(box.target);
+                    
+                    let animation;
+                    box.target.dataset.lazyAnimation != undefined ? animation = box.target.dataset.lazyAnimation : animation = 'zoomIn';
+                    box.target.classList.add('box-lazy-ready', animation);
                     // box.target.src = box.target.dataset.src;
                     // box.target.onload = () => box.target.classList.add('loaded');
                 }
@@ -117,8 +161,8 @@ const site = {
         let observer = new IntersectionObserver(onIntersection, interactSettings)
 
         lazyBoxes.forEach(box => {
-            box.classList.add('animated', 'lightspeed')
-            observer.observe(box)
+            box.classList.add('animated', 'lightspeed');
+            observer.observe(box);
         })
     }
 }

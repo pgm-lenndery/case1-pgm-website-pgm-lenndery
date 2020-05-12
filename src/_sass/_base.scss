@@ -147,7 +147,6 @@ a {
 }
 
 .marquee {
-    @include font-rhode;
     padding: 0.5rem;
     background-color: white;
     color: black;
@@ -155,4 +154,39 @@ a {
     white-space: nowrap;
     overflow: hidden;
     text-transform: lowercase;
+    
+    &:hover &-content {
+        animation-play-state: paused;
+    }
+    
+    &:before,
+    &:after {
+        position: absolute;
+        top: 0;
+        width: 50px;
+        height: 30px;
+        content: "";
+        z-index: 1;
+    }
+    
+    &-content {
+        width: 300%;
+        display: flex;
+        line-height: 30px;
+        animation: marquee 30s linear infinite forwards;
+        
+        * {@include font-rhode;}
+    }
+}
+  
+  
+  
+  
+  @keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-66.6%);
+    }
 }
