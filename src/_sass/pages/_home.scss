@@ -78,8 +78,26 @@
     }
 }
 
-[data-label="hero"] {
-    background-image: url('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_pgm_klein_wit.svg');
-    background-repeat: no-repeat;
-    background-position: 100% 166px;
+.hero {
+    position: relative;
+    
+    &-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    &-background-wrapper {
+        position: absolute;
+        @include position-spread;
+        overflow: hidden;
+        
+        img {
+            position: relative;
+            top: 5%;
+            left: 60%;
+            opacity: .4;
+            z-index: 0;
+            width: 990px;
+        }
+    }
 }
