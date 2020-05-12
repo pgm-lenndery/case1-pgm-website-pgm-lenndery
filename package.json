@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "baas:edit": "code ../01-case-1-baas",
-    "baas:update": "cd ../01-case-1-baas && git pull & git add . && git commit -m 'Updated assets' & git push",
+    "baas:update": "cd ../01-case-1-baas && git pull & git add . && git commit -m 'Updated assets' && git push",
     "baas:open": "open 'https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/'",
     "11ty:build": "npx @11ty/eleventy",
     "11ty:dev": "npx @11ty/eleventy --serve --quiet",
