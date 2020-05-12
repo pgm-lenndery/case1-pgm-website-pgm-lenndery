@@ -113,7 +113,7 @@ const site = {
                 card.classList.add('collection-item');
                 card.innerHTML = `
                     ${index == 0 ? '<div class="card-joint box-lazy lightspeed" style="animation-delay: ${0.1*index}s;"></div>' : ''}
-                    <div class="card box-lazy lightspeed" style="animation-delay: ${0.1*index}s;">
+                    <div class="card box-lazy lightspeed" style="animation-delay: ${0.07*index}s;">
                         <div class="card-header p-4">
                             <p class="font-rhode mb-0">${i.name_first}</p>
                             <p class="text-modern small mb-0">${i.name_last}</p>
@@ -122,7 +122,7 @@ const site = {
                             <img src="${i.img[0].thumbnails.large.url}" alt="">
                         </div>
                     </div>
-                    <div class="card-joint box-lazy lightspeed" style="animation-delay: ${0.1*index}s;"></div>
+                    <div class="card-joint box-lazy lightspeed" style="animation-delay: ${0.07*index}s;"></div>
                 `;
                 this.studentsHighlight.appendChild(card);
             }
