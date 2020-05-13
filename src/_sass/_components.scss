@@ -172,6 +172,7 @@
             // .card {margin-left: 3rem;} 
             .card-joint:first-child {visibility: hidden;}
         }
+        
         &:last-child {
             // extra margin inside collection after last card
             // .card {margin-right: 3rem;}
@@ -179,6 +180,7 @@
         }
         
     }
+    
     &-horizontal {
         display: flex;
         align-items: center;
@@ -222,21 +224,75 @@
     }
 }
 
-// .marquee {
-//     // position: fixed;
-//     // top: 0;
-//     // left: 0;
-//     // width: 100%;
-//     // height: fit-content;
+.marquee {
+    --marquee-speed: 7;
+    padding: 0.5rem;
+    background-color: white;
+    color: black;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-transform: lowercase;
     
-//     .inner {
-//         position: relative;
-//         display: flex;
+    &:hover &-content {
+        animation-play-state: paused;
+    }
+    
+    &:before,
+    &:after {
+        position: absolute;
+        top: 0;
+        width: 50px;
+        height: 30px;
+        content: "";
+        z-index: 1;
+    }
+    
+    &-content {
+        width: 300%;
+        display: flex;
+        line-height: 30px;
+        animation: marquee 10s linear infinite forwards;
+        animation-duration: calc(var(--marquee-speed)*10s);
         
-//         > * {
-//             white-space: nowrap;
-//         }
-//     }
-// }
+        * {@include font-rhode;}
+    }
+}
 
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-66.6%);
+    }
+}
+
+.modal {
+    position: fixed;
+    @include position-spread;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &.sesam-hidden {
+        display: none;
+    }
+    
+    .modal-wrapper .modal-content {
+        display: block;
+    }
+}
+
+.sesam-backdrop {
+    position: fixed;
+    @include position-spread;
+    @extend .level-9;
+    background-color: rgba(0, 0, 0, 0.336);
+    
+    &.sesam-hidden {
+        display: none;
+    }
+}
 

@@ -1,4 +1,5 @@
-import {callerName, fetchAPI} from './common.js'
+import {callerName, fetchAPI} from './common.js';
+import {sesamCollapse, sesam} from './sesam.js';
 
 const status = new callerName('main');
 
@@ -14,6 +15,8 @@ const site = {
         this.renderCases();
         this.renderStudents();
         this.lazyLoadingBoxes();
+        
+        sesamCollapse.initialize();
     },
     
     cache() {
@@ -105,7 +108,6 @@ const site = {
         const students = 10;
         
         const apiData = await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json');
-        status.log(apiData);
         await apiData.records.forEach((i, index) => {
             i = i.fields;
             if (students >= index+1) {
@@ -148,7 +150,6 @@ const site = {
             boxes.forEach(box => {
                 if (box.isIntersecting) {
                     observer.unobserve(box.target);
-                    status.log(box.target);
                     
                     let animation;
                     box.target.dataset.lazyAnimation != undefined ? animation = box.target.dataset.lazyAnimation : animation = 'zoomIn';
