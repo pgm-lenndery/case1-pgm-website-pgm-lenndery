@@ -1,6 +1,7 @@
 module.exports = (eleventyConfig) => { 
     eleventyConfig.setQuietMode(true);
     eleventyConfig.addWatchTarget("./src/");
+    
     // Copy `img/` to `_site/img`
     eleventyConfig.addPassthroughCopy({ 
         'src/_static/images': 'static/images',

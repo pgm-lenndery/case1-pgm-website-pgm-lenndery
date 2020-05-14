@@ -47,6 +47,9 @@ const sesamCollapse = {
         this.parent = document.querySelectorAll(`[data-sesam-group="${this.parent}"] .sesam`);
         this.trigger = document.querySelector(`[data-sesam-trigger="${this.targetName}"]`);
         
+        let targetConfig = target.dataset.sesam.replace(/(\')/g, '"');
+        targetConfig = JSON.parse(targetConfig);
+        
         // COLLAPSE TRIGGER
         if (this.trigger.classList.contains('sesam-show') == false) {
             this.itemShow(this.trigger);
@@ -56,21 +59,43 @@ const sesamCollapse = {
                 if (item.dataset.sesamTrigger !== this.targetName) this.itemHide(item);
             });
         } else this.itemHide(this.trigger);
-
+        
         // COLLAPSE TARGET
         if (target.classList.contains('sesam-show') == false) {
             this.itemShow(target);
             if (target.dataset.sesamBackdrop == 'true') this.itemShow(this.backdrop);
-            if (target.dataset.sesamScrollblock == 'true') this.scrollBlock({ block: true })
+            if (target.dataset.sesamScrollblock == 'true') this.scrollBlock({ block: true });
+            
+            sesam({
+                target: this.targetName,
+                classes: {
+                    add: [targetConfig.animate.in],
+                    remove: [targetConfig.animate.out]
+                },
+                modal: {
+                    backdrop: targetConfig.modal.backdrop,
+                    scrollBlock: targetConfig.modal.scrollblock,
+                }
+            })
         } else {
             this.itemHide(target);
             if (target.dataset.sesamBackdrop == 'true') this.itemHide(this.backdrop);
-            if (target.dataset.sesamScrollblock == 'true') this.scrollBlock({ block: false })
+            if (target.dataset.sesamScrollblock == 'true') this.scrollBlock({ block: false });
+            
+            sesam({
+                target: this.targetName,
+                classes: {
+                    add: [targetConfig.animate.out],
+                    remove: [targetConfig.animate.in]
+                },
+                modal: {
+                    backdrop: false,
+                    scrollBlock: false,
+                }
+            })
             
             // HIDE ALSO OTHER ELEMENTS
-            this.parent.forEach((item) => {
-                if (item.dataset.sesamTarget !== this.targetName) this.itemHide(item);
-            });
+            this.parent.forEach((item) => {if (item.dataset.sesamTarget !== this.targetName) this.itemHide(item)});
         }
     },
 
@@ -119,26 +144,45 @@ const sesamCollapse = {
         else document.body.classList.remove('sesam-scrollBlock');
     }
 }, sesam = ({action, collapse, execute, classes, target, modal}) => {
-    target = document.querySelector(`[data-sesam-target='${target}']`);
+    const targetElement = document.querySelector(`[data-sesam-target='${target}']`);
     
     if (action !== undefined) {
-        if (action == 'show') sesamCollapse.itemShow(target);
-        if (action == 'hide') sesamCollapse.itemHide(target);
+        if (action == 'show') sesamCollapse.itemShow(targetElement);
+        if (action == 'hide') sesamCollapse.itemHide(targetElement);
     }
     
     if (collapse !== undefined && collapse == true) sesamCollapse.collapseDo(target);
     if (execute !== undefined) execute;
-    if (classes !== undefined) target.classList.add(classes.add);
-    if (classes !== undefined) target.classList.remove(classes.remove);
-    if (classes !== undefined) target.classList.remove(classes.remove);
-    if (modal.backdrop !== undefined) {
+    if (classes != undefined && classes.add !== undefined) classes.add.forEach(i => {targetElement.classList.add(i)});
+    if (classes != undefined && classes.remove !== undefined) classes.remove.forEach(i => {targetElement.classList.remove(i)});
+    if (modal != undefined && modal.backdrop !== undefined) {
         if (modal.backdrop == true) sesamCollapse.itemShow(sesamCollapse.backdrop);
         if (modal.backdrop == false) sesamCollapse.itemHide(sesamCollapse.backdrop);
     }
-    if (modal.scrollBlock !== undefined) {
+    if (modal != undefined && modal.scrollBlock !== undefined) {
         if (modal.scrollBlock == true) sesamCollapse.scrollBlock({ block: true })
         if (modal.scrollBlock == false) sesamCollapse.scrollBlock({ block: false })
     }
 };
 
 export {sesamCollapse, sesam};
+
+/*
+sesam({
+    target: 'example', //doet dit: document.querySelector(`[data-sesam-target='${example}']`)
+    collapse: true, // gaat gewoon kijken wat de huidige state is van een target en die veranderen
+    action: 'show', // of 'hide', niet gebruiken in combinatie met collapse argument
+    execute: (() => { // voer extra javascript uit
+        console.log('this works!')
+    })(), 
+    classes: {
+        add: ['add','some','classes'],
+        remove: ['remove','some','classes']
+    },
+    modal: {
+        backdrop: true, // voegt sesam-hidden/sesam-show classe toe aan het backdrop element, 
+                        //backdrop element wordt automatisch gemaakt bij het initialiseren
+        scrollBlock: true // blokkeert het scrollen door de pagina wanneer deze modal getoont wordt
+    }
+})
+*/

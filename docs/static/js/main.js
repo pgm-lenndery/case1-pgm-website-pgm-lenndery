@@ -1,5 +1,5 @@
 import {callerName, fetchAPI} from './common.js';
-import {sesamCollapse, sesam} from './sesam.js';
+import {modalControl, sesamCollapse, sesam} from './modules/index.js'
 
 const status = new callerName('main');
 
@@ -17,6 +17,15 @@ const site = {
         this.lazyLoadingBoxes();
         
         sesamCollapse.initialize();
+        modalControl.initialize();
+        
+        // sesam({
+        //     target: 'test',
+        //     collapse: true,
+        //     classes: {
+        //         add: ['fadeIn']
+        //     }
+        // })
     },
     
     cache() {

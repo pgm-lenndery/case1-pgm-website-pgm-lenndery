@@ -65,13 +65,14 @@
 }
 
 .bg-color {
-    &-purple {
-        background-color: $purple500;
-    }
-    
-    &-black {
-        background-color: black;
-    }
+    &-purple {background-color: $purple500;}
+    &-black {background-color: black;}
+    &-white {background-color: white;}
+}
+
+.text-color {
+    &-black {color: black;}
+    &-white {color: white;}
 }
 
 @for $i from 0 through 10 {

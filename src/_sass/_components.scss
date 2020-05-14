@@ -40,9 +40,8 @@
         border-right-width: 2px;
     }
     
-    &-offset-t {
-        margin-top: -2px;
-    }
+    &-offset-t {margin-top: -2px;}
+    &-offset-b {margin-bottom: -2px;}
     
     &-offset-y {
         margin-top: -2px;
@@ -269,19 +268,78 @@
 }
 
 .modal {
+    --box-modal-offset: 2.3rem;
     position: fixed;
     @include position-spread;
-    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
     
     &.sesam-hidden {
         display: none;
     }
     
-    .modal-wrapper .modal-content {
+    &-wrapper &-content {
+        background-color: black;
         display: block;
+        height: 84vh;
+        
+        &::after {
+            @extend .box-all; 
+            content: ' ';
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: black;;
+            z-index: -1;
+            transform: translate(calc(var(--box-modal-offset)*-1), var(--box-modal-offset));
+        }
+        
+        .modal-content-header {
+            height: 2.3rem;
+        }
+        
+        &-wrapper {
+            height: 100%;
+            overflow-y: scroll;
+        }
+    }
+    
+    &.box-modal {
+        .modal-content {
+            position: relative;
+        }
+        
+        .modal-wrapper {
+            transform: translateY(calc((var(--box-modal-offset)*-1)/2));
+        }
+        
+        .modal-controls {
+            position: absolute;
+            top: calc(var(--box-modal-offset));
+            left: calc(var(--box-modal-offset)*-1);
+            background-color: black;
+            
+            > div {
+                @extend .box-all;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: var(--box-modal-offset);
+                height: var(--box-modal-offset);
+                
+                &:first-child {
+                    @extend .box-offset-b
+                }
+            }
+        }
+        
+        .modal-title {
+            max-width: 480px;
+        }
     }
 }
 
@@ -289,10 +347,47 @@
     position: fixed;
     @include position-spread;
     @extend .level-9;
-    background-color: rgba(0, 0, 0, 0.336);
+    background-color: rgba(0, 0, 0, 0.884);
     
     &.sesam-hidden {
         display: none;
+    }
+}
+
+[data-label="tabs"] {
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    z-index: 8;
+    @extend .ml-8;
+    @extend .box-offset-b;
+    
+    .tab {
+        margin-right: 1.3rem;
+        padding: 10px;
+        display: flex;
+        background-color: $purple500;
+        cursor: pointer;
+        transition: all .2s ease;
+        border: 0px solid white;
+        border-width: 2px 2px 0px 2px;
+        
+        &:hover {
+            transform: scale(1.05);
+        }
+        
+        svg {
+            margin-right: 5px;
+        }
+        
+        &-title {
+            display: block;
+            max-width: 240px;
+            @include font-rhode;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     }
 }
 
