@@ -49,7 +49,7 @@ export const modalControl = {
         const checks = [];
         this.tabs.querySelectorAll('.tab').forEach(tab => {
             checks.push(tab.dataset.tabTrigger == sesamName)
-        });
+        }); 
         
         if (checks.includes(true) == false) {
             const tab = document.createElement('div');
