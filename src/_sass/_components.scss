@@ -271,13 +271,13 @@
     --box-modal-offset: 2.3rem;
     position: fixed;
     @include position-spread;
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: center;
     z-index: 10;
     
-    &.sesam-hidden {
-        display: none;
+    &.sesam-show {
+        display: flex;
     }
     
     &-wrapper &-content {

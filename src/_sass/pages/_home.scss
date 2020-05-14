@@ -1,7 +1,6 @@
 
 [data-label="casesHighlight"] .salvatore {
     * {@include transition;}
-    clear: both;
     
     &.hovering {
         @include transition;
@@ -16,7 +15,9 @@
         @extend .mr-6;
     }
     
-    .card {       
+    .card {   
+        cursor: pointer;
+            
         &-body {
             position: relative;
             

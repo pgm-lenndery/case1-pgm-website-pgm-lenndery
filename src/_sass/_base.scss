@@ -16,10 +16,25 @@ img {
     object-position: center;
 }
 
-svg.feather * {
+svg.feather {
+    --d: 24px;
+    width: var(--d);
+    height: var(--d);
     stroke-width: 2px;
     stroke-linecap: butt;
     stroke-linejoin: miter;
+    rx: 0px;
+    
+    * {
+        stroke-linecap: butt;
+        stroke-linejoin: miter;
+        rx: 0px;
+    }
+    
+    &.feather-size {
+        &-normal {--d: 24px;}
+        &-big {--d: 40px;}
+    }
 }
 
 .btn-arrow {
@@ -132,20 +147,23 @@ a {
         text-decoration: inherit;
     }
     
-    &::after {
-        --h: 2px;
-        content: ' ';
-        position: absolute;
-        left: 0%;
-        width: 100%;
-        top: calc(50% - (var(--h)/2));
-        height: var(--h);
-        background-color: $purple500;
-        z-index: -1;
+    &.btn-arrow-link {
+        &::after {
+            --h: 2px;
+            content: ' ';
+            position: absolute;
+            left: 0%;
+            width: 100%;
+            top: calc(50% - (var(--h)/2));
+            height: var(--h);
+            background-color: $purple500;
+            z-index: -1;
+        }
+        
+        svg {
+            margin: 0 -10px;
+            stroke: $purple500
+        }
     }
     
-    svg {
-        margin: 0 -10px;
-        stroke: $purple500
-    }
 }

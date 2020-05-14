@@ -13,6 +13,17 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addLayoutAlias('page', 'page.html');
     eleventyConfig.addLayoutAlias('default', 'default.html');
     
+    eleventyConfig.addPairedShortcode('anker', (content, href, attr) => {
+        // const {href = '#', target = '_self'} = options;
+        return `
+            <a href="${href}" class="btn-arrow" ${attr}>
+                <i data-feather="chevron-right"></i>
+                ${content}
+                <i data-feather="chevron-right"></i>
+            </a>
+        `
+    });
+    
     return {
         pathPrefix: '/case1-pgm-website-pgm-lenndery',
         dir: {

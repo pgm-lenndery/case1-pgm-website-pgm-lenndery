@@ -3,7 +3,7 @@ import {modalControl, sesamCollapse, sesam} from './modules/index.js'
 
 const status = new callerName('main');
 
-const site = {
+export const site = {
     initialize() {
         status.init();
         this.cache();
@@ -12,20 +12,11 @@ const site = {
         this.fillMarquee();
         this.fillMarquee();
         this.addFilterOptions();
-        this.renderCases();
-        this.renderStudents();
-        this.lazyLoadingBoxes();
+        this.getApidata();
+        this.arrowButtons();
         
         sesamCollapse.initialize();
         modalControl.initialize();
-        
-        // sesam({
-        //     target: 'test',
-        //     collapse: true,
-        //     classes: {
-        //         add: ['fadeIn']
-        //     }
-        // })
     },
     
     cache() {
@@ -85,9 +76,10 @@ const site = {
         
         const apiData = await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json');
         
-        await apiData.cases.forEach(i => {
+        await apiData.cases.data.forEach(i => {
             const card = document.createElement('div');
             card.classList.add('salvatore-grid-item','card','box-all','mt-6','box-lazy');
+            card.setAttribute('data-id', i.id);
             card.innerHTML = `
                 <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
                     <div class="font-rhode py-3"> 2 maanden geleden<span class="word-joint">・</span>webpgm</div><i data-feather="arrow-right"></i>
@@ -116,8 +108,7 @@ const site = {
         status.add('renderStudents');
         const students = 10;
         
-        const apiData = await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json');
-        await apiData.records.forEach((i, index) => {
+        await this.apiData.students.records.forEach((i, index) => {
             i = i.fields;
             if (students >= index+1) {
                 const card = document.createElement('div');
@@ -174,6 +165,37 @@ const site = {
             box.classList.add('animated', 'lightspeed');
             observer.observe(box);
         })
+    },
+    
+    async getApidata() {
+        this.apiData = {
+            cases: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json'),
+            students: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json')
+        }
+        console.log(await this.apiData);
+        
+        this.renderDomElements();
+        this.lazyLoadingBoxes();
+    },
+    
+    renderDomElements() {
+        this.renderCases();
+        this.renderStudents();
+    },
+    
+    arrowButtons() {
+        const btnArrow = document.querySelectorAll('.btn-arrow');
+        const btnArrowLink = document.querySelectorAll('.btn-arrow-link');
+        const arrow = '<i data-feather="chevron-right"></i>';
+        
+        btnArrow.forEach(btn => {
+            btn.innerHTML += arrow;
+            btn.innerHTML += arrow;
+        });
+        
+        btnArrowLink.forEach(btn => {
+            btn.innerHTML += arrow;
+        });
     }
 }
 

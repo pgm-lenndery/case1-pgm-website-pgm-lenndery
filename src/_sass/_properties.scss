@@ -4,8 +4,8 @@
 
 .font-rhode {
     @include font-rhode;
-    // line-height: 4.7rem;
     line-height: 108%;
+    text-transform: lowercase;
 }
 
 .text-modern {
