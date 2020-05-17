@@ -1,0 +1,20 @@
+---
+layout: default
+---
+
+<section>
+    <div class="container-fluid py-5 box-b">
+        <h1 class="font-rhode modal-title">{{ title }}</h1>
+        <p class="mb-0 text-modern">{{ subtitle }}</p>
+    </div>
+</section>
+<section id="mainContent">
+    <div class="container-fluid my-8">
+        <div class="row">
+            <div class="col-12 col-lg-8">
+                {{ content }}
+            </div>
+        </div>
+    </div>
+</section>
+{% include modal-page %}

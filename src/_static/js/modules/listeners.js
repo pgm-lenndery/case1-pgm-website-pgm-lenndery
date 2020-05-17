@@ -51,9 +51,9 @@ export const listeners = {
         })
         
         document.body.addEventListener('mouseover', (event) => {
-            if (event.target.closest(this.caseCardHoverTarget) != null) {
+            if (this.caseCardHoverTarget != null && event.target.closest(this.caseCardHoverTarget) != null) {
                 this.casesHighlight.classList.add('hovering');
-            } else {
+            } else if (this.casesHighlight != null) {
                 this.casesHighlight.classList.remove('hovering');
             }
         });

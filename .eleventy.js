@@ -10,8 +10,9 @@ module.exports = (eleventyConfig) => {
         'src/_static/js': 'static/js'
     });
       
-    eleventyConfig.addLayoutAlias('page', 'page.html');
-    eleventyConfig.addLayoutAlias('default', 'default.html');
+    eleventyConfig.addLayoutAlias('page', 'page.liquid');
+    eleventyConfig.addLayoutAlias('default', 'default.liquid');
+    eleventyConfig.addLayoutAlias('modal', 'modal.liquid');
     
     eleventyConfig.addPairedShortcode('anker', (content, href, attr) => {
         // const {href = '#', target = '_self'} = options;
@@ -25,11 +26,12 @@ module.exports = (eleventyConfig) => {
     });
     
     return {
-        pathPrefix: '/case1-pgm-website-pgm-lenndery',
+        pathPrefix: '/case1-pgm-website-pgm-lenndery/',
         dir: {
             output: 'docs',
             input: 'src/',
             data: '_data',
+            pages: '_pages',
             includes: '_includes',
             layouts: '_layouts'
         },

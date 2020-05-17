@@ -15,3 +15,12 @@ small, .small {
         --letter-spacing: 3px;
     }
 }
+
+#mainContent {
+    @for $i from 1 through 6 {
+        h#{$i} {
+          @include font-rhode;
+          margin-bottom: 1.5rem;
+        }
+    }
+}

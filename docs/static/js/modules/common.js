@@ -26,3 +26,14 @@ export const fetchAPI = async (url) => {
         throw new Error('nieje mut')
     }
 }
+
+export const fetchPage = async (url) => {
+    try {
+        let response = await fetch(url)
+        let data = await response.text();
+        return data
+    }
+    catch {
+        throw new Error('nieje mut')
+    }
+}

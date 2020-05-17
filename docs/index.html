@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script type="module" src="/case1-pgm-website-pgm-lenndery/static/js/main.js"></script>
+    <script type="module" src="/case1-pgm-website-pgm-lenndery/static/js/app.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -37,25 +39,25 @@
     <link rel="stylesheet" href="https://use.typekit.net/wjg3qhe.css">
     
     <!-- local assets -->
-    <link rel="stylesheet" href="static/css/main.css">
+    <link rel="stylesheet" href="/case1-pgm-website-pgm-lenndery/static/css/main.css">
     <!-- <link rel="stylesheet" href="./static/css/salvatore.css"> -->
     <link rel="stylesheet" href="https://lib.lennertderyck.be/assets/min/flexy-cards.css">
 </head>
 <body data-page="home">
     <div class="box-lazy" data-lazy-animation="fadeInDown">
     <header class="header box-b">
-        <div class="container-fluid">
+        <a href="/case1-pgm-website-pgm-lenndery/" class="container-fluid">
             <div class="header-brand py-5">
                 <img width="300px" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_graduaat_programmeren.svg" alt="">
             </div>
-        </div>
+        </a>
     </header>
     <div data-label="marquee" class="marquee">
         <div class="marquee-content"></div>
     </div>  
 </div>
-    <main>
-        <section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp">
+<main>
+    <section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp">
     <div class="container-fluid py-8 hero-content">
         <h1 class="font-rhode display-3 mb-4">
             graduaat<br>programmeren<br>front end development
@@ -220,9 +222,9 @@
 </div>
 
 
-    </main>
-    <div data-label="tabs" class="tabs"></div>
-    <footer class="box-lazy" data-lazy-animation="fadeInUp">
+</main>
+<div data-label="tabs" class="tabs"></div>
+<footer class="box-lazy" data-lazy-animation="fadeInUp">
     <div class="container-fluid box-y">
         <div class="row mx-0">
             <div class="col-auto box-x py-3 d-flex align-items-center bg-color-purple">
@@ -253,6 +255,57 @@
         </div> 
     </div>
 </footer>
+<div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="page">
+    <div class="modal-wrapper">
+        <div class="modal-content box-all">
+            <div class="modal-content-wrapper">
+                <div class="modal-controls">
+                    <div data-action="modalClose"><i data-feather="x"></i></div>
+                    <div data-action="modalHide"><i data-feather="minus"></i></div>
+                </div>
+                <div class="modal-content-header d-none">
+                    <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
+                </div>
+                <div class="modal-content-body">
+                    <button class="btn-arrow" data-sesam-trigger="test">meer weten?</button>
+                    <div class="row p-7">
+                        <div class="col-12 col-md-8">
+                            <h2 class="modal-title font-rhode mb-5">triviaquiz met opendb api</h2>
+                            <p class="text-modern">over deze opdracht</p>
+                            <p>Dit was een examenopdracht waarbij een quizapplicatie ontwikkeld moest worden.</p>
+                            <p>Het was de bedoeling dat de gebruiker 10 vragen beantwoord en nadien een score te zien krijgt. Deze score moest bijgehouden worden, ook wanneer de gebruiker de browser afsluit.</p>
+                            <p>Als laatste moest het ook mogelijk zijn om voorkeuren op te geven zoals de moeilijkheidsgraad en de categorie.</p>
+                        </div>
+                    </div>
+                    <div class="bg-color-white text-color-black font-rhode px-7 py-2">
+                        webpack<span class="word-joint">・</span>babel<span class="word-joint">・</span>sass<span class="word-joint">・</span>github<span class="word-joint">・</span>api’s
+                    </div>
+                    <div class="row mx-0 box-b">
+                        <div class="col-auto px-7 py-7">
+                            <p class="text-modern">vak</p>
+                            <p>web programming</p>
+                            <p class="text-modern">academiejaar</p>
+                            <p>2019 - 2020</p>
+                        </div>
+                        <div class="col-auto pl-0 pr-7 py-7">
+                            <p class="text-modern">technologieën</p>
+                            <p>html, sass, javascript</p>
+                            <p class="text-modern">studenten</p>
+                            <p>Jaimy Van Gyseghem</p>
+                        </div>
+                        <div class="d-none d-lg-block col-3 pr-0 ml-auto">
+                            <div class="box-l h-100">
+                                <div class="filter-purple-rain position-relative">
+                                    <img class="h-100" style="max-width: 100%; max-height: 300px;" src="https://dl.airtable.com/.attachmentThumbnails/9e0a4860a1d429c55a0957a6a5cea48b/8a322593" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     
     <!-- bootstrap scripts -->
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
@@ -260,9 +313,8 @@
     <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
     
     <!-- scripts -->
-    <script src="static/js/plugins/salvatore.js"></script>
-    <script type="module" src="static/js/main.js"></script>
-    <script type="module" src="static/js/plugins/sesamCollapse.js"></script>
+    <script src="/case1-pgm-website-pgm-lenndery/static/js/plugins/salvatore.js"></script>
+    <!-- <script type="module" src="/case1-pgm-website-pgm-lenndery/static/js/plugins/sesamCollapse.js"></script> -->
     
     <script>
         /* Initialize feather icons */

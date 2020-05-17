@@ -1,6 +1,4 @@
-import {site} from '../main.js';
-import {callerName, fetchAPI} from '../common.js';
-import {sesamCollapse, sesam} from './index.js';
+import {main, site, sesamCollapse, sesam, listeners, callerName, fetchAPI, fetchPage} from './index.js';
 
 const status = new callerName('modalControl');
 
@@ -9,19 +7,13 @@ export const modalControl = {
         status.init();
         
         this.cache();
-        this.listen();
     },
     
     cache() {
         status.add('cache');
         this.tabs = document.querySelector('[data-label="tabs"]')
     },
-    
-    listen() {
-        status.add('listen');
-        
-    },
-    
+
     createTab({title, sesamName}) {
         const checks = [];
         this.tabs.querySelectorAll('.tab').forEach(tab => {
@@ -138,4 +130,51 @@ export const modalControl = {
             }
         });        
     },
+    
+    async displayPageModalByUrl() {       
+        fetch(`${origin}/${main.sitePrefix}/`)
+        .then(response => response.text())
+        .then(text => {
+            document.open();
+            document.write(text);
+            document.close();
+        })
+        .then(async () => {
+            sesamCollapse.initialize();
+            const pageData = await fetchPage(`${origin}/${main.sitePrefix}${window.location.pathname.replace(main.sitePrefix,'')}`);
+            
+            document.querySelector('[data-sesam-target="page"] .modal-content-wrapper').innerHTML = `
+                <div class="modal-controls">
+                    <div data-action="modalClose"><i data-feather="x"></i></div>
+                    <div data-action="modalHide"><i data-feather="minus"></i></div>
+                </div>
+                <div class="modal-content-header d-none">
+                    <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
+                </div>
+                <div class="modal-content-body">
+                    ${pageData}
+                </div>
+            `;
+            
+            feather.replace();
+            
+            await sesam({
+                target: 'page',
+                action: 'show',
+                modal: {
+                    backdrop: true,
+                    scrollBlock: true
+                }
+            });
+            
+            modalControl.initialize();
+            listeners.initialize();
+            site.cache();
+            site.getApidata();
+            site.fillMarquee();
+            site.fillMarquee();
+            site.fillMarquee();
+            site.arrowButtons();
+        });        
+    }
 }

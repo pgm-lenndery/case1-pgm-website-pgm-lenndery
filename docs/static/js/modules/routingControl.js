@@ -1,4 +1,4 @@
-import {callerName} from '../common.js';
+import {callerName} from './index.js';
 
 const status = new callerName('routingControl');
 
