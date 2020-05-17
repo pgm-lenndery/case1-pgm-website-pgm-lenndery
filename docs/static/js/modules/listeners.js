@@ -11,6 +11,8 @@ export const listeners = {
     initialize() {       
         document.body.addEventListener('click', (event) => {
             const modalActions = event.target.closest('.modal .modal-controls > div');
+            console.log(modalActions);
+            
             const tab = event.target.closest('[data-label="tabs"] .tab');
             const casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card');
             
@@ -28,10 +30,12 @@ export const listeners = {
             
             // show or hide modals, and show or hide tabs
             if (modalActions != null && modalActions.dataset.action == 'modalClose') {
+                console.log('modalClose');
                 modalControl.modalClose({
                     sesamTarget: event.target.closest('.modal').dataset.sesamTarget
                 })
-            } else if (modalActions != null && modalActions.dataset.action == 'modalHide') {          
+            } else if (modalActions != null && modalActions.dataset.action == 'modalHide') {  
+                console.log('modalHide');
                 modalControl.modalHide({
                     sesamTarget: event.target.closest('.modal').dataset.sesamTarget,
                     title: event.target.closest('.modal').querySelector('.modal-title').innerText
@@ -42,7 +46,11 @@ export const listeners = {
             if (tab != null) {
                 sesam({
                     target: tab.dataset.tabTrigger,
-                    collapse: true,
+                    action: 'show',
+                    modal: {
+                        backdrop: true,
+                        scrollBlock: true
+                    }
                 });
                 modalControl.removeTab({
                     sesamName: tab.dataset.tabTrigger

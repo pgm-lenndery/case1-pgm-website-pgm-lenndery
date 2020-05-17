@@ -1,24 +1,34 @@
 import {callerName, modalControl, sesamCollapse, sesam, listeners, fetchAPI, fetchPage} from './modules/index.js'
 
-// const status = new callerName('main');
+const status = new callerName('main');
 
 export const site = {
     async initialize() {
-        // status.init();
+        status.init();
         this.cache();
         
-        modalControl.initialize();
-        modalControl.displayPageModalByUrl();
         sesamCollapse.initialize();
+        modalControl.initialize();
+    },
+    
+    start() {
+        modalControl.initialize();
+        site.cache();
+        site.getApidata();
+        site.fillMarquee();
+        site.fillMarquee();
+        site.fillMarquee();
+        site.arrowButtons();
+        listeners.initialize();
     },
     
     cache() {
-        // // status.add('cache');
+        status.add('cache');
         this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');
     },
     
     fillMarquee() {
-        // // status.add('fillMarquee');
+        status.add('fillMarquee');
         const words = ['javascript','html','animation','webpack','Adobe Illustrator','react','typescript','wordpress','svg','git','sass','firebase','bootstrap','indexedDB','Adobe XD']
         if (this.marquee != null) {
             words.forEach(word => {
@@ -33,7 +43,7 @@ export const site = {
     },
     
     addFilterOptions() {
-        // // status.add('addFilterOptions');
+        status.add('addFilterOptions');
         const options = ['all','design','animation','protoyping'];
         options.forEach((i, index) => {
             const option = document.createElement('div');
@@ -48,7 +58,7 @@ export const site = {
     },
     
     async renderCases() {
-        // // status.add('renderCases');
+        status.add('renderCases');
         const cases = 10;
     
         if (listeners.casesHighlight != null) {
@@ -85,7 +95,7 @@ export const site = {
     },
     
     async renderStudents() {
-        // status.add('renderStudents');
+        status.add('renderStudents');
         const students = 10;
         
         if (listeners.studentsHighlight != null) {
@@ -161,7 +171,7 @@ export const site = {
     },
     
     renderDomElements() {
-        // status.add('renderDomElements');
+        status.add('renderDomElements');
         listeners.cache();
         this.renderCases();
         this.renderStudents();
@@ -182,6 +192,3 @@ export const site = {
         });
     }
 }
-
-
-window.onload = site.initialize();
