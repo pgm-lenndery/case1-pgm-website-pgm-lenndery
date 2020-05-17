@@ -1,5 +1,5 @@
 import {callerName, fetchAPI} from './common.js';
-import {modalControl, sesamCollapse, sesam} from './modules/index.js'
+import {modalControl, sesamCollapse, sesam, listeners} from './modules/index.js'
 
 const status = new callerName('main');
 
@@ -7,11 +7,9 @@ export const site = {
     initialize() {
         status.init();
         this.cache();
-        this.listen();
         this.fillMarquee();
         this.fillMarquee();
         this.fillMarquee();
-        this.addFilterOptions();
         this.getApidata();
         this.arrowButtons();
         
@@ -22,24 +20,6 @@ export const site = {
     cache() {
         status.add('cache');
         this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');
-        this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options');
-        this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore');
-        this.caseCardHoverTarget = '[data-label="casesHighlight"] .salvatore .card:hover';
-        this.studentsHighlight = document.querySelector('[data-label="studentsHighlight"] .collection');
-    },
-    
-    listen() {
-        status.add('listen');
-        document.body.addEventListener('mouseover', (event) => {
-            if (event.target.closest(this.caseCardHoverTarget) != null) {
-                this.casesHighlight.classList.add('hovering');
-            } else {
-                this.casesHighlight.classList.remove('hovering');
-            }
-        });
-        document.body.addEventListener('focusout', () => {
-            this.casesHighlight.classList.remove('hovering');
-        });
     },
     
     fillMarquee() {
@@ -97,7 +77,7 @@ export const site = {
                 </div>
             `;
             // this.casesHighlight.appendChild(card);
-            salvattore.appendElements(this.casesHighlight, [card]);
+            salvattore.appendElements(listeners.casesHighlight, [card]);
         })
         
         feather.replace();
@@ -126,7 +106,7 @@ export const site = {
                     </div>
                     <div class="card-joint box-lazy lightspeed" style="animation-delay: ${0.07*index}s;"></div>
                 `;
-                this.studentsHighlight.appendChild(card);
+                listeners.studentsHighlight.appendChild(card);
             }
         });
         
@@ -173,8 +153,7 @@ export const site = {
             students: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json')
         }
         console.log(await this.apiData);
-        
-        this.renderDomElements();
+        if (document.body.dataset.page == 'home') this.renderDomElements();
         this.lazyLoadingBoxes();
     },
     

@@ -11,9 +11,18 @@ body {
     }
 }
 
+main {
+    min-height: calc(100vh - 206px - 162px);
+}
+
 img {
     object-fit: cover;
     object-position: center;
+    
+    &.fit-to-wrapper {
+        max-height: 100%;
+        max-width: 100%;
+    }
 }
 
 svg.feather {

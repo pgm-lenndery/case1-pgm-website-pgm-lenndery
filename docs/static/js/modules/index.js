@@ -1,8 +1,9 @@
 import {modalControl} from './modalControl.js';
-import {initializeListeners} from './listeners.js';
-import {sesamCollapse, sesam} from '../plugins/sesam.js';
+import {sesamCollapse, sesam} from '../plugins/sesamCollapse.js';
+import {listeners} from './listeners.js';
 
 export {
     modalControl,
-    sesamCollapse, sesam
+    sesamCollapse, sesam,
+    listeners
 };

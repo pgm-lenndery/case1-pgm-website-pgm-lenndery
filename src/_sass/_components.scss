@@ -114,8 +114,9 @@
 }
 
 .header-section {
-    .row .col {
-        @extend .py-4
+    .row [class*="col"] {
+        padding-top: 1.5rem;
+        padding-bottom: 1.5rem;
     }
 }
 

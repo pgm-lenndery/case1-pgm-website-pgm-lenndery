@@ -61,11 +61,7 @@
             graduaat<br>programmeren<br>front end development
         </h1>
         <h3 class="text-modern font-weight-normal">catchy ondertitel</h3>
-        <button class="btn-arrow" data-sesam-trigger="test">
-    <i data-feather="chevron-right"></i>
-    meer weten?
-    <i data-feather="chevron-right"></i>
-</button>
+        <button class="btn-arrow" data-sesam-trigger="test">meer weten?</button>
     </div>
     <div class="hero-background-wrapper">
         <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_pgm_klein_wit.svg" alt="">
@@ -141,7 +137,7 @@
             </div>
             <div class="col-3 box-l cta-section-cta">
                 <h3 class="text-modern">
-                    meer<br>info
+                    ontdek onze opleiding
                 </h3>
                 <i data-feather="arrow-right"></i>
             </div>
@@ -149,7 +145,7 @@
     </div>
     <div class="container-fluid box-lazy py-6" data-lazy-animation="fadeInUp">
         <div class="row">
-            <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0 text-center ">
+            <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0 box-r text-center">
                 <i data-feather="briefcase" class="feather-size-big mb-3"></i>
                 <h3 class="font-rhode">120 studiepunten</h3>
                 <h5>verspreid over 2 academiejaren</h5>
@@ -161,17 +157,17 @@
                 <h5>Je krijgt 1200 uren praktijk waaronder<br>echte cases en werkplekleren</h5>
                 <a href="/onze-opleiding/werkplekleren" class="btn-arrow">kom meer te weten</a>
             </div>
-            <div class="col-12 col-xl-4 text-center">
+            <div class="col-12 col-xl-4 box-l text-center">
                 <i data-feather="award" class="feather-size-big mb-3"></i>
                 <h3 class="font-rhode">Knelpuntberoep</h3>
-                <h5>Veel werkgelegenheid,<br> een door VDAB erkent knelpunt beroep<br> en een VDAB traject mogelijk</h5>
+                <h5>Een door VDAB erkent knelpunt beroep<br> en veel werkgelegenheid</h5>
                 <a href="/onze-opleiding/werkplekleren" class="btn-arrow">lees meer</a>
             </div>
         </div>
     </div>
 </section>
 
-<div class="modal box-modal container" data-sesam="{'animate':{'in':'fadeInUp', 'out':'fadeInDown'}, 'modal': {'backdrop':true, 'scrollblock':true}}" data-sesam-target="test" data-sesam-backdrop="true" data-sesam-scrollblock="true">
+<div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="test">
     <div class="modal-wrapper">
         <div class="modal-content box-all">
             <div class="modal-content-wrapper">
@@ -183,6 +179,7 @@
                     <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
                 </div>
                 <div class="modal-content-body">
+                    <button class="btn-arrow" data-sesam-trigger="test">meer weten?</button>
                     <div class="row p-7">
                         <div class="col-12 col-md-8">
                             <h2 class="modal-title font-rhode mb-5">triviaquiz met opendb api</h2>
@@ -221,6 +218,8 @@
         </div>
     </div>
 </div>
+
+
     </main>
     <div data-label="tabs" class="tabs"></div>
     <footer class="box-lazy" data-lazy-animation="fadeInUp">
@@ -254,7 +253,6 @@
         </div> 
     </div>
 </footer>
-
     
     <!-- bootstrap scripts -->
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
@@ -264,6 +262,7 @@
     <!-- scripts -->
     <script src="static/js/plugins/salvatore.js"></script>
     <script type="module" src="static/js/main.js"></script>
+    <script type="module" src="static/js/plugins/sesamCollapse.js"></script>
     
     <script>
         /* Initialize feather icons */
