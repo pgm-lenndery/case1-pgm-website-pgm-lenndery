@@ -342,6 +342,13 @@
             max-width: 480px;
         }
     }
+    
+    #mainContent {
+        p img {
+            max-width: 100%;
+            @extend .box-all;
+        }
+    }
 }
 
 .sesam-backdrop {

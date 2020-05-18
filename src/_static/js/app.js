@@ -166,7 +166,7 @@ export const site = {
             students: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json')
         }
         console.log(await this.apiData);
-        if (document.body.dataset.page == 'home') this.renderDomElements();
+        this.renderDomElements();
         this.lazyLoadingBoxes();
     },
     

@@ -1,39 +1,40 @@
 ---
 layout: default
 ---
-
-<section>
-    <div class="container-fluid py-5 box-b">
-        <h1 class="font-rhode modal-title">{{ title }}</h1>
-        <p class="mb-0 text-modern">{{ subtitle }}</p>
-    </div>
-</section>
-<section id="mainContent">
-    <div class="container-fluid my-8">
-        <div class="row">
-            <div class="col-12 col-lg-8">
-                {{ content }}
+<main>
+    <section>
+        <div class="container-fluid py-5 box-b">
+            <h1 class="font-rhode modal-title">{{ title }}</h1>
+            <p class="mb-0 text-modern">{{ subtitle }}</p>
+        </div>
+    </section>
+    <section id="mainContent">
+        <div class="container-fluid my-8">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    {{ content }}
+                </div>
             </div>
         </div>
+    </section>
+    <div id="loader">
     </div>
-</section>
-<div id="loader">
-</div>
-<style>
-    #loader {
-        position: absolute;
-        top: 0px;
-        bottom: 0px;
-        left: 0px;
-        right: 0px;
-        /* width: 100vw;
-        height: 100vh; */
-        background-color: black;
-        z-index: 7;
-    }
-    
-    body[data-page="home"] #loader {
-        display: none;
-    }
-</style>
+    <style>
+        #loader {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            /* width: 100vw;
+            height: 100vh; */
+            background-color: black;
+            z-index: 7;
+        }
+        
+        .modal #loader {
+            display: none;
+        }
+    </style>
+</main>
 {% include modal-page %}

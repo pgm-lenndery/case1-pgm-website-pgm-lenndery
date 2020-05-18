@@ -84,22 +84,22 @@ const sesamCollapse = {
     },
     
     itemHide(element) {
+        console.log(element)
         element.classList.remove('sesam-show');
         element.classList.add('sesam-hidden');
     },
     
     itemShow(element) {
+        console.log(element)
         element.classList.add('sesam-show');
         element.classList.remove('sesam-hidden');
     },
     
     addBackdrop() {
-        if (document.querySelector('[data-label="sesamBackdrop"]') == null) {
-            this.backdrop = document.createElement('div');
-            this.backdrop.setAttribute('data-label','sesamBackdrop');
-            this.backdrop.classList.add('sesam','sesam-hidden','sesam-backdrop');
-            document.body.appendChild(this.backdrop);
-        }
+        this.backdrop = document.createElement('div');
+        this.backdrop.setAttribute('data-label','sesamBackdrop');
+        this.backdrop.classList.add('sesam','sesam-hidden','sesam-backdrop');
+        document.body.appendChild(this.backdrop);
     },
     
     scrollBlock({ block }) {
@@ -108,7 +108,7 @@ const sesamCollapse = {
     }
 }, sesam = ({action, collapse, execute, classes, target, modal}) => {
     target = document.querySelector(`[data-sesam-target='${target}']`);
-    
+    console.log(target);
     action != undefined && action == 'show' ? sesamCollapse.itemShow(target) : null;
     action != undefined && action == 'hide' ? sesamCollapse.itemHide(target) : null;
     collapse != undefined && collapse == true ? sesamCollapse.collapse(target) : null;
