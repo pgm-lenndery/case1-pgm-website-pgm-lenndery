@@ -2,6 +2,7 @@ import { modalControl, sesam, sesamCollapse } from './index.js';
 
 export const listeners = {
     cache() {
+        this.tabsContainer = document.querySelector('[data-label="tabs"]')
         this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options');
         this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore');
         this.caseCardHoverTarget = '[data-label="casesHighlight"] .salvatore .card:hover';
@@ -10,9 +11,7 @@ export const listeners = {
     
     initialize() {       
         document.body.addEventListener('click', (event) => {
-            const modalActions = event.target.closest('.modal .modal-controls > div');
-            console.log(modalActions);
-            
+            const modalActions = event.target.closest('.modal .modal-controls > div');      
             const tab = event.target.closest('[data-label="tabs"] .tab');
             const casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card');
             
@@ -53,6 +52,25 @@ export const listeners = {
                 modalControl.removeTab({
                     sesamName: tab.dataset.tabTrigger
                 })
+                
+                // modalControl.openTab({sesamName}) // replace functions above
+                
+                const openedModal = document.querySelector(`[data-sesam-target].sesam-show`);
+                if (openedModal != null) {
+                    console.log('other modal is showed', openedModal.dataset.sesamTarget);
+                    modalControl.modalHide({
+                        sesamTarget: openedModal.dataset.sesamTarget,
+                        title: openedModal.querySelector('.modal-title').innerHTML
+                    })
+                    sesam({
+                        target: tab.dataset.tabTrigger,
+                        action: 'show',
+                        modal: {
+                            backdrop: true,
+                            scrollBlock: true
+                        }
+                    });
+                }
             }        
         })
         

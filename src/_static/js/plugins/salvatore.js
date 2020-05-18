@@ -490,10 +490,9 @@ self.createFragmentsList = function createFragmentsList(quantity) {
 
 self.appendElements = function appendElements(grid, elements) {
   // adds a list of elements to the end of a grid
-
   var columns = grid.children
-    , numberOfColumns = columns.length
-    , fragments = self.createFragmentsList(numberOfColumns)
+  , numberOfColumns = columns.length
+  , fragments = self.createFragmentsList(numberOfColumns)
   ;
 
   Array.prototype.forEach.call(elements, function append_to_next_fragment(element) {

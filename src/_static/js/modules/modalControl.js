@@ -41,16 +41,6 @@ export const modalControl = {
                 existingTab.classList.remove('bounce');
             })
         }
-        
-        // const tab = document.createElement('div');
-        // tab.classList.add('tab','animated', 'slideInUp', 'faster');
-        // tab.setAttribute('data-tab-trigger',sesamName);
-        // tab.innerHTML = `
-        //     <i data-feather="plus"></i>
-        //     <span class="tab-title">${title}</span>
-        // `;
-        // this.tabs.appendChild(tab);
-        // feather.replace();
     },
     
     removeTab({sesamName}) {
@@ -59,6 +49,10 @@ export const modalControl = {
             tabToRemove.classList.add('slideOutDown');
             tabToRemove.addEventListener('animationend', () => {tabToRemove.remove()});
         }
+    },
+    
+    openTab() {
+        console.log('tab opened')
     },
     
     modalClose({sesamTarget}) {

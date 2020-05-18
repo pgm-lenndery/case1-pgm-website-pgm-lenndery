@@ -18,8 +18,6 @@ export const main = {
                 document.body.querySelectorAll('link, meta').forEach(i => {
                     i.remove();
                 })
-                site.initialize();
-                site.start();
                 
                 document.querySelector('[data-sesam-target="page"] .modal-content-wrapper').innerHTML = `
                     <div class="modal-controls">
@@ -33,7 +31,8 @@ export const main = {
                         ${originalPage}
                     </div>
                 `;
-                
+                site.initialize();
+                site.start();
                 feather.replace();
                 sesamCollapse.initialize();
                 sesam({

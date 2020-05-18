@@ -14,19 +14,20 @@ export const site = {
         status.add('start');
         modalControl.cache();
         this.cache();
-        this.getApidata();
         this.fillMarquee();
         this.fillMarquee();
         this.fillMarquee();
         this.arrowButtons();
         this.addFilterOptions()
         listeners.initialize();
+        this.getApidata();
     },
     
     cache() {
         status.add('cache');
         this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');
-        this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options')
+        this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options');
+        this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore');
     },
     
     fillMarquee() {
@@ -62,11 +63,13 @@ export const site = {
     async renderCases() {
         status.add('renderCases');
         const cases = 10;
-    
+        
+        salvattore.registerGrid(this.casesHighlight);
+        // salvattore.recreateColumns();
+        
         if (listeners.casesHighlight != null) {
             const apiData = await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json');
-            
-            await apiData.cases.data.forEach(i => {
+            await apiData.cases.data.forEach((i, index) => {
                 const card = document.createElement('div');
                 card.classList.add('salvatore-grid-item','card','box-all','mt-6','box-lazy');
                 card.setAttribute('data-id', i.id);
@@ -86,8 +89,7 @@ export const site = {
                         </div>
                     </div>
                 `;
-                // this.casesHighlight.appendChild(card);
-                salvattore.appendElements(listeners.casesHighlight, [card]);
+                salvattore.appendElements(this.casesHighlight, [card]);
             })
             
             feather.replace();
