@@ -17,4 +17,23 @@ layout: default
         </div>
     </div>
 </section>
+<div id="loader">
+</div>
+<style>
+    #loader {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        /* width: 100vw;
+        height: 100vh; */
+        background-color: black;
+        z-index: 7;
+    }
+    
+    body[data-page="home"] #loader {
+        display: none;
+    }
+</style>
 {% include modal-page %}

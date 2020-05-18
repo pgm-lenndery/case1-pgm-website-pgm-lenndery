@@ -62,6 +62,25 @@
         </div>
     </div>
 </section>
+<div id="loader">
+</div>
+<style>
+    #loader {
+        position: absolute;
+        top: 0px;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        /* width: 100vw;
+        height: 100vh; */
+        background-color: black;
+        z-index: 7;
+    }
+    
+    body[data-page="home"] #loader {
+        display: none;
+    }
+</style>
 <div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="page">
     <div class="modal-wrapper">
         <div class="modal-content box-all">
