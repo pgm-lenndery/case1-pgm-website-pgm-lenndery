@@ -2,10 +2,6 @@ import {fetchPage} from './modules/index.js';
 import {site} from './app.js';
 import {sesamCollapse, sesam} from './modules/sesamCollapse.js';
 
-// setInterval(() => {
-//     console.log(document.body)
-// }, 500);
-
 export const main = {
     initialize() {
         this.cache();
@@ -18,7 +14,6 @@ export const main = {
                 // const temp = document.createElement('template');
                 // temp.innerHTML = page;
                 // document.body.appendChild(temp);
-                console.log(originalPage);
                 document.body.innerHTML = await page;
                 document.body.querySelectorAll('link, meta').forEach(i => {
                     i.remove();
@@ -40,7 +35,7 @@ export const main = {
                 `;
                 
                 feather.replace();
-                
+                sesamCollapse.initialize();
                 sesam({
                     target: 'page',
                     action: 'show',
@@ -49,9 +44,11 @@ export const main = {
                         scrollBlock: true
                     }
                 });
+                site.arrowButtons();
             })()          
         } else {
-           site.initialize() && site.start();
+            sesamCollapse.initialize();
+            site.initialize() && site.start();
         }
     },
     

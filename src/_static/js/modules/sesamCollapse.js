@@ -9,7 +9,7 @@ const sesamCollapse = {
         this.domSetup(this.triggers);
         this.domSetup(this.targets);
         
-        this.addBackdrop();
+        if (this.backdrop == null) this.addBackdrop();
     },
     
     listen() {
@@ -18,7 +18,6 @@ const sesamCollapse = {
             
             if (trigger != null) {
                 this.collapse(trigger);
-                
                 const targets = document.querySelectorAll(`[data-sesam-target="${trigger.dataset.sesamTrigger}"]`);
                 targets.forEach(i => {this.collapse(i)});
             }
@@ -28,6 +27,7 @@ const sesamCollapse = {
     cache() {
         this.triggers = document.querySelectorAll('[data-sesam-trigger]');
         this.targets = document.querySelectorAll('[data-sesam-target]');
+        this.backdrop = document.querySelector('[data-label="sesamBackdrop"]');
     },
 
     domSetup(elements) {
@@ -43,7 +43,7 @@ const sesamCollapse = {
         
         if (itemState == true) this.itemShow(element);
         else this.itemHide(element);
-        
+                
         // execute if collapse element is target
         if (element.dataset.sesamTarget != undefined && itemState == true) {
             element.dataset.sesamBackdrop == 'true' ? this.itemShow(this.backdrop) : null;
@@ -84,13 +84,11 @@ const sesamCollapse = {
     },
     
     itemHide(element) {
-        console.log(element)
         element.classList.remove('sesam-show');
         element.classList.add('sesam-hidden');
     },
     
     itemShow(element) {
-        console.log(element)
         element.classList.add('sesam-show');
         element.classList.remove('sesam-hidden');
     },
@@ -108,7 +106,6 @@ const sesamCollapse = {
     }
 }, sesam = ({action, collapse, execute, classes, target, modal}) => {
     target = document.querySelector(`[data-sesam-target='${target}']`);
-    console.log(target);
     action != undefined && action == 'show' ? sesamCollapse.itemShow(target) : null;
     action != undefined && action == 'hide' ? sesamCollapse.itemHide(target) : null;
     collapse != undefined && collapse == true ? sesamCollapse.collapse(target) : null;

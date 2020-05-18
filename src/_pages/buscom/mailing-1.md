@@ -23,6 +23,10 @@ Over het algemeen gaven de respondenten een zeer goede beoordeling. De enige opm
 
 #### bijlagen
 
+##### gegevensverwerking
+
+<a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/buscom_campagne1_evaluatie.xlsx" class="text-modern small btn-arrow-link" download>Gegevensverwerking in excel</a>
+
 ##### account voor eerste mailing
 
 ![account voor eerste mailing](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/mailchimp_account_voor.png)

@@ -30,12 +30,10 @@ export const listeners = {
             
             // show or hide modals, and show or hide tabs
             if (modalActions != null && modalActions.dataset.action == 'modalClose') {
-                console.log('modalClose');
                 modalControl.modalClose({
                     sesamTarget: event.target.closest('.modal').dataset.sesamTarget
                 })
             } else if (modalActions != null && modalActions.dataset.action == 'modalHide') {  
-                console.log('modalHide');
                 modalControl.modalHide({
                     sesamTarget: event.target.closest('.modal').dataset.sesamTarget,
                     title: event.target.closest('.modal').querySelector('.modal-title').innerText

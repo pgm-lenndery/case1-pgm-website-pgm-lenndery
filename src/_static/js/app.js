@@ -7,11 +7,11 @@ export const site = {
         status.init();
         this.cache();
         
-        sesamCollapse.initialize();
         modalControl.initialize();
     },
     
     start() {
+        status.add('start');
         modalControl.cache();
         this.cache();
         this.getApidata();
@@ -19,12 +19,14 @@ export const site = {
         this.fillMarquee();
         this.fillMarquee();
         this.arrowButtons();
+        this.addFilterOptions()
         listeners.initialize();
     },
     
     cache() {
         status.add('cache');
         this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');
+        this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options')
     },
     
     fillMarquee() {
@@ -183,12 +185,16 @@ export const site = {
         const arrow = '<i data-feather="chevron-right"></i>';
         
         btnArrow.forEach(btn => {
-            btn.innerHTML += arrow;
-            btn.innerHTML += arrow;
+            if (btn.innerHTML.includes('svg') == false) {
+                btn.innerHTML += arrow;
+                btn.innerHTML += arrow;
+            }
         });
         
         btnArrowLink.forEach(btn => {
-            btn.innerHTML += arrow;
+            !btn.innerHTML.includes('svg') ? btn.innerHTML += arrow : null
         });
+        
+        feather.replace();
     }
 }
