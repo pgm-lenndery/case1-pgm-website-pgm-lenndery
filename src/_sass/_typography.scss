@@ -17,10 +17,32 @@ small, .small {
 }
 
 #mainContent {
-    @for $i from 1 through 6 {
+    h5, h6 {
+        margin-top: 40px;
+    }
+    
+    a {
+        color: #7f47dd;
+        
+        svg.feather {stroke-width: 1px;}
+    }
+    
+    @for $i from 1 through 4 {
         h#{$i} {
-          @include font-rhode;
-          margin-bottom: 1.5rem;
+            @include font-rhode;
+            margin-bottom: 1.5rem;
         }
+    }
+    @for $i from 5 through 6 {
+        h#{$i} {
+            // @include text-modern;
+            font-weight: 400;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+        }
+    }
+    
+    h3 + h5, h4 + h6 {
+        margin-top: -17px;
     }
 }
