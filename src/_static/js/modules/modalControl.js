@@ -30,6 +30,7 @@ export const modalControl = {
                 <i data-feather="plus"></i>
                 <span class="tab-title">${title}</span>
             `;
+            tab.title = title;
             this.tabs.appendChild(tab);
             feather.replace();
         } else {
