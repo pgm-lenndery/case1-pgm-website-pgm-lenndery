@@ -9,9 +9,9 @@ permalink: buscom/mailing-1/index.html
 
 Bij het maken van deze site ben ik beginnen experimenteren. Ik wou vooral geen "standaard" website; Deze zou onze creativiteit omtrent code en interfaces moeten tonen. Het doel van de mail was dan ook om te weten of dat de site nog steeds goed bruikbaar en leesbaar zou zijn, en de hiërarchie tussen de verschillende componenten duidelijk is.
 
-De tone of voice in de mail en de bevraging waren over het algemeen informeel om de ontvanger de indruk te geven dat dit niet weer reclame is van een of andere bedrijf. Ik voor een gepersonaliseerde aansprekening gezorgd waardoor de mail nog sneller opvalt.
+De tone of voice in de mail en de bevraging waren over het algemeen informeel om de ontvanger de indruk te geven dat dit niet weer de zoveelste campagne was van een of ander bedrijf. Ik heb voor een gepersonaliseerde aansprekening gezorgd waardoor de mail sneller opvalt.
 
-Als laatse plaatste ik de call-to-action-knop zo hoog mogelijk in de mail zodat deze zo snel mogelijk opviel.
+Daarbij plaatste ik de call-to-action-knop zo hoog mogelijk in de mail zodat deze zo snel mogelijk opviel.
 
 ### Verwerking
 
@@ -27,7 +27,7 @@ Over het algemeen gaven de respondenten een zeer goede beoordeling. De enige opm
 
 <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/buscom_campagne1_evaluatie.xlsx" class="text-modern small btn-arrow-link" download>Gegevensverwerking in excel</a>
 
-##### Account voor eerste mailing
+##### Account vóór eerste mailing
 
 ![account voor eerste mailing](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/mailchimp_account_voor.png)
 
