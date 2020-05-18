@@ -12,13 +12,13 @@ export const site = {
     },
     
     start() {
-        modalControl.initialize();
-        site.cache();
-        site.getApidata();
-        site.fillMarquee();
-        site.fillMarquee();
-        site.fillMarquee();
-        site.arrowButtons();
+        modalControl.cache();
+        this.cache();
+        this.getApidata();
+        this.fillMarquee();
+        this.fillMarquee();
+        this.fillMarquee();
+        this.arrowButtons();
         listeners.initialize();
     },
     

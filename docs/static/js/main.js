@@ -1,5 +1,6 @@
+import {fetchPage} from './modules/index.js';
+import {site} from './app.js';
 import {sesamCollapse, sesam} from 'https://unpkg.com/sesam-collapse';
-import { fetchPage, site } from './modules/index.js';
 
 export const main = {
     initialize() {

@@ -71,6 +71,3 @@ export const listeners = {
         });
     }
 };
-
-listeners.cache();
-listeners.initialize();

@@ -1,4 +1,5 @@
-import {site, sesamCollapse, sesam, listeners, callerName, fetchAPI, fetchPage} from './index.js';
+import {sesamCollapse, sesam, listeners, callerName, fetchAPI, fetchPage} from './index.js';
+import {site} from '../app.js'
 import {main} from '../main.js'
 
 const status = new callerName('modalControl');
@@ -16,39 +17,39 @@ export const modalControl = {
     },
 
     createTab({title, sesamName}) {
-        // const checks = [];
-        // this.tabs.querySelectorAll('.tab').forEach(tab => {
-        //     checks.push(tab.dataset.tabTrigger == sesamName)
-        // }); 
+        const checks = [];
+        this.tabs.querySelectorAll('.tab').forEach(tab => {
+            checks.push(tab.dataset.tabTrigger == sesamName)
+        }); 
         
-        // if (checks.includes(true) == false) {
-        //     const tab = document.createElement('div');
-        //     tab.classList.add('tab','animated', 'slideInUp', 'faster');
-        //     tab.setAttribute('data-tab-trigger',sesamName);
-        //     tab.innerHTML = `
-        //         <i data-feather="plus"></i>
-        //         <span class="tab-title">${title}</span>
-        //     `;
-        //     this.tabs.appendChild(tab);
-        //     feather.replace();
-        // } else {
-        //     const existingTab = this.tabs.querySelector(`[data-tab-trigger="${sesamName}"]`);
-        //     existingTab.classList.remove('slideInUp', 'bounce');
-        //     existingTab.classList.add('bounce');
-        //     existingTab.addEventListener('animationend', () => {
-        //         existingTab.classList.remove('bounce');
-        //     })
-        // }
+        if (checks.includes(true) == false) {
+            const tab = document.createElement('div');
+            tab.classList.add('tab','animated', 'slideInUp', 'faster');
+            tab.setAttribute('data-tab-trigger',sesamName);
+            tab.innerHTML = `
+                <i data-feather="plus"></i>
+                <span class="tab-title">${title}</span>
+            `;
+            this.tabs.appendChild(tab);
+            feather.replace();
+        } else {
+            const existingTab = this.tabs.querySelector(`[data-tab-trigger="${sesamName}"]`);
+            existingTab.classList.remove('slideInUp', 'bounce');
+            existingTab.classList.add('bounce');
+            existingTab.addEventListener('animationend', () => {
+                existingTab.classList.remove('bounce');
+            })
+        }
         
-        const tab = document.createElement('div');
-        tab.classList.add('tab','animated', 'slideInUp', 'faster');
-        tab.setAttribute('data-tab-trigger',sesamName);
-        tab.innerHTML = `
-            <i data-feather="plus"></i>
-            <span class="tab-title">${title}</span>
-        `;
-        this.tabs.appendChild(tab);
-        feather.replace();
+        // const tab = document.createElement('div');
+        // tab.classList.add('tab','animated', 'slideInUp', 'faster');
+        // tab.setAttribute('data-tab-trigger',sesamName);
+        // tab.innerHTML = `
+        //     <i data-feather="plus"></i>
+        //     <span class="tab-title">${title}</span>
+        // `;
+        // this.tabs.appendChild(tab);
+        // feather.replace();
     },
     
     removeTab({sesamName}) {
