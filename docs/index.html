@@ -56,13 +56,13 @@
     </div>  
 </div>
 <main>
-    <section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp" data-menu-indexing="Hello">
+    <section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp" data-href="">
     <div class="container-fluid py-8 hero-content">
         <h1 class="font-rhode display-3 mb-4">
             graduaat<br>programmeren<br>front end development
         </h1>
         <h4 class="text-modern font-weight-normal">leer knappe websites en apps maken</h4>
-        <button class="btn-arrow" data-sesam-trigger="programVideo">bekijk onze video</button>
+        <a href="/case1-pgm-website-pgm-lenndery/onze-opleiding/video" class="btn-arrow">bekijk onze video</a>
     </div>
     <div class="hero-background-wrapper">
         <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_pgm_klein_wit.svg" alt="">
@@ -81,7 +81,7 @@
         </div>
     </div>
 </section>
-<section data-menu-indexing="Onze opleiding">
+<section data-href="onze-opleiding">
     <div class="container-fluid box-lazy animate-delay-04 box-y header-section" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col">
@@ -120,7 +120,7 @@
         </div>
     </div>
 </section>
-<section data-label="studentsHighlight" data-menu-indexing="Studenten">
+<section data-label="studentsHighlight" data-href="studenten">
     <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col">
@@ -139,7 +139,7 @@
     <div class="collection collection-horizontal py-5">
     </div>
 </section>
-<section data-label="casesHighlight" class="mb-8" data-menu-indexing="Opdrachten & cases">
+<section data-label="casesHighlight" class="mb-8">
     <div class="box-lazy" data-lazy-animation="fadeInUp">
         <div class="container-fluid box-y box-offset-t header-section">
             <div class="row">
@@ -156,7 +156,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases">
+        <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases" data-href="cases">
             <div class="filter-section-title box-r py-3 pr-3">
                 <p class="text-modern mb-0">filter cases</p>
             </div>
@@ -168,7 +168,7 @@
     </div>
 </section>
 
-<section>
+<section data-href="contact">
     <div class="container-fluid box-lazy box-offset-b box-y header-section" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col">
@@ -176,12 +176,12 @@
                     contact
                 </h2>
             </div>
-            <div class="col-3 box-l cta-section-cta">
+            <a class="col-3 box-l cta-section-cta" href="/case1-pgm-website-pgm-lenndery/contact/bedrijven">
                 <h3 class="text-modern">
                     voor<br>bedrijven
                 </h3>
                 <i data-feather="arrow-right"></i>
-            </div>
+            </a>
         </div>
     </div>
     <div class="container-fluid box-y box-lazy box-offset-b" data-lazy-animation="fadeInUp">
@@ -224,12 +224,12 @@
 <!-- modals -->
 <div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="test">
     <div class="modal-wrapper">
+        <div class="modal-controls">
+            <div data-action="modalClose"><i data-feather="x"></i></div>
+            <div data-action="modalHide"><i data-feather="minus"></i></div>
+        </div>
         <div class="modal-content box-all">
             <div class="modal-content-wrapper">
-                <div class="modal-controls">
-                    <div data-action="modalClose"><i data-feather="x"></i></div>
-                    <div data-action="modalHide"><i data-feather="minus"></i></div>
-                </div>
                 <div class="modal-content-header d-none">
                     <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
                 </div>
@@ -273,38 +273,9 @@
         </div>
     </div>
 </div>
-<div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="programVideo">
-    <div class="modal-wrapper">
-        <div class="modal-content box-all">
-            <div class="modal-content-wrapper">
-                <div class="modal-controls">
-                    <div data-action="modalClose"><i data-feather="x"></i></div>
-                    <div data-action="modalHide"><i data-feather="minus"></i></div>
-                </div>
-                <div class="modal-content-header d-none">
-                    <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
-                </div>
-                <div class="modal-content-body h-100">
-                    <div class="modal-title d-none">opleidingsvideo</div>
-                    <video class="w-100 h-100 modal-show-playpause" controls preload="metadata" poster="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/video/opleidingsvideo_poster_2.png">
-                        <source src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/video/opleidingsvideo.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
 </main>
 <div data-label="fixedBottom" class="container-fluid">
     <div data-label="tabs" class="tabs"></div>
-    <nav data-label="homeNav" class="navbar box-t box-x box-offset-b">
-        <div class="navbar-label text-modern box-b d-flex justify-content-between" data-sesam-trigger="homeNav"><strong>menu</strong><i data-feather="chevron-down"></i></div>
-        <div class="navbar-nav" data-sesam-target="homeNav" data-sesam-options="collapseClean:true">
-        </div>
-    </nav>
 </div>
 <footer class="box-lazy" data-lazy-animation="fadeInUp">
     <div class="container-fluid box-y">
@@ -339,12 +310,12 @@
 </footer>
 <div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="page">
     <div class="modal-wrapper">
+        <div class="modal-controls">
+            <div data-action="modalClose"><i data-feather="x"></i></div>
+            <div data-action="modalHide"><i data-feather="minus"></i></div>
+        </div>
         <div class="modal-content box-all">
             <div class="modal-content-wrapper">
-                <div class="modal-controls">
-                    <div data-action="modalClose"><i data-feather="x"></i></div>
-                    <div data-action="modalHide"><i data-feather="minus"></i></div>
-                </div>
                 <div class="modal-content-header d-none">
                     <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
                 </div>

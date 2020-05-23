@@ -15,7 +15,7 @@ module.exports = (eleventyConfig) => {
               res.write(content_404);
               // Add 404 http status code in request header.
               res.writeHead(404, { "Content-Type": "text/html" });
-            //   res.writeHead(404);
+              // res.writeHead(404);
               res.end();
             });
           }
@@ -30,6 +30,7 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addLayoutAlias('page', 'page.liquid');
     eleventyConfig.addLayoutAlias('default', 'default.liquid');
     eleventyConfig.addLayoutAlias('modal', 'modal.liquid');
+    eleventyConfig.addLayoutAlias('modal-galery', 'modal-galery.liquid');
     
     eleventyConfig.addPairedShortcode('anker', (content, href, attr) => {
         // const {href = '#', target = '_self'} = options;

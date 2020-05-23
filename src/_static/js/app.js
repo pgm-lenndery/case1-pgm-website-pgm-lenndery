@@ -1,4 +1,4 @@
-import {callerName, modalControl, sesamCollapse, sesam, listeners, fetchAPI, fetchPage, uiControl} from './modules/index.js'
+import {callerName, modalControl, sesamCollapse, sesam, listeners, fetchAPI, fetchPage, uiControl, routingControl} from './modules/index.js'
 
 const status = new callerName('main');
 
@@ -21,10 +21,9 @@ export const site = {
         this.addFilterOptions()
         listeners.initialize();
         this.getApidata();
-        this.pageMenuIndexing();
         uiControl.initialize();
         sesamCollapse.collectInitialProperties();
-        console.log(sesamCollapse.dimensions)
+        routingControl.initialize();
     },
     
     cache() {
@@ -78,6 +77,7 @@ export const site = {
                 const card = document.createElement('div');
                 card.classList.add('salvatore-grid-item','card','box-all','mt-6','box-lazy');
                 card.setAttribute('data-id', i.id);
+                card.setAttribute('data-href', 'cases');
                 card.innerHTML = `
                     <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
                         <div class="font-rhode py-3"> 2 maanden geleden<span class="word-joint">・</span>webpgm</div><i data-feather="arrow-right"></i>
@@ -143,8 +143,6 @@ export const site = {
         let lazyBoxes = document.querySelectorAll('.box-lazy');
 
         const interactSettings = {
-            // root: document.querySelector('.center'),
-            // rootMargin: '0px 200px 200px 0px',
             threshold: 0.1
         }
 
@@ -208,21 +206,4 @@ export const site = {
         
         feather.replace();
     },
-    
-    pageMenuIndexing() {
-        status.add('pageMenuIndexing');
-        
-        const indexedItems = document.querySelectorAll('[data-menu-indexing]');
-        indexedItems.forEach((i, index) => {
-            const navItem = document.createElement('div');
-            navItem.classList.add('nav-item','text-modern','box-b');
-            const itemIndex = index+1;
-            navItem.innerHTML = `
-                <span class="nav-item-index">${itemIndex < 10 ? `0${itemIndex}` : itemIndex}</span>
-                <span class="word-joint">・</span>
-                <span class="nav-item-label">${i.dataset.menuIndexing}</span>
-            `;
-            this.homeNav.querySelector('.navbar-nav').appendChild(navItem);
-        });
-    }
 }

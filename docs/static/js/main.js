@@ -5,11 +5,11 @@ import {sesamCollapse, sesam} from './modules/sesamCollapse.js';
 export const main = {
     initialize() {
         this.cache();
-        
-        if (window.location.href != `${window.location.origin}/${this.sitePrefix}/`) {
+        console.log(`${window.location.origin}/${this.SITE_PREFIX}/#/`);
+        if (window.location.href != `${window.location.origin}/${this.SITE_PREFIX}/` && window.location.href.includes(`${this.SITE_PREFIX}/#`) == false) {
             const originalPage = document.querySelector('main').innerHTML;
             (async () => {
-                let response = await fetch(`${origin}/${main.sitePrefix}/`);
+                let response = await fetch(`${origin}/${main.SITE_PREFIX}/`);
                 let page = response.text();
                 // const temp = document.createElement('template');
                 // temp.innerHTML = page;
@@ -18,10 +18,6 @@ export const main = {
                 document.body.querySelectorAll('link, meta').forEach(i => {i.remove()})
                 
                 document.querySelector('[data-sesam-target="page"] .modal-content-wrapper').innerHTML = `
-                    <div class="modal-controls">
-                        <div data-action="modalClose"><i data-feather="x"></i></div>
-                        <div data-action="modalHide"><i data-feather="minus"></i></div>
-                    </div>
                     <div class="modal-content-header d-none">
                         <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
                     </div>
@@ -50,7 +46,7 @@ export const main = {
     },
     
     cache() {
-        this.sitePrefix = 'case1-pgm-website-pgm-lenndery';
+        this.SITE_PREFIX = 'case1-pgm-website-pgm-lenndery';
     }
 }
 

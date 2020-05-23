@@ -281,10 +281,24 @@
         display: flex;
     }
     
-    &-wrapper &-content {
-        background-color: black;
-        display: block;
-        height: 84vh;
+    &-wrapper {
+        position: relative;
+        
+        .modal-content {
+            background-color: black;
+            display: block;
+            max-height: 84vh;
+            overflow-y: scroll;
+            
+            .modal-content-header {
+                height: 4.5rem;
+            }
+            
+            // &-wrapper {
+            //     height: 83vh;
+            //     overflow-y: scroll;
+            // }
+        }
         
         &::after {
             @extend .box-all; 
@@ -297,15 +311,6 @@
             background-color: black;;
             z-index: -1;
             transform: translate(calc(var(--box-modal-offset)*-1), var(--box-modal-offset));
-        }
-        
-        .modal-content-header {
-            height: 2.3rem;
-        }
-        
-        &-wrapper {
-            height: 100%;
-            overflow-y: scroll;
         }
     }
     
@@ -329,8 +334,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                width: var(--box-modal-offset);
-                height: var(--box-modal-offset);
+                width: calc(2.3rem + 2px);
+                height: calc(2.3rem + 2px);
                 
                 &:first-child {
                     @extend .box-offset-b
@@ -431,4 +436,5 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    z-index: 11;
 }

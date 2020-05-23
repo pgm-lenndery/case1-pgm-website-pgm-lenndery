@@ -85,18 +85,15 @@ export const modalControl = {
     },
     
     renderModal({id}) {
-        function idMatch(input) {
-            return input.id == id;
-        }
+        status.add('renderModal')
+
+        function idMatch(input) {return input.id == id};
         
         const i = site.apiData.cases.cases.data.filter(idMatch)[0];
+        status.log(i)
         document.querySelector('[data-sesam-target="test"] .modal-content-wrapper').innerHTML = `
-            <div class="modal-controls">
-                <div data-action="modalClose"><i data-feather="x"></i></div>
-                <div data-action="modalHide"><i data-feather="minus"></i></div>
-            </div>
-            <div class="modal-content-header d-none">
-                <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
+            <div class="modal-content-header box-b">
+                <img height="100%" width="100%" src="${i.img.tumbnail}" alt="">
             </div>
             <div class="modal-content-body">
                 <div class="row p-7">
@@ -104,6 +101,8 @@ export const modalControl = {
                         <h2 class="modal-title font-rhode mb-5">${i.title}</h2>
                         <p class="text-modern">over deze opdracht</p>
                         <p>${i.about}</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at accusamus sed impedit veritatis, dolorem quam. Distinctio, aliquam.</p>
+                        <p>Saepe placeat fugit expedita delectus ea distinctio modi assumenda molestiae debitis, ut soluta eveniet enim perferendis nisi voluptatum ipsum aspernatur accusantium quaerat repudiandae iste quas dignissimos aperiam iusto. Quae, laborum ullam earum nulla iure corporis ex optio quos? Reiciendis eos ex facilis?</p>
                     </div>
                 </div>
                 <div class="bg-color-white text-color-black font-rhode px-7 py-2">
@@ -147,7 +146,7 @@ export const modalControl = {
     },
     
     async displayPageModalByUrl() {       
-        fetch(`${origin}/${main.sitePrefix}/`)
+        fetch(`${origin}/${main.SITE_PREFIX}/`)
         .then(response => response.text())
         .then(text => {
             document.open();
@@ -156,13 +155,9 @@ export const modalControl = {
         })
         .then(async () => {
             sesamCollapse.initialize();
-            const pageData = await fetchPage(`${origin}/${main.sitePrefix}${window.location.pathname.replace(main.sitePrefix,'')}`);
+            const pageData = await fetchPage(`${origin}/${main.SITE_PREFIX}${window.location.pathname.replace(main.SITE_PREFIX,'')}`);
             
             document.querySelector('[data-sesam-target="page"] .modal-content-wrapper').innerHTML = `
-                <div class="modal-controls">
-                    <div data-action="modalClose"><i data-feather="x"></i></div>
-                    <div data-action="modalHide"><i data-feather="minus"></i></div>
-                </div>
                 <div class="modal-content-header d-none">
                     <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
                 </div>
