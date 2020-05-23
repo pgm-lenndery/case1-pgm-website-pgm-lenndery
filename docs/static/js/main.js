@@ -15,9 +15,7 @@ export const main = {
                 // temp.innerHTML = page;
                 // document.body.appendChild(temp);
                 document.body.innerHTML = await page;
-                document.body.querySelectorAll('link, meta').forEach(i => {
-                    i.remove();
-                })
+                document.body.querySelectorAll('link, meta').forEach(i => {i.remove()})
                 
                 document.querySelector('[data-sesam-target="page"] .modal-content-wrapper').innerHTML = `
                     <div class="modal-controls">
@@ -31,10 +29,10 @@ export const main = {
                         ${originalPage}
                     </div>
                 `;
+                sesamCollapse.initialize();
                 site.initialize();
                 site.start();
                 feather.replace();
-                sesamCollapse.initialize();
                 sesam({
                     target: 'page',
                     action: 'show',

@@ -11,6 +11,8 @@ p.text-modern {
 }
 
 small, .small {
+    font-size: 80% !important;
+    
     &.text-modern {
         --letter-spacing: 3px;
     }

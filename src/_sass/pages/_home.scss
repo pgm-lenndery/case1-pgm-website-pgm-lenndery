@@ -102,3 +102,32 @@
         }
     }
 }
+
+[data-label="homeNav"] {
+    background-color: black;
+    z-index: 12;
+    overflow-x: scroll;
+    min-width: fit-content;
+    
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+        transition: all .3s ease;
+        width: fit-content;
+    }
+    
+    .navbar-label {
+        padding: .7rem .8rem;
+    }
+
+    .nav-item {
+        width: 100%;
+        padding: .7rem .8rem;
+        white-space: nowrap;
+        
+        .word-joint {
+            margin: 0 -9px;
+        }
+    }
+}

@@ -3,11 +3,14 @@ const sesamCollapse = {
         console.log('\n' + `%c[service] sesam.js initialize() running! \n` + ' ', 'color: #00d400; font-weight: bold');
         console.log(`%c[service] initialize()`, 'font-weight: bold');
         
+        this.states = new Map();
+        this.dimensions = new Map();
+        
         this.cache();
         this.listen();
         
-        this.domSetup(this.triggers);
-        this.domSetup(this.targets);
+        this.setInitialClasses(this.triggers);
+        this.setInitialClasses(this.targets);
         
         if (this.backdrop == null) this.addBackdrop();
     },
@@ -30,17 +33,32 @@ const sesamCollapse = {
         this.backdrop = document.querySelector('[data-label="sesamBackdrop"]');
     },
 
-    domSetup(elements) {
-        elements.forEach(i => {
-            i = i.classList;
-            if (!i.contains('sesam')) i.add('sesam');
-            if (!i.contains('sesam-hidden') && !i.contains('sesam-show')) i.add('sesam-hidden');
-        });
+    setInitialClasses(elements) {
+        try {
+            elements.forEach(i => {
+                i = i.classList;
+                if (!i.contains('sesam')) i.add('sesam');
+                if (!i.contains('sesam-hidden') && !i.contains('sesam-show')) i.add('sesam-hidden');
+            });
+        } catch (error) {
+            console.log(error)
+        }
     },
     
+    collectInitialProperties() {
+        try {
+            this.targets.forEach(element => {
+                this.getCollapseDimensions(element);
+                this.setState(element)
+                this.initializeCleanCollapse(element)
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    },
+        
     collapse(element) {
         const itemState = this.itemState(element);
-        
         if (itemState == true) this.itemShow(element);
         else this.itemHide(element);
                 
@@ -54,11 +72,13 @@ const sesamCollapse = {
                 this.targetOptions(element);
                 this.optionsMap.get('backdrop') == 'true' ? this.itemShow(this.backdrop) : null;
                 this.optionsMap.get('scrollBlock') == 'true' ? this.scrollBlock({ block: true }) : null;
+                this.optionsMap.get('collapseClean') == 'true' ? this.cleanCollapse(element) : null;
                 // this.optionsMap.has('parent') == true ? this.hideOtherChildren(this.optionsMap.get('parent')) : null;
             }
         } else if (element.dataset.sesamTarget != undefined && itemState == false) {
             this.itemHide(this.backdrop);
             this.scrollBlock({ block: false });
+            this.cleanCollapse(element);
         }
     },
     
@@ -86,11 +106,13 @@ const sesamCollapse = {
     itemHide(element) {
         element.classList.remove('sesam-show');
         element.classList.add('sesam-hidden');
+        sesamCollapse.setState(element);
     },
     
     itemShow(element) {
         element.classList.add('sesam-show');
         element.classList.remove('sesam-hidden');
+        sesamCollapse.setState(element);
     },
     
     addBackdrop() {
@@ -103,12 +125,43 @@ const sesamCollapse = {
     scrollBlock({ block }) {
         if (block == true) document.body.classList.add('sesam-scrollBlock');
         else document.body.classList.remove('sesam-scrollBlock');
+    },
+    
+    getCollapseDimensions(element) {
+        this.dimensions.set(element.dataset.sesamTarget, element.offsetHeight);
+    },
+    
+    setState(element) {
+        let state = element.classList.contains('sesam-show');
+        state == false ? state = 'hidden' : state = 'show';
+        this.states.set(element.dataset.sesamTarget, state);
+    },
+    
+    initializeCleanCollapse(element) {
+        const targetName = element.dataset.sesamTarget
+        // if (element.dataset.sesamOptions.includes('collapseClean:true')) element.style.height = `${this.dimensions.get(targetName)}px`
+        if (element.dataset.sesamOptions.includes('collapseClean:true')) element.style.height = '0px'
+    },
+    
+    cleanCollapse(element) {
+        const targetName = element.dataset.sesamTarget;
+        const state = sesamCollapse.states.get(targetName);
+        
+        if (state == 'show') element.style.height = `${sesamCollapse.dimensions.get(targetName)}px`;
+        else if (state == 'hidden') element.style.height = '0px';
     }
 }, sesam = ({action, collapse, execute, classes, target, modal}) => {
     target = document.querySelector(`[data-sesam-target='${target}']`);
     action != undefined && action == 'show' ? sesamCollapse.itemShow(target) : null;
     action != undefined && action == 'hide' ? sesamCollapse.itemHide(target) : null;
-    collapse != undefined && collapse == true ? sesamCollapse.collapse(target) : null;
+    if (collapse != undefined && collapse == true) {
+        sesamCollapse.collapse(target);
+        sesamCollapse.setState(element);
+    } 
+    // else if (collapse != undefined && collapse.clean != undefined) {
+        
+    // }
+    
     execute != undefined ? execute : null;
     if (modal != undefined && modal.backdrop !== undefined) {
         modal.backdrop == true ? sesamCollapse.itemShow(sesamCollapse.backdrop) : null;

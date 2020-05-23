@@ -27,6 +27,8 @@
   "homepage": "https://github.com/pgmgent-1920-students/case1-pgm-website-pgm-lenndery#readme",
   "dependencies": {
     "@11ty/eleventy": "^0.10.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "sass": "^1.26.5"

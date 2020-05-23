@@ -363,17 +363,19 @@
 }
 
 [data-label="tabs"] {
-    position: fixed;
-    bottom: 0px;
+    // position: fixed;
+    // bottom: 0px;
     display: flex;
     z-index: 11;
-    @extend .ml-8;
     @extend .box-offset-b;
+    width: 100%;
+    z-index: 11;
     
     .tab {
+        display: flex;
         margin-right: 1.3rem;
         padding: 10px;
-        display: flex;
+        height: fit-content;
         background-color: $purple500;
         cursor: pointer;
         transition: all .2s ease;
@@ -399,3 +401,34 @@
     }
 }
 
+#cursor {
+    --d: 68px;    
+    position: fixed;
+    left: var(--d);
+    top: var(--d);
+    width: var(--d);
+    height: var(--d);
+    background: white;
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+    border-radius: 120px;
+    transform: scale(0);
+    cursor: none;
+    z-index: 100;
+    transition: all .2 ease;
+    
+    &.moved {
+        transform: scale(1);
+        transition: all .2 ease;
+    }
+}
+
+[data-label="fixedBottom"] {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}

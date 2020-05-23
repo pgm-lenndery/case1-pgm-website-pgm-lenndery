@@ -37,3 +37,11 @@
     right: 0px;
 }
 
+@mixin no-focus {
+    &:focus, &:focus-within {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+

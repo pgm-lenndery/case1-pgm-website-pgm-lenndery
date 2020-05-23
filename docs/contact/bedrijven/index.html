@@ -41,95 +41,44 @@
     <!-- <link rel="stylesheet" href="./static/css/salvatore.css"> -->
     <link rel="stylesheet" href="https://lib.lennertderyck.be/assets/min/flexy-cards.css">
 </head>
-<body data-page="page">
+<body data-page="Voor bedrijven">
     <div id="cursor"></div>
-    <div class="box-lazy" data-lazy-animation="fadeInDown">
-    <header class="header box-b">
-        <a href="/case1-pgm-website-pgm-lenndery/" class="container-fluid">
-            <div class="header-brand py-5">
-                <img width="300px" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_graduaat_programmeren.svg" alt="">
-            </div>
-        </a>
-    </header>
-    <div data-label="marquee" class="marquee">
-        <div class="marquee-content"></div>
-    </div>  
-</div>
-<main>
-    
-<section>
-    <div class="container-fluid box-lazy box-y header-section box-offset-y d-flex align-items-center" data-lazy-animation="fadeInUp">
-        <div class="row">
-            <div class="col-6 py-6 w-100 d-flex flex-column justify-content-center">
-                <h2 class="font-rhode display-4">
-                    404
-                </h2>
-                <h3 class="font-rhode mb-4">dat is een bug :(</h3>
-                <h5>Start een opleiding programmeren en<br> misschien los jij dit probleem wel op</h5>
-            </div>
-            <div class="col-6 box-l p-0">
-                <div class="filter-purple-rain">
-                    <img class="fit-to-wrapper" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/andere/groepsfoto_bootcamp_cropped.jpg" alt="">
+    <main>
+    <section>
+        <div class="container-fluid py-5 box-b">
+            <h1 class="font-rhode modal-title">Voor bedrijven</h1>
+            <p class="mb-0 text-modern">Samenwerkingen</p>
+        </div>
+    </section>
+    <section id="mainContent">
+        <div class="container-fluid mt-8 mb-5">
+            <div class="row">
+                <div class="col-12 col-lg-8">
+                    
                 </div>
             </div>
         </div>
+    </section>
+    <div id="loader">
     </div>
-    <div class="container-fluid d-none box-lazy animate-delay-02 box-y box-offset-b header-section" data-lazy-animation="fadeInUp">
-        <div class="row">
-            <div class="col">
-                <h2 class="font-rhode display-4">
-                    onze<br>opleiding
-                </h2>
-            </div>
-            <div class="col-3 box-l cta-section-cta">
-                <h3 class="text-modern">
-                    ontdek onze opleiding
-                </h3>
-                <i data-feather="arrow-right"></i>
-            </div>
-        </div>
-    </div>
-</section>
+    <style>
+        #loader {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            /* width: 100vw;
+            height: 100vh; */
+            background-color: black;
+            z-index: 7;
+        }
+        
+        .modal #loader {
+            display: none;
+        }
+    </style>
 </main>
-<div data-label="fixedBottom" class="container-fluid">
-    <div data-label="tabs" class="tabs"></div>
-    <nav data-label="homeNav" class="navbar box-t box-x box-offset-b">
-        <div class="navbar-label text-modern box-b d-flex justify-content-between" data-sesam-trigger="homeNav"><strong>menu</strong><i data-feather="chevron-down"></i></div>
-        <div class="navbar-nav" data-sesam-target="homeNav" data-sesam-options="collapseClean:true">
-        </div>
-    </nav>
-</div>
-<footer class="box-lazy" data-lazy-animation="fadeInUp">
-    <div class="container-fluid box-y">
-        <div class="row mx-0">
-            <div class="col-auto box-x py-3 d-flex align-items-center bg-color-purple">
-                <div class="px-1">
-                    <img height="40px" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_pgm_klein_paars.svg" alt="">
-                </div>
-            </div>
-            <div class="col-auto py-3 d-flex align-items-center">
-                <span class="font-rhode px-4">
-                    pgm.gent is een website van de opleiding<br>Programmeren van Arteveldehogeschool
-                </span>
-            </div>
-           
-        </div>
-    </div>
-    <div class="container-fluid">
-        <div class="row py-3">
-            <div class="col-auto py-2 mx-auto text-modern text-center small">
-                <span class="font-weight-bold">
-                    <a class="text-center btn-arrow-link" href="https://www.google.com/maps/place/Campus+Mariakerke+Arteveldehogeschool/@51.0869464,3.6676795,17.21z/data=!4m5!3m4!1s0x47c370362705fc21:0x47f9e1d923e07a64!8m2!3d51.0873546!4d3.6686913" target="_blank" rel="noopener">
-                        Industrieweg 232, 9030 Mariakerke (Gent)
-                    </a>
-                </span><br>
-                <span>
-                    Alle rechten voorbehouden © Arteveldehogeschool 2019 - 2020
-                </span>
-            </div>
-        </div> 
-    </div>
-</footer>
 <div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="page">
     <div class="modal-wrapper">
         <div class="modal-content box-all">

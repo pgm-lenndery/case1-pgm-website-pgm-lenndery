@@ -3,13 +3,13 @@ title: home
 layout: page
 permalink: index.html
 ---
-<section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp">
+<section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp" data-menu-indexing="Hello">
     <div class="container-fluid py-8 hero-content">
         <h1 class="font-rhode display-3 mb-4">
             graduaat<br>programmeren<br>front end development
         </h1>
-        <h3 class="text-modern font-weight-normal">catchy ondertitel</h3>
-        <button class="btn-arrow" data-sesam-trigger="test">meer weten?</button>
+        <h4 class="text-modern font-weight-normal">leer knappe websites en apps maken</h4>
+        <button class="btn-arrow" data-sesam-trigger="programVideo">bekijk onze video</button>
     </div>
     <div class="hero-background-wrapper">
         <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_pgm_klein_wit.svg" alt="">
@@ -23,60 +23,13 @@ permalink: index.html
                 <p class="cta-section-subtitle">Bekijk onze video en je bent meteen verkocht</p>
             </div>
             <div class="col-3 box-l cta-section-static">
-                <img class="w-100" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pages/intro_video_sneakpeak.png" alt="">
+                <!-- <img class="w-100" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pages/intro_video_sneakpeak.png" alt=""> -->
             </div>
         </div>
     </div>
 </section>
-<section data-label="studentsHighlight">
-    <div class="container-fluid box-lazy animate-delay-04 box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
-        <div class="row">
-            <div class="col">
-                <h2 class="font-rhode display-4">
-                    onze<br>studenten
-                </h2>
-            </div>
-            <div class="col-3 box-l cta-section-cta">
-                <h3 class="text-modern">
-                    ontdek ze<br>allemaal
-                </h3>
-                <i data-feather="arrow-right"></i>
-            </div>
-        </div>
-    </div>
-    <div class="collection collection-horizontal py-5">
-    </div>
-</section>
-<section data-label="casesHighlight" class="mb-8">
-    <div class="box-lazy" data-lazy-animation="fadeInUp">
-        <div class="container-fluid box-y box-offset-t header-section">
-            <div class="row">
-                <div class="col">
-                    <h2 class="font-rhode display-4">
-                        cases &<br>opdrachten
-                    </h2>
-                </div>
-                <div class="col-3 box-l cta-section-cta">
-                    <h3 class="text-modern">
-                        ontdek ze<br>allemaal
-                    </h3>
-                    <i data-feather="arrow-right"></i>
-                </div>
-            </div>
-        </div>
-        <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases">
-            <div class="filter-section-title box-r py-3 pr-3">
-                <p class="text-modern mb-0">filter cases</p>
-            </div>
-            <div class="filter-section-options box-offset-y d-flex pl-4"></div>
-        </div> 
-    </div>
-    <div class="container-fluid salvatore salvatore-grid" data-columns="3">
-        <!-- highlighted cases -->
-    </div>
-</section>
-<section>
-    <div class="container-fluid box-lazy box-y header-section" data-lazy-animation="fadeInUp">
+<section data-menu-indexing="Onze opleiding">
+    <div class="container-fluid box-lazy animate-delay-04 box-y header-section" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col">
                 <h2 class="font-rhode display-4">
@@ -85,7 +38,7 @@ permalink: index.html
             </div>
             <div class="col-3 box-l cta-section-cta">
                 <h3 class="text-modern">
-                    ontdek onze opleiding
+                    ontdek onze<br>opleiding
                 </h3>
                 <i data-feather="arrow-right"></i>
             </div>
@@ -114,7 +67,108 @@ permalink: index.html
         </div>
     </div>
 </section>
+<section data-label="studentsHighlight" data-menu-indexing="Studenten">
+    <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col">
+                <h2 class="font-rhode display-4">
+                    onze<br>studenten
+                </h2>
+            </div>
+            <div class="col-3 box-l cta-section-cta">
+                <h3 class="text-modern">
+                    ontdek ze<br>allemaal
+                </h3>
+                <i data-feather="arrow-right"></i>
+            </div>
+        </div>
+    </div>
+    <div class="collection collection-horizontal py-5">
+    </div>
+</section>
+<section data-label="casesHighlight" class="mb-8" data-menu-indexing="Opdrachten & cases">
+    <div class="box-lazy" data-lazy-animation="fadeInUp">
+        <div class="container-fluid box-y box-offset-t header-section">
+            <div class="row">
+                <div class="col">
+                    <h2 class="font-rhode display-4">
+                        cases &<br>opdrachten
+                    </h2>
+                </div>
+                <div class="col-3 box-l cta-section-cta">
+                    <h3 class="text-modern">
+                        ontdek ze<br>allemaal
+                    </h3>
+                    <i data-feather="arrow-right"></i>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases">
+            <div class="filter-section-title box-r py-3 pr-3">
+                <p class="text-modern mb-0">filter cases</p>
+            </div>
+            <div class="filter-section-options box-offset-y d-flex pl-4"></div>
+        </div> 
+    </div>
+    <div class="container-fluid salvatore salvatore-grid" data-columns="3">
+        <!-- highlighted cases -->
+    </div>
+</section>
 
+<section>
+    <div class="container-fluid box-lazy box-offset-b box-y header-section" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col">
+                <h2 class="font-rhode display-4">
+                    contact
+                </h2>
+            </div>
+            <div class="col-3 box-l cta-section-cta">
+                <h3 class="text-modern">
+                    voor<br>bedrijven
+                </h3>
+                <i data-feather="arrow-right"></i>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid box-y box-lazy box-offset-b" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-5 mb-xl-0 box-r py-6">
+                <h3 class="font-rhode">opleidingsverantwoordelijke</h3>
+                <h5 class="text-modern">Olivier Parent</h5>
+                <a href="mailto:olivier.parent@arteveldehs.be" class="btn-arrow small mb-5">olivier.parent@arteveldehs.be</a>
+                
+                <h3 class="font-rhode">trajectbeheer</h3>
+                <h5 class="text-modern">Maaike Callens</h5>
+                <a href="mailto:maaike.callens@arteveldehs.be" class="btn-arrow small mb-5">maaike.callens@arteveldehs.be</a>
+                
+                <h3 class="font-rhode">werkplekleren</h3>
+                <h5 class="text-modern">Philippe De Pauw - Waterschoot</h5>
+                <a href="mailto:philippe.depauw@arteveldehs.be" class="btn-arrow small">philippe.depauw@arteveldehs.be</a>
+            </div>
+            <div class="col-12 col-md-6 mb-5 mb-xl-0 py-6 pl-6">
+                <h3 class="font-rhode mb-2">contactformulier</h3>
+                <form data-label="contactMain" class="form">
+                    <div class="form-group">
+                        <input class="form-item" type="text" required name="" id="contactMain_name" placeholder="je naam" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-item" type="email" required name="" id="contactMain_email" placeholder="je emailadres" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-item" type="text" required name="" id="contactMain_subject" placeholder="een onderwerp" autocomplete="off">
+                    </div>
+                    <div class="form-group mt-4">
+                        <textarea class="form-item" name="" id="contactMain_msg" rows="2" placeholder="je bericht"></textarea>
+                    </div>
+                    <button class="btn-arrow d-block mx-auto mt-4" type="submit">versturen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- modals -->
 <div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="test">
     <div class="modal-wrapper">
         <div class="modal-content box-all">
@@ -161,6 +215,28 @@ permalink: index.html
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="programVideo">
+    <div class="modal-wrapper">
+        <div class="modal-content box-all">
+            <div class="modal-content-wrapper">
+                <div class="modal-controls">
+                    <div data-action="modalClose"><i data-feather="x"></i></div>
+                    <div data-action="modalHide"><i data-feather="minus"></i></div>
+                </div>
+                <div class="modal-content-header d-none">
+                    <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
+                </div>
+                <div class="modal-content-body h-100">
+                    <div class="modal-title d-none">opleidingsvideo</div>
+                    <video class="w-100 h-100 modal-show-playpause" controls preload="metadata" poster="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/video/opleidingsvideo_poster_2.png">
+                        <source src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/video/opleidingsvideo.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>

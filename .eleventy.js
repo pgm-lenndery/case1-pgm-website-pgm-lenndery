@@ -24,10 +24,7 @@ module.exports = (eleventyConfig) => {
     
     // Copy `img/` to `_site/img`
     eleventyConfig.addPassthroughCopy({ 
-        'src/_static/images': 'static/images',
-        'src/_static/fonts': 'static/fonts',
-        'src/_static/css': 'static/css',
-        'src/_static/js': 'static/js'
+      'src/_static': 'static/'
     });
       
     eleventyConfig.addLayoutAlias('page', 'page.liquid');

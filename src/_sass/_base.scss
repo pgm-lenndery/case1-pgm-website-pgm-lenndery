@@ -2,6 +2,10 @@
     background-color: $purple500;
 }
 
+* {
+    cursor: none !important;
+}
+
 body {
     background-color: black;
     color: white;
@@ -15,6 +19,11 @@ main {
     min-height: calc(100vh - 206px - 162px);
 }
 
+hr {
+    border: none;
+    border-top: 2px solid white;
+}
+
 img {
     object-fit: cover;
     object-position: center;
@@ -23,6 +32,10 @@ img {
         max-height: 100%;
         max-width: 100%;
     }
+}
+
+video {
+    object-fit: cover; 
 }
 
 svg.feather {

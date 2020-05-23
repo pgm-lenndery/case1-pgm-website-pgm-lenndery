@@ -1,4 +1,4 @@
-import {callerName, modalControl, sesamCollapse, sesam, listeners, fetchAPI, fetchPage} from './modules/index.js'
+import {callerName, modalControl, sesamCollapse, sesam, listeners, fetchAPI, fetchPage, uiControl} from './modules/index.js'
 
 const status = new callerName('main');
 
@@ -21,6 +21,10 @@ export const site = {
         this.addFilterOptions()
         listeners.initialize();
         this.getApidata();
+        this.pageMenuIndexing();
+        uiControl.initialize();
+        sesamCollapse.collectInitialProperties();
+        console.log(sesamCollapse.dimensions)
     },
     
     cache() {
@@ -28,6 +32,7 @@ export const site = {
         this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');
         this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options');
         this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore');
+        this.homeNav = document.querySelector('[data-label="homeNav"]');
     },
     
     fillMarquee() {
@@ -131,7 +136,7 @@ export const site = {
     },
     
     lazyLoadingBoxes() {
-        // status.add('lazyLoading');
+        status.add('lazyLoading');
         
         // source: https://medium.com/@filipvitas/lazy-load-images-with-zero-javascript-2c5bcb691274
         
@@ -165,23 +170,27 @@ export const site = {
     },
     
     async getApidata() {
+        status.add('getApidata');
+        
         this.apiData = {
             cases: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json'),
             students: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json')
         }
-        console.log(await this.apiData);
         this.renderDomElements();
         this.lazyLoadingBoxes();
     },
     
     renderDomElements() {
         status.add('renderDomElements');
+        
         listeners.cache();
         this.renderCases();
         this.renderStudents();
     },
     
     arrowButtons() {
+        status.add('arrowButtons');
+        
         const btnArrow = document.querySelectorAll('.btn-arrow');
         const btnArrowLink = document.querySelectorAll('.btn-arrow-link');
         const arrow = '<i data-feather="chevron-right"></i>';
@@ -198,5 +207,22 @@ export const site = {
         });
         
         feather.replace();
+    },
+    
+    pageMenuIndexing() {
+        status.add('pageMenuIndexing');
+        
+        const indexedItems = document.querySelectorAll('[data-menu-indexing]');
+        indexedItems.forEach((i, index) => {
+            const navItem = document.createElement('div');
+            navItem.classList.add('nav-item','text-modern','box-b');
+            const itemIndex = index+1;
+            navItem.innerHTML = `
+                <span class="nav-item-index">${itemIndex < 10 ? `0${itemIndex}` : itemIndex}</span>
+                <span class="word-joint">・</span>
+                <span class="nav-item-label">${i.dataset.menuIndexing}</span>
+            `;
+            this.homeNav.querySelector('.navbar-nav').appendChild(navItem);
+        });
     }
 }
