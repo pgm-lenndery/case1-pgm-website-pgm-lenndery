@@ -1,4 +1,4 @@
-import { modalControl, sesam, sesamCollapse, callerName, uiControl } from './index.js';
+import { modalControl, sesam, sesamCollapse, callerName, uiControl, routingControl } from './index.js';
 
 const status = new callerName('listeners');
 
@@ -27,6 +27,7 @@ export const listeners = {
             const tab = event.target.closest('[data-label="tabs"] .tab');
             const casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card');
             const homeNav = event.target.closest('[data-label="homeNav"] .navbar-label');
+            const internalLink = event.target.closest('a[data-href]'); 
             
             if (casesHighlightCard != null) {
                 // show case modal
@@ -86,25 +87,7 @@ export const listeners = {
                 }
             }
             
-            // console.log(homeNav);
-            // if (homeNav != null) {
-            //     const state = sesamCollapse.states.get('homeNav');
-            //     console.log(sesamCollapse.states.get('homeNav'))
-            //     console.log(sesamCollapse.dimensions.get('homeNav'));
-            //     if (state == 'hidden') {
-            //         sesam({
-            //             target: 'homeNav',
-            //             action: 'show',
-            //         });
-            //         uiControl.navbarNav.style.height = `${sesamCollapse.dimensions.get('homeNav')}px`;
-            //     } else if (state == 'show') {
-            //         sesam({
-            //             target: 'homeNav',
-            //             action: 'hide',
-            //         });
-            //         uiControl.navbarNav.style.height = '0px';
-            //     }
-            // }           
+            if (internalLink != null) routingControl.openInternalLink(internalLink);
         })
         
         document.body.addEventListener('mouseover', (event) => {

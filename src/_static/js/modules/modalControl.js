@@ -13,7 +13,8 @@ export const modalControl = {
     
     cache() {
         status.add('cache');
-        this.tabs = document.querySelector('[data-label="tabs"]')
+        this.tabs = document.querySelector('[data-label="tabs"]');
+        this.$pageModal = document.querySelector('[data-sesam-target="page"] .modal-content-wrapper');
     },
 
     createTab({title, sesamName}) {
@@ -145,7 +146,7 @@ export const modalControl = {
         });        
     },
     
-    async displayPageModalByUrl() {       
+    async renderModalFromVisitedUrl() {       
         fetch(`${origin}/${main.SITE_PREFIX}/`)
         .then(response => response.text())
         .then(text => {
@@ -157,7 +158,7 @@ export const modalControl = {
             sesamCollapse.initialize();
             const pageData = await fetchPage(`${origin}/${main.SITE_PREFIX}${window.location.pathname.replace(main.SITE_PREFIX,'')}`);
             
-            document.querySelector('[data-sesam-target="page"] .modal-content-wrapper').innerHTML = `
+            this.$pageModal.innerHTML = `
                 <div class="modal-content-header d-none">
                     <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
                 </div>
@@ -179,5 +180,6 @@ export const modalControl = {
             
             site.start();
         });        
-    }
+    },
+    
 }

@@ -2,7 +2,6 @@
 layout: modal
 title: Mailchimp – campagne 1
 subtitle: Mailcampagne via Mailchimp
-permalink: buscom/mailing-1/index.html
 ---
 
 ### Opstellen

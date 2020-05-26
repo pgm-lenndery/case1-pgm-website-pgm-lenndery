@@ -13,11 +13,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" type='image/png' href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/favicon_2.png"/>
     <!-- <meta name="theme-color" content="#662B32">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#662B32">
-     -->
-
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#662B32">
+    -->
+    
     <!-- seo -->
+    <meta name="robots" content="noindex, nofollow, nosnippet">
     <meta name="description" content="pgm.gent | Graduaat Programmeren Arteveldehogeschool">
     <meta name="keywords" content="graduaat, programmeren, pgm, gent, artevelde, arteveldehogeschool">
     
@@ -56,13 +57,13 @@
     </div>  
 </div>
 <main>
-    <section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp" data-href="">
+    <section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp" data-section-href="">
     <div class="container-fluid py-8 hero-content">
         <h1 class="font-rhode display-3 mb-4">
             graduaat<br>programmeren<br>front end development
         </h1>
         <h4 class="text-modern font-weight-normal">leer knappe websites en apps maken</h4>
-        <a href="/case1-pgm-website-pgm-lenndery/onze-opleiding/video" class="btn-arrow">bekijk onze video</a>
+        <a href="/case1-pgm-website-pgm-lenndery/onze-opleiding/opleidingsvideo" class="btn-arrow">bekijk onze video</a>
     </div>
     <div class="hero-background-wrapper">
         <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_pgm_klein_wit.svg" alt="">
@@ -81,7 +82,7 @@
         </div>
     </div>
 </section>
-<section data-href="onze-opleiding">
+<section data-section-href="onze-opleiding">
     <div class="container-fluid box-lazy animate-delay-04 box-y header-section" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col">
@@ -103,24 +104,24 @@
                 <i data-feather="briefcase" class="feather-size-big mb-3"></i>
                 <h3 class="font-rhode">120 studiepunten</h3>
                 <h5>verspreid over 2 academiejaren</h5>
-                <a href="#" class="btn-arrow">curriculum</a>
+                <a href="/case1-pgm-website-pgm-lenndery/onze-opleiding/curriculum" class="btn-arrow">curriculum</a>
             </div>
             <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0 text-center">
                 <i data-feather="tool" class="feather-size-big mb-3"></i>
                 <h3 class="font-rhode">Veel praktijk</h3>
                 <h5>Je krijgt 1200 uren praktijk waaronder<br>echte cases en werkplekleren</h5>
-                <a href="/onze-opleiding/werkplekleren" class="btn-arrow">kom meer te weten</a>
+                <a href="/case1-pgm-website-pgm-lenndery/onze-opleiding/werkplekleren" class="btn-arrow">kom meer te weten</a>
             </div>
             <div class="col-12 col-xl-4 box-l text-center">
                 <i data-feather="award" class="feather-size-big mb-3"></i>
                 <h3 class="font-rhode">Knelpuntberoep</h3>
                 <h5>Een door VDAB erkent knelpunt beroep<br> en veel werkgelegenheid</h5>
-                <a href="/onze-opleiding/werkplekleren" class="btn-arrow">lees meer</a>
+                <a href="/case1-pgm-website-pgm-lenndery/onze-opleiding" class="btn-arrow">lees meer</a>
             </div>
         </div>
     </div>
 </section>
-<section data-label="studentsHighlight" data-href="studenten">
+<section data-label="studentsHighlight" data-section-href="studenten">
     <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col">
@@ -156,7 +157,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases" data-href="cases">
+        <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases" data-section-href="cases">
             <div class="filter-section-title box-r py-3 pr-3">
                 <p class="text-modern mb-0">filter cases</p>
             </div>
@@ -168,7 +169,7 @@
     </div>
 </section>
 
-<section data-href="contact">
+<section data-section-href="contact">
     <div class="container-fluid box-lazy box-offset-b box-y header-section" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col">
@@ -269,6 +270,7 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal-breadcrumbs"></div>
             </div>
         </div>
     </div>
@@ -357,9 +359,9 @@
                 </div>
             </div>
         </div>
+        <div class="modal-breadcrumbs box-x box-b bg-color-black font-rhode px-4 py-2 medium"></div>
     </div>
 </div>
-    
     <!-- bootstrap scripts -->
     <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->

@@ -320,6 +320,7 @@
         }
         
         .modal-wrapper {
+            width: 100%;
             transform: translateY(calc((var(--box-modal-offset)*-1)/2));
         }
         

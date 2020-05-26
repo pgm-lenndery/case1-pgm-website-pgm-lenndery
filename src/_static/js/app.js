@@ -26,6 +26,8 @@ export const site = {
         routingControl.initialize();
     },
     
+    
+    
     cache() {
         status.add('cache');
         this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');
@@ -172,10 +174,12 @@ export const site = {
         
         this.apiData = {
             cases: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json'),
-            students: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json')
+            students: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json'),
+            curry: await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/curry.json')
         }
         this.renderDomElements();
         this.lazyLoadingBoxes();
+        uiControl.curry()
     },
     
     renderDomElements() {
@@ -206,4 +210,9 @@ export const site = {
         
         feather.replace();
     },
+    
+    removeTrailingSlash(url) {
+        if (url.endsWith('/')) {return url.replace(/\/$/, '')}
+        else return url
+    }
 }

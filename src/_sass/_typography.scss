@@ -10,6 +10,10 @@ p.text-modern {
     font-weight: 600;
 }
 
+.medium {
+    font-size: 90% !important;
+}
+
 small, .small {
     font-size: 80% !important;
     
@@ -46,5 +50,9 @@ small, .small {
     
     h3 + h5, h4 + h6 {
         margin-top: -17px;
+    }
+    
+    p ~ h3, p ~ h4, p ~ h5 {
+        margin-top: 2.5rem;
     }
 }

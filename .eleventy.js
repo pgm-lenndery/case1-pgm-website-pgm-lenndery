@@ -1,7 +1,6 @@
 const fs = require("fs");
 
-module.exports = (eleventyConfig) => { 
-    
+module.exports = (eleventyConfig) => {     
     eleventyConfig.setQuietMode(true);
     eleventyConfig.addWatchTarget("./src/");
     
@@ -24,24 +23,14 @@ module.exports = (eleventyConfig) => {
     
     // Copy `img/` to `_site/img`
     eleventyConfig.addPassthroughCopy({ 
-      'src/_static': 'static/'
+      'src/_static': 'static/',
+      'src/robots.txt': 'robots.txt'
     });
       
     eleventyConfig.addLayoutAlias('page', 'page.liquid');
     eleventyConfig.addLayoutAlias('default', 'default.liquid');
     eleventyConfig.addLayoutAlias('modal', 'modal.liquid');
     eleventyConfig.addLayoutAlias('modal-galery', 'modal-galery.liquid');
-    
-    eleventyConfig.addPairedShortcode('anker', (content, href, attr) => {
-        // const {href = '#', target = '_self'} = options;
-        return `
-            <a href="${href}" class="btn-arrow" ${attr}>
-                <i data-feather="chevron-right"></i>
-                ${content}
-                <i data-feather="chevron-right"></i>
-            </a>
-        `
-    });
     
     return {
         pathPrefix: '/case1-pgm-website-pgm-lenndery/',
