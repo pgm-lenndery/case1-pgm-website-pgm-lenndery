@@ -23,6 +23,16 @@ Waar ik deze keer het meeste van verbaast ben is de weinige respons die ik terug
 Ook het aantal clicks is aanzienlijk gedaald. Van 88 naar 54 clicks, dat is een daling van meer dan 25 procent.
 
 Deze bevraging toont opnieuw aan dat mijn werk een goed resultaat opgeleverd heeft en de grafieken bevestigen dit. Alhoewel er deze keer over de look en feel vaker het antwoord 'goed' in plaats van 'zeer goed' en bij de blogpost ook vaker een score 3 in plaats van 4 of 5 werd gegeven, zijn de algemene resultaten wel goed. Dit kan natuurlijk ook liggen aan het feit dat er zo weinig respons was.
+<div class="row mb-5">
+    <div class="col-12">
+        <h5>Resultaten campagne 1</h5>
+        <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/campagne-2//grafieken/grafieken_campagne_1.png" alt="">
+    </div>
+    <div class="col-12">
+        <h5>Resultaten campagne 2</h5>
+        <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/campagne-2//grafieken/grafieken_campagne_2.png" alt="">
+    </div>
+</div>
 
 Ook de tabbladen-functie bij het verkleinen van een detailpagina werd positief bevonden.
 
