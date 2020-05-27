@@ -27,9 +27,6 @@ export const fetchAPI = async (url) => {
     }
 }
 
-const apidata = fetchAPI('url')
-console.log(apidata);
-
 export const fetchPage = async (url) => {
     try {
         let response = await fetch(url)
