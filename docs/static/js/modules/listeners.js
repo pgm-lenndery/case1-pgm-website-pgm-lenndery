@@ -27,7 +27,9 @@ export const listeners = {
             const tab = event.target.closest('[data-label="tabs"] .tab');
             const casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card');
             const homeNav = event.target.closest('[data-label="homeNav"] .navbar-label');
-            const internalLink = event.target.closest('a[data-href]'); 
+            
+            const siteURL = window.location.origin;
+            const internalLink = event.target.closest(`a[href*="${siteURL}"], a[href^="/"], a[href^="./"], a[href^="../"], a[href^="#"]`); 
             
             if (casesHighlightCard != null) {
                 // show case modal
@@ -87,7 +89,10 @@ export const listeners = {
                 }
             }
             
-            if (internalLink != null) routingControl.openInternalLink(internalLink);
+            if (internalLink != null) {
+                event.preventDefault();
+                routingControl.openInternalLink(internalLink);
+            };
         })
         
         document.body.addEventListener('mouseover', (event) => {

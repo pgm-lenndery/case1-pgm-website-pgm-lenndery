@@ -30,7 +30,12 @@ small, .small {
     a {
         color: #7f47dd;
         
-        svg.feather {stroke-width: 1px;}
+        svg.feather {stroke-width: 2px;}
+        
+        &.btn-arrow-link {
+            font-weight: 500;
+            color: white;
+        }
     }
     
     @for $i from 1 through 4 {

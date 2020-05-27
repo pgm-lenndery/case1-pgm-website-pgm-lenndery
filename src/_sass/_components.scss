@@ -51,8 +51,8 @@
 
 .container {
     &-fluid {
-        padding-left: $spacer * 6;
-        padding-right: $spacer * 6;
+        padding-left: $spacer * 2.5;
+        padding-right: $spacer * 2.5;
     }
     
     &-xxl {
@@ -438,4 +438,44 @@
     justify-content: space-between;
     align-items: flex-end;
     z-index: 11;
+}
+
+@media (min-width: 576px) {
+    .container {
+        &-fluid {
+            padding-left: $spacer * 2.5;
+            padding-right: $spacer * 2.5;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        &-fluid {
+            padding-left: $spacer * 4;
+            padding-right: $spacer * 4;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        &-fluid {
+            padding-left: $spacer * 5;
+            padding-right: $spacer * 5;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        &-fluid {
+            padding-left: $spacer * 6;
+            padding-right: $spacer * 6;
+        }
+        
+        &-xxl {
+            max-width: 1600px;
+        }
+    }
 }

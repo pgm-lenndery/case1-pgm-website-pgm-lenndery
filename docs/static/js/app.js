@@ -26,8 +26,6 @@ export const site = {
         routingControl.initialize();
     },
     
-    
-    
     cache() {
         status.add('cache');
         this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');

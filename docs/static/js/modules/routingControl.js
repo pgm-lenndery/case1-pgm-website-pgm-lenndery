@@ -11,7 +11,7 @@ export const routingControl = {
         this.getUrlOnScroll()
         if (window.location.hash.includes('#/') == true) this.scrollToUrl();
         
-        this.replaceInternalLinks();
+        // this.replaceInternalLinks();
     },
     
     cache() {
@@ -53,28 +53,28 @@ export const routingControl = {
     
     breadCrumbs({char, pageTitle}) {
         status.add('breadCrumbs');
-        
         char == undefined ? char = '・' : null;
-        let location = window.location.pathname;
+        
+        let location = site.removeTrailingSlash(window.location.pathname);
+        
+        // remove site prefix from path and remove empty array values
         location = location.replace(`/${main.SITE_PREFIX}`,'').split('/').filter(item => item);
         location.splice(1, 1, pageTitle);
         location.unshift('pgm.gent');
-        location = location.join(`<span class="word-joint">${char}</span>`);
-        return location;
-    },
-    
-    replaceInternalLinks() {
-        this.$internalLinks.forEach(i => {
-            i.outerHTML = i.outerHTML.replace('href','data-href');
+        let dom = location.map((i, index) => {
+            i = i.toLowerCase();
+            return `<a href="/${main.SITE_PREFIX}/${location.slice(1, index+1).join('/')}" class="font-rhode">${i}</a>`
         });
+        dom = dom.join(`<span class="word-joint">${char}</span>`);
+        return dom;
     },
     
     openInternalLink(event) {
         status.add('openInternalLink');
-        const requestedUrl = event.dataset.href;
+        const requestedUrl = site.removeTrailingSlash(event.href);
         const currentUrl = site.removeTrailingSlash(window.location.pathname);
         
-        if (requestedUrl == window.location.pathname) {
+        if (requestedUrl == currentUrl) {
             // page is already fetched
             
             sesam({
@@ -86,29 +86,37 @@ export const routingControl = {
                 }
             });
             modalControl.removeTab({sesamName: 'page'});
+        } else if (requestedUrl.endsWith(`${window.location.origin}/${main.SITE_PREFIX}`) == true) {
+            window.history.pushState({urlPath: ''}, '', `${window.location.origin}/${main.SITE_PREFIX}/`);
+            sesam({
+                target: 'page',
+                action: 'hide',
+                modal: {
+                    backdrop: false,
+                    scrollBlock: false
+                }
+            });
         } else {
             // page has to be fetched
-            
             fetchPage(requestedUrl).then(content => {
                 let page = document.createElement('template');
                 page.innerHTML = content;
-                return page.content.cloneNode(true).querySelector('main');
+                return {
+                    pageContent: page.content.cloneNode(true).querySelector('main').innerHTML,
+                    pageTitle: page.content.cloneNode(true).querySelector('.modal-title').innerHTML
+                };
             }).then(page => {
                 modalControl.$pageModal.innerHTML = `
                     <div class="modal-content-body">
-                        ${page.innerHTML}
+                        ${page.pageContent}
                     </div>
                 `;
                 
                 window.history.pushState({urlPath: ''}, '', requestedUrl);
+                document.querySelector('[data-sesam-target="page"] .modal-breadcrumbs').innerHTML = this.breadCrumbs({char: '❯', pageTitle: page.pageTitle});
                 uiControl.initialize();
                 
-                console.log(sesamCollapse.states.get('page'))
                 modalControl.removeTab({sesamName: 'page'});
-                // if (sesamCollapse.states.get('page') != 'hidden') {
-                //     modalControl.removeTab({sesamName: 'page'});
-                // }
-                
                 sesam({
                     target: 'page',
                     action: 'show',
@@ -116,7 +124,9 @@ export const routingControl = {
                         backdrop: true,
                         scrollBlock: true
                     }
-                })
+                });
+            }).then(() => {
+                this.replaceInternalLinks();
             }).catch(error => status.log(error));
         }  
     }
