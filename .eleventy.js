@@ -27,10 +27,10 @@ module.exports = (eleventyConfig) => {
       'src/robots.txt': 'robots.txt'
     });
       
-    eleventyConfig.addLayoutAlias('page', 'page.liquid');
+    eleventyConfig.addLayoutAlias('no-modal', 'no-modal.liquid');
     eleventyConfig.addLayoutAlias('default', 'default.liquid');
-    eleventyConfig.addLayoutAlias('modal', 'modal.liquid');
-    eleventyConfig.addLayoutAlias('modal-galery', 'modal-galery.liquid');
+    eleventyConfig.addLayoutAlias('page', 'page.liquid');
+    eleventyConfig.addLayoutAlias('page-galery', 'page-galery.liquid');
     
     return {
         pathPrefix: '/case1-pgm-website-pgm-lenndery/',

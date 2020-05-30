@@ -45,7 +45,7 @@
     }
 }
 
-.animate {
+.animate, .animated {
     &.fastest {--animation-duration: .2s;}
     &.lightspeed {--animation-duration: .1s;}
     

@@ -131,3 +131,11 @@
         }
     }
 }
+
+
+[data-section-href="contact"] {
+    .form input.form-item {
+        max-width: 100vw;
+        font-size: calc(1.575rem + 3.9vw);
+    }
+}

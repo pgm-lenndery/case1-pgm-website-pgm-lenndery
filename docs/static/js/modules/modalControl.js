@@ -25,7 +25,7 @@ export const modalControl = {
         
         if (checks.includes(true) == false) {
             const tab = document.createElement('div');
-            tab.classList.add('tab','animated', 'slideInUp', 'faster');
+            tab.classList.add('tab','animated', 'slideInUp', 'lightspeed');
             tab.setAttribute('data-tab-trigger',sesamName);
             tab.innerHTML = `
                 <i data-feather="plus"></i>

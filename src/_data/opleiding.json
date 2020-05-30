@@ -1,0 +1,24 @@
+{
+    "contact": {
+        "email": "info.graduaat.programmeren@arteveldehs.be",
+        "adres": "Industrieweg 232, 9030 Mariakerke (Gent)",
+        "personen": [
+            {
+                "naam": "Olivier Parent",
+                "functie": "curriculum",
+                "email": "olivier.parent@arteveldehs.be"
+            },
+            {
+                "naam": "Maaike Callens",
+                "functie": "trajectbeheer",
+                "email": "maaike.callens@arteveldehs.be"
+            },
+            {
+                "naam": "Philippe De Pauw - Waterschoot",
+                "functie": "werkplekleren",
+                "email": "philippe.depauw@arteveldehs.be"
+            }
+        ]
+    },
+    "technologieen": ["HTML", "CSS", "SASS / SCSS", "JavaScript", "Git", "databases", "api's", "Webpack", "React", "node.js", "Adobe Illustrator", "Adobe Photoshop", "animation", "3D", "Blender", "eleventy"]
+}

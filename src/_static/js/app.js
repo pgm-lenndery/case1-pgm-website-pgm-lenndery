@@ -52,16 +52,16 @@ export const site = {
     addFilterOptions() {
         status.add('addFilterOptions');
         const options = ['all','design','animation','protoyping'];
-        options.forEach((i, index) => {
-            const option = document.createElement('div');
-            option.className = 'options-el';
-            option.innerHTML = `
-                <input type="radio" id="filterOption${index}" ${index == 0 ? 'checked' : ''} name="type" value="${i}">
-                <label for="filterOption${index}">${i}</label>
-                <span class="word-joint">・</span>
-            `;
-            this.casesHighlightFilter.appendChild(option);
+        let dom = options.map((i, index) => {
+            return `
+                <div class="options-el">
+                    <input type="radio" id="filterOption${index}" ${index == 0 ? 'checked' : ''} name="type" value="${i}">
+                    <label for="filterOption${index}">${i}</label>
+                </div>
+            `; 
         })
+        dom = dom.join(`<div class="word-joint">・</div>`);
+        this.casesHighlightFilter.innerHTML = dom;
     },
     
     async renderCases() {

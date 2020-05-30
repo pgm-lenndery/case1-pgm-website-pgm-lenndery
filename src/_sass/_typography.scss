@@ -2,9 +2,20 @@
     @include font-poppins;
 }
 
+h1 {
+    font-size: calc(1.2rem + 3.9vw);
+}
+
 h3, h4 {
     line-height: 2.5rem;
 }
+
+@for $i from 1 through 6 {
+    h#{$i}:not(.hyphens-false) {
+        hyphens: auto;
+    }
+}
+
 
 p.text-modern {
     font-weight: 600;
@@ -23,23 +34,47 @@ small, .small {
 }
 
 #mainContent {
-    img {
-        width: 100%;
+    img {width: 100%;}
+    
+    h5, h6 {margin-top: 40px;}
+    h3 + h5, h4 + h6 {margin-top: -17px;}
+    p ~ h3, p ~ h4, p ~ h5 {margin-top: 2.5rem;}
+    
+    p, ul {
+        color: #bdbdbd;
+        line-height: 150%;
+        
+        a {display: inline;}
     }
     
-    h5, h6 {
-        margin-top: 40px;
-    }
+    ul {padding-left: 20px;}
     
     a {
-        color: #7f47dd;
+        color: $purple400;
+        text-decoration: underline;
         
         svg.feather {stroke-width: 2px;}
         
         &.btn-arrow-link {
             font-weight: 500;
             color: white;
+            text-decoration: none;
         }
+    }
+    
+    pre {color: $purple300;}
+    
+    blockquote {
+        margin-bottom: 1rem;
+        padding-left: 1rem;
+        border-left: 2px solid $purple300;
+        
+        * {
+            font-size: 0.9rem;
+            color: $purple300;
+            @include font-rhode;
+        }        
+        *:last-child {margin-bottom: 0;}
     }
     
     @for $i from 1 through 4 {
@@ -56,12 +91,17 @@ small, .small {
             margin-bottom: 1.5rem;
         }
     }
-    
-    h3 + h5, h4 + h6 {
-        margin-top: -17px;
-    }
-    
-    p ~ h3, p ~ h4, p ~ h5 {
-        margin-top: 2.5rem;
+}
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {
+    h1 {
+        font-size: calc(1.575rem + 3.9vw);
     }
 }
+
+@media (min-width: 1200px) {}
+

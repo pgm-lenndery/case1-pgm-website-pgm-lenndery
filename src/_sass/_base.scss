@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: black;
+    background-color: $mainBackground;
     color: white;
     
     &.sesam-scrollBlock {
@@ -20,8 +20,7 @@ main {
 }
 
 #seoBanner {
-    width: 0px;
-    height: 0px;
+    display: none;
 }
 
 hr {
@@ -196,4 +195,26 @@ a {
         }
     }
     
+}
+
+#cursor {
+    --d: 68px;    
+    position: fixed;
+    left: var(--d);
+    top: var(--d);
+    width: var(--d);
+    height: var(--d);
+    background: white;
+    mix-blend-mode: exclusion;
+    pointer-events: none;
+    border-radius: 120px;
+    transform: scale(0);
+    cursor: none;
+    z-index: 100;
+    transition: all .2 ease;
+    
+    &.moved {
+        transform: scale(1);
+        transition: all .2 ease;
+    }
 }

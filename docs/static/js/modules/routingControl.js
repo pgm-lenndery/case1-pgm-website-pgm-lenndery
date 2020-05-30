@@ -76,7 +76,6 @@ export const routingControl = {
         
         if (requestedUrl == currentUrl) {
             // page is already fetched
-            
             sesam({
                 target: 'page',
                 action: 'show',

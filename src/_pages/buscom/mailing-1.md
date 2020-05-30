@@ -1,5 +1,5 @@
 ---
-layout: modal
+layout: page
 title: Mailchimp – campagne 1
 subtitle: Mailcampagne via Mailchimp
 ---
