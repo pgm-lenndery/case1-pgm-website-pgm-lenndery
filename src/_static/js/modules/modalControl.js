@@ -1,4 +1,4 @@
-import {sesamCollapse, sesam, listeners, callerName, fetchAPI, fetchPage} from './index.js';
+import {sesamCollapse, sesam, listeners, callerName, fetchAPI, fetchPage, routingControl} from './index.js';
 import {site} from '../app.js'
 import {main} from '../main.js'
 
@@ -14,10 +14,14 @@ export const modalControl = {
     cache() {
         status.add('cache');
         this.tabs = document.querySelector('[data-label="tabs"]');
-        this.$pageModal = document.querySelector('[data-sesam-target="page"] .modal-content-wrapper');
+        this.$pageModal = document.querySelector('[data-sesam-target="page"]');
+        this.$pageModalWrapper = document.querySelector('[data-sesam-target="page"] .modal-content-wrapper');
+        this.$pageModalCrumbs = document.querySelector('[data-sesam-target="page"] .modal-breadcrumbs');
     },
 
     createTab({title, sesamName}) {
+        const currentPath = site.removeTrailingSlash(window.location.pathname);
+        
         const checks = [];
         this.tabs.querySelectorAll('.tab').forEach(tab => {
             checks.push(tab.dataset.tabTrigger == sesamName)
@@ -27,6 +31,7 @@ export const modalControl = {
             const tab = document.createElement('div');
             tab.classList.add('tab','animated', 'slideInUp', 'lightspeed');
             tab.setAttribute('data-tab-trigger',sesamName);
+            tab.setAttribute('data-tab-href',currentPath);
             tab.innerHTML = `
                 <i data-feather="plus"></i>
                 <span class="tab-title">${title}</span>
@@ -52,11 +57,13 @@ export const modalControl = {
         }
     },
     
-    openTab() {
-        console.log('tab opened')
+    openTab({tabHref}) {
+        window.history.pushState({urlPath: ''}, '', tabHref);
+        console.log('tab opened', tabHref.replace(`/${main.SITE_PREFIX}`, ''));
     },
     
     modalClose({sesamTarget}) {
+        status.add('modalClose');
         sesam({
             target: sesamTarget,
             action: 'hide',
@@ -68,9 +75,11 @@ export const modalControl = {
         modalControl.removeTab({
             sesamName: sesamTarget
         });
+        routingControl.homeUrlInAddressBar();
     },
     
     modalHide({sesamTarget, title}) {
+        status.add('modalHide');
         sesam({
             target: sesamTarget,
             action: 'hide',
@@ -83,6 +92,7 @@ export const modalControl = {
             title: title, 
             sesamName: sesamTarget
         })
+        routingControl.homeUrlInAddressBar();
     },
     
     renderModal({id}) {
@@ -158,7 +168,7 @@ export const modalControl = {
             sesamCollapse.initialize();
             const pageData = await fetchPage(`${origin}/${main.SITE_PREFIX}${window.location.pathname.replace(main.SITE_PREFIX,'')}`);
             
-            this.$pageModal.innerHTML = `
+            this.$pageModalWrapper.innerHTML = `
                 <div class="modal-content-header d-none">
                     <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
                 </div>

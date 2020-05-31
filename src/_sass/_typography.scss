@@ -3,7 +3,12 @@
 }
 
 h1 {
-    font-size: calc(1.2rem + 3.9vw);
+    font-size: 1.8rem;
+    
+    & +  h4 {
+        line-height: 130%;
+        font-size: 1.2;
+    }
 }
 
 h3, h4 {
@@ -65,7 +70,7 @@ small, .small {
     pre {color: $purple300;}
     
     blockquote {
-        margin-bottom: 1rem;
+        margin-bottom: 2rem;
         padding-left: 1rem;
         border-left: 2px solid $purple300;
         
@@ -95,7 +100,11 @@ small, .small {
 
 @media (min-width: 576px) {}
 
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+    h1 {
+        font-size: calc(1.2rem + 3.9vw);
+    }
+}
 
 @media (min-width: 992px) {
     h1 {

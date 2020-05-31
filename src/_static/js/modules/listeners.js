@@ -29,7 +29,8 @@ export const listeners = {
             const homeNav = event.target.closest('[data-label="homeNav"] .navbar-label');
             
             const siteURL = window.location.origin;
-            const internalLink = event.target.closest(`a[href*="${siteURL}"], a[href^="/"], a[href^="./"], a[href^="../"], a[href^="#"]`); 
+            // const internalLink = event.target.closest(`a[href*="${siteURL}"], a[href^="/"], a[href^="./"], a[href^="../"], a[href^="#"]`); 
+            const internalLink = event.target.closest(`a`); 
             
             if (casesHighlightCard != null) {
                 // show case modal
@@ -57,23 +58,9 @@ export const listeners = {
             
             // show modal when clicked on tab
             if (tab != null) {
-                sesam({
-                    target: tab.dataset.tabTrigger,
-                    action: 'show',
-                    modal: {
-                        backdrop: true,
-                        scrollBlock: true
-                    }
-                });
-                modalControl.removeTab({
-                    sesamName: tab.dataset.tabTrigger
-                })
-                
-                // modalControl.openTab({sesamName}) // replace functions above
-                
                 const openedModal = document.querySelector(`[data-sesam-target].sesam-show`);
                 if (openedModal != null) {
-                    console.log('other modal is showed', openedModal.dataset.sesamTarget);
+                    console.log('other modal is showed:', openedModal.dataset.sesamTarget);
                     modalControl.modalHide({
                         sesamTarget: openedModal.dataset.sesamTarget,
                         title: openedModal.querySelector('.modal-title').innerHTML
@@ -86,12 +73,32 @@ export const listeners = {
                             scrollBlock: true
                         }
                     });
+                    modalControl.openTab({
+                        tabHref: tab.dataset.tabHref
+                    });
                 }
+                sesam({
+                    target: tab.dataset.tabTrigger,
+                    action: 'show',
+                    modal: {
+                        backdrop: true,
+                        scrollBlock: true
+                    }
+                });
+                modalControl.removeTab({
+                    sesamName: tab.dataset.tabTrigger
+                })
+                modalControl.openTab({
+                    tabHref: tab.dataset.tabHref
+                });
+                
+                // modalControl.openTab({sesamName}) // replace functions above
             }
             
             if (internalLink != null) {
+                status.log(event)
                 event.preventDefault();
-                routingControl.openInternalLink(internalLink);
+                routingControl.openClickedAnker(internalLink);
             };
         })
         

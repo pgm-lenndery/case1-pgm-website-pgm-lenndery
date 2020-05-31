@@ -94,11 +94,12 @@
         
         img {
             position: relative;
-            top: 5%;
-            left: 60%;
-            opacity: .4;
-            z-index: 0;
+            top: 47%;
+            left: -69%;
             width: 990px;
+            opacity: .4;
+            user-select: none;
+            z-index: 0;
         }
     }
 }
@@ -136,6 +137,24 @@
 [data-section-href="contact"] {
     .form input.form-item {
         max-width: 100vw;
+        max-width: 100%;
         font-size: calc(1.575rem + 3.9vw);
     }
 }
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+    .hero-background-wrapper img {
+        position: relative;
+        top: 5%;
+        left: 60%;
+        opacity: .4;
+        z-index: 0;
+        width: 990px;
+    }
+}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}

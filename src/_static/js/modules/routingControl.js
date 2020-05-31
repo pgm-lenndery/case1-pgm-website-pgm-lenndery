@@ -21,6 +21,12 @@ export const routingControl = {
         this.$internalLinks = document.querySelectorAll(`a[href*="${siteURL}"], a[href^="/"], a[href^="./"], a[href^="../"], a[href^="#"]`);
     },
     
+    homeUrlInAddressBar() {
+        status.log('homeUrlInAddressBar');
+        const currentDomain = site.removeTrailingSlash(window.location.origin);
+        window.history.pushState({urlPath: ''}, '', `${currentDomain}/${main.SITE_PREFIX}/`);
+    },
+    
     getUrlOnScroll() {
         status.add('observer');
         
@@ -67,14 +73,18 @@ export const routingControl = {
         });
         dom = dom.join(`<span class="word-joint">${char}</span>`);
         return dom;
-    },
+    },    
     
-    openInternalLink(event) {
-        status.add('openInternalLink');
+    openClickedAnker(event) {
+        status.add('openClickedAnker');
+        const currentPath = site.removeTrailingSlash(window.location.pathname);
+        const currentDomain = site.removeTrailingSlash(window.location.origin);
         const requestedUrl = site.removeTrailingSlash(event.href);
-        const currentUrl = site.removeTrailingSlash(window.location.pathname);
+        const requestedPath = site.removeTrailingSlash(event.href).replace(currentDomain, '');
         
-        if (requestedUrl == currentUrl) {
+        if (requestedUrl.startsWith(currentDomain) == false) {
+            window.open(requestedUrl, "_blank")
+        } else if (requestedUrl == currentPath) {
             // page is already fetched
             sesam({
                 target: 'page',
@@ -85,8 +95,10 @@ export const routingControl = {
                 }
             });
             modalControl.removeTab({sesamName: 'page'});
-        } else if (requestedUrl.endsWith(`${window.location.origin}/${main.SITE_PREFIX}`) == true) {
-            window.history.pushState({urlPath: ''}, '', `${window.location.origin}/${main.SITE_PREFIX}/`);
+        } else if (requestedUrl.endsWith(`${currentDomain}/${main.SITE_PREFIX}`) == true) {
+            // hide modal if clicked link is home
+            this.homeUrlInAddressBar();
+            // window.history.pushState({urlPath: ''}, '', `${currentDomain}/${main.SITE_PREFIX}/`);
             sesam({
                 target: 'page',
                 action: 'hide',
@@ -105,14 +117,15 @@ export const routingControl = {
                     pageTitle: page.content.cloneNode(true).querySelector('.modal-title').innerHTML
                 };
             }).then(page => {
-                modalControl.$pageModal.innerHTML = `
+                modalControl.$pageModalWrapper.innerHTML = `
                     <div class="modal-content-body">
                         ${page.pageContent}
                     </div>
                 `;
                 
                 window.history.pushState({urlPath: ''}, '', requestedUrl);
-                document.querySelector('[data-sesam-target="page"] .modal-breadcrumbs').innerHTML = this.breadCrumbs({char: '❯', pageTitle: page.pageTitle});
+                modalControl.$pageModal.setAttribute('data-modal-href', requestedPath);
+                modalControl.$pageModalCrumbs.innerHTML = this.breadCrumbs({char: '❯', pageTitle: page.pageTitle});
                 uiControl.initialize();
                 
                 modalControl.removeTab({sesamName: 'page'});

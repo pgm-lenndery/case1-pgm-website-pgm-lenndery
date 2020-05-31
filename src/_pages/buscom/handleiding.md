@@ -136,6 +136,12 @@ Dit werkt voor alle linken die gelegd worden binnen Eleventy, ook naar bestanden
 
 Ook belangrijk om te weten is dat Eleventy autmatisch de relatieve paden naar de bestemmingen telkens zal genereren.
 
+##### Interne en externe links
+
+Het is opzich niet nodig bij het aanmaken van een link om aan te geven dat deze in een nieuw venster geopend moet worden, deze overweging wordt automatisch gemaakt door de JavaScript achter deze site.
+
+Een externe url (die naar een ander domein verwijst) zal altijd geopend worden in een nieuw venster, een interne altijd in een modal binnen deze site, net zoals deze handleiding.
+
 ### Media- en databestanden
 
 Alle media wordt voorlopig voor deze site op een apparte repo gehost via GitHub Pages. Het enige wat moet gebeuren is de bestanden toevoegen in de *src*-folder binnen die repo en de bestanden zullen na het builden van die repo (dat automatisch gebeurt) beschikbaar zijn.
