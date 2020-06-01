@@ -81,9 +81,14 @@ export const routingControl = {
         const currentDomain = site.removeTrailingSlash(window.location.origin);
         const requestedUrl = site.removeTrailingSlash(event.href);
         const requestedPath = site.removeTrailingSlash(event.href).replace(currentDomain, '');
+        const requestedHash = requestedUrl.split('/').slice(-1)[0].split('#')[1]
         
         if (requestedUrl.startsWith(currentDomain) == false) {
             window.open(requestedUrl, "_blank")
+        } else if (requestedUrl.startsWith(currentDomain) == true && requestedHash != undefined) {
+            document.querySelector(`#${requestedHash}`).scrollIntoView({
+                behavior: 'smooth'
+            });
         } else if (requestedUrl == currentPath) {
             // page is already fetched
             sesam({
@@ -98,7 +103,6 @@ export const routingControl = {
         } else if (requestedUrl.endsWith(`${currentDomain}/${main.SITE_PREFIX}`) == true) {
             // hide modal if clicked link is home
             this.homeUrlInAddressBar();
-            // window.history.pushState({urlPath: ''}, '', `${currentDomain}/${main.SITE_PREFIX}/`);
             sesam({
                 target: 'page',
                 action: 'hide',
@@ -110,24 +114,35 @@ export const routingControl = {
         } else {
             // page has to be fetched
             fetchPage(requestedUrl).then(content => {
-                let page = document.createElement('template');
+                const page = document.createElement('template');
                 page.innerHTML = content;
+                
                 return {
-                    pageContent: page.content.cloneNode(true).querySelector('main').innerHTML,
+                    pageContent: page.content.cloneNode(true).querySelector('main'),
                     pageTitle: page.content.cloneNode(true).querySelector('.modal-title').innerHTML
                 };
             }).then(page => {
+                // pageindexing
+                const indexed = page.pageContent.querySelectorAll('#mainContent h3, #mainContent h4, #mainContent h5');
+                page.pageContent.querySelector('#pageIndex').appendChild(uiControl.pageIndexing(indexed));
+
+                // filling page
                 modalControl.$pageModalWrapper.innerHTML = `
                     <div class="modal-content-body">
-                        ${page.pageContent}
+                        ${page.pageContent.innerHTML}
                     </div>
                 `;
                 
+                
                 window.history.pushState({urlPath: ''}, '', requestedUrl);
                 modalControl.$pageModal.setAttribute('data-modal-href', requestedPath);
-                modalControl.$pageModalCrumbs.innerHTML = this.breadCrumbs({char: '❯', pageTitle: page.pageTitle});
+                modalControl.$pageModalCrumbs.innerHTML = this.breadCrumbs({
+                    char: '❯', 
+                    pageTitle: page.pageTitle
+                });
                 uiControl.initialize();
-                
+                uiControl.addIdTitles();
+            }).then(() => {
                 modalControl.removeTab({sesamName: 'page'});
                 sesam({
                     target: 'page',
@@ -137,8 +152,6 @@ export const routingControl = {
                         scrollBlock: true
                     }
                 });
-            }).then(() => {
-                this.replaceInternalLinks();
             }).catch(error => status.log(error));
         }  
     }

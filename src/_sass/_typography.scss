@@ -98,6 +98,17 @@ small, .small {
     }
 }
 
+#pageIndex {
+    position: relative;
+    list-style: none;
+    
+    .pageindex-list {
+        position: sticky;
+        top: 0px;
+        height: fit-content;
+    }
+}
+
 @media (min-width: 499px) {
     h1 {
         font-size: calc(1rem + 3.9vw);

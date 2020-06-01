@@ -29,9 +29,7 @@ export const uiControl = {
                 `;
                 bottle.appendChild(div);
             });
-        } catch (error) {
-            status.log(error)
-        }
+        } catch (error) {null}
     },
     
     getCurryCourses(input) {
@@ -45,5 +43,40 @@ export const uiControl = {
             `;
         })
         return tempStr;
+    },
+    
+    addIdTitles() {
+        const indexed = document.body.querySelectorAll('#mainContent h3, #mainContent h4, #mainContent h5');
+        indexed.forEach(i => {
+            const indexItemId = i.innerHTML.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+            i.setAttribute('id', indexItemId);
+        })
+    },
+    
+    pageIndexing(indexed) {
+        status.add('pageIndex');
+        
+        try {
+            this.$mainContent = document.querySelector('#mainContent');
+            
+            const indexList = document.createElement('ul'), indexListTitle = document.createElement('h5');
+            indexList.className = 'pageindex-list';
+            indexListTitle.className = 'font-rhode';
+            indexListTitle.innerHTML = 'Inhoudsopgave';
+            indexList.appendChild(indexListTitle);
+
+            indexed.forEach(i => {
+                const indexItemId = i.innerHTML.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
+                
+                // add index list items to unordered list element
+                const li = document.createElement('li');
+                li.classList.add('pageindex-list-item', `tagname-${i.tagName}`);
+                li.innerHTML = `<a href="#${indexItemId}">${i.innerHTML}</>`;
+                indexList.appendChild(li);
+            })
+            return indexList;
+        } catch (err) {
+            status.log(err);
+        }
     }
 }

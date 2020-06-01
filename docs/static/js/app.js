@@ -24,6 +24,7 @@ export const site = {
         uiControl.initialize();
         sesamCollapse.collectInitialProperties();
         routingControl.initialize();
+        uiControl.addIdTitles();
     },
     
     cache() {

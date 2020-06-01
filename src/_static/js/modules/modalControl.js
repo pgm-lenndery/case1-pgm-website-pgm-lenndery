@@ -17,6 +17,7 @@ export const modalControl = {
         this.$pageModal = document.querySelector('[data-sesam-target="page"]');
         this.$pageModalWrapper = document.querySelector('[data-sesam-target="page"] .modal-content-wrapper');
         this.$pageModalCrumbs = document.querySelector('[data-sesam-target="page"] .modal-breadcrumbs');
+        this.$pageModalPageIndex = document.querySelector('[data-sesam-target="page"] #pageIndex');
     },
 
     createTab({title, sesamName}) {
