@@ -18,7 +18,19 @@ Er worden een aantal templates aangemaakt waar er op bepaalde plaatsen aan de ha
 
 Bij het builden zal Eleventy desbetreffende template ophalen en het bestand met de content in "mergen" met het template. In sé zal Eleventy de variabelen vervangen met die content. In dat content-bestand moet je natuurlijk wel aangeven welke variabele met welke content vervangen wordt.
 
-[illustratie werking van eleventy]
+Builden gebeurt door gebruik te maken van de ingebouwde functies in de commandoprompt of terminal:
+
+```bash
+# voor een gewone build
+$ npm run build 
+
+# om een live preview te krijgen tijdens het aanpassen en builden van de site
+$ npm run build
+```
+
+Je kan ook gebruik maken van de ingebouwde npm functionaliteit in Visual Studio Code om deze scripts uit te voeren.
+
+Meer over npm kan je lezen op [npmjs.com](https://www.npmjs.com/).
 
 ##### Configuratie
 
@@ -31,6 +43,8 @@ In een .liquid-bestand kan je gewonen HTML schrijven maar het is de manier van h
 Verder is er weinig configuratie gedaan buiten aangeven waar bepaalde folders komen. Hierover kan je meer lezen onder "folderstructuur".
 
 [Hier](https://github.com/pgm-lenndery/case1-pgm-website-pgm-lenndery/blob/master/.eleventy.js) vind je de volledige configuratie van Eleventy.
+
+Meer over de Eleventy-configuratie kan je lezen op [11ty.dev](https://www.11ty.dev/docs/config/).
 
 ### Folderstructuur
 
@@ -136,6 +150,18 @@ Dit werkt voor alle linken die gelegd worden binnen Eleventy, ook naar bestanden
 
 Ook belangrijk om te weten is dat Eleventy autmatisch de relatieve paden naar de bestemmingen telkens zal genereren.
 
+Meer over liquid kan je lezen op [shopify.github.io](https://shopify.github.io/liquid/).
+
+##### Links toevoegen met markdown
+
+```markdown
+{% raw %}[Zichtbare tekst die wordt toegevoegd](een url) 
+
+[Voorbeeld van een interne link met Liquid]({{ '/contact/bedrijven' | url}})
+
+[Bijvoorbeeld deze link naar een Markdown stylesheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet){% endraw %}
+```
+
 ##### Interne en externe links
 
 Het is opzich niet nodig bij het aanmaken van een link om aan te geven dat deze in een nieuw venster geopend moet worden, deze overweging wordt automatisch gemaakt door de JavaScript achter deze site.
@@ -154,9 +180,18 @@ Dit heb ik opgelost door een script te schrijven dat een oplijsting genereert va
 
 Telkens wanneer er een nieuw bestand aan de repo wordt toegevoegd zal de lijst opnieuw gegenereerd worden door GitHub Actions. Dit detecteerd een nieuwe push naar de repo en zal mijn script uitvoeren. Na twee à drie minuuten zijn de bestanden beschikbaar via bovenstaande url.
 
+##### Afbeeldingen toevoegen met markdown
+
+```markdown
+{% raw %}![titel van een afbeelding](de volledige url naar een afbeelding)
+
+![Dit is het pgm-logo](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png){% endraw %}
+```
+
 ---
 
 ### Data aanpassen
+
 ##### Opleidingsinfo, contactinfo & technologieën
 
 De contactinformatie is de vinden in de Eleventy-repo onder ```src/_data/opleiding.json```.
@@ -174,7 +209,16 @@ Hier worden alle vakken verdeeld onder de vijf opleidingsdomeinen in een array a
 
 ### Pagina's aanpassen
 
-De meeste pagina's bevinden zich in de *src/_pages*-folder. Voor het schrijven van pagina's wordt over het algemeen Markdown gebruikt. Markdown is een zeer eenvoudige en snel aan te leren taal. [Hier vind je een cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+Alle pagina's bevinden zich in de *src/_pages*-folder. Bij het aanmaken van een pagina volstaat het om deze toe te voegen aan deze folder en de basisconfiguratie toe te voegen (lees verder hieronder).
+
+##### Markdown
+
+Voor het schrijven van pagina's wordt over het algemeen Markdown gebruikt. 
+
+Markdown is een zeer eenvoudige taal die en snel aan te leren is. Aangezien deze taal zo simpel is [vind je een cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet).
+
+> Goed om te weten:
+In Markdown kan ook HTML geschreven worden
 
 Naast Markdown kunnen pagina's ook gewoon met pure HTML gemaakt worden, hier kan je een .html- of .liquid-bestand voor gebruiken.
 

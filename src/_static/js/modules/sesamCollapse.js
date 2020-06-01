@@ -76,7 +76,7 @@ const sesamCollapse = {
                 // this.optionsMap.has('parent') == true ? this.hideOtherChildren(this.optionsMap.get('parent')) : null;
             }
         } else if (element.dataset.sesamTarget != undefined && itemState == false) {
-            this.itemHide(this.backdrop);
+            (this.optionsMap.get('backdrop') == 'true' || element.dataset.sesamBackdrop) && this.optionsMap.get('backdrop') != undefined == 'true' ? this.itemHide(this.backdrop) : null;
             this.scrollBlock({ block: false });
             this.cleanCollapse(element);
         }

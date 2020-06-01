@@ -60,3 +60,43 @@ Ik kan stellen dat de campagne zelf minder een succes was maar de respons op de 
 Het lijkt erop dat de gebruikers het donkere thema wel aangenaam vinden en de tyopgrafie over het algemeen goed zit maar dat er zeker nog werk aan de winkel is.
 
 Bij een nieuwe campagne zal het van belang zijn om de gebruikers nog meer aan te zetten tot het invullen van de bevraging zodat de resultaten nog betrouwbaarder zijn, en bij het invoegen van voorbeelden van het visual design deze eerder als kleine delen worden toegevoegd zodat dit meer overkomt zoals bij een website.
+
+### Bijlagen
+
+##### Gegevensverwerking Excel
+
+**1e mailing**
+
+<a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/buscom_campagne1_evaluatie.xlsx" class="text-modern small btn-arrow-link" download>excel-bestand downloaden</a>
+
+**2e mailing**
+
+<a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/campagne-2/buscom_campagne_2_evaluatie.xlsx" class="text-modern small btn-arrow-link" download>excel-bestand downloaden</a>
+
+##### Screenshots Mailchimp 1e mailing
+
+**Account vóór eerste mailing**
+
+![account voor eerste mailing](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/mailchimp_account_voor.png)
+
+**Campagne**
+
+![account voor eerste mailing](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/mailchilmp_campagne.png)
+
+**Account na eerste mailing**
+
+![account voor eerste mailing](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/mailchimp_account_na.png)
+
+##### Screenshots Mailchimp 2e mailing
+
+**Account vóór tweede mailing**
+
+![account vóór tweede mailing](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/campagne-2/mailchimp_account_voor_campagne_2.png)
+
+**Campagne**
+
+![tweede campagne](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/campagne-2/mailchmip_campagne_2.png)
+
+**Account na tweede mailing**
+
+![account na tweede mailing](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/buscom/campagne-2/mailchimp_account_na_campagne_2.png)

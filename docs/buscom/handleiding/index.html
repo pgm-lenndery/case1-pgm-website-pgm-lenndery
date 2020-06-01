@@ -60,7 +60,7 @@
     </section>
     <section id="mainContent">
         <div class="container-fluid mt-8 mb-5">
-            <div class="row">
+            <div class="row flex-column-reverse flex-lg-row">
                 <div class="col-12 col-lg-8">
                     <blockquote>
 <p>Enige basiskennis van HTML, CSS en JavaScript is gewenst om deze handleiding goed te kunnen begrijpen</p>
@@ -71,13 +71,22 @@
 <p>Er worden een aantal templates aangemaakt waar er op bepaalde plaatsen aan de hand van variabelen bepaalde content zal komen. Dan heb je een aantal folders binnen je project met bestanden die deze content bevatten. In Eleventy is er heel wat keuze wat betreft het soort bestand dat je gebruikt voor je content. De meest gebruikte data-types zijn HTML, Nunjucks, Liquid, Markdown en meer.</p>
 <h5>Het &quot;builden&quot;</h5>
 <p>Bij het builden zal Eleventy desbetreffende template ophalen en het bestand met de content in &quot;mergen&quot; met het template. In sé zal Eleventy de variabelen vervangen met die content. In dat content-bestand moet je natuurlijk wel aangeven welke variabele met welke content vervangen wordt.</p>
-<p>[illustratie werking van eleventy]</p>
+<p>Builden gebeurt door gebruik te maken van de ingebouwde functies in de commandoprompt of terminal:</p>
+<pre><code class="language-bash"># voor een gewone build
+$ npm run build 
+
+# om een live preview te krijgen tijdens het aanpassen en builden van de site
+$ npm run build
+</code></pre>
+<p>Je kan ook gebruik maken van de ingebouwde npm functionaliteit in Visual Studio Code om deze scripts uit te voeren.</p>
+<p>Meer over npm kan je lezen op <a href="https://www.npmjs.com/">npmjs.com</a>.</p>
 <h5>Configuratie</h5>
 <p>Het voordeel aan Eleventy is dat het heel makkelijk en uitgebreid te configureren is. Aangezien het gebruik maakt van JavaScript als basis kan je gebruiken van node packages (best te omschrijven als plug en play JavaScript-functies die andere developers ter beschikking stellen via een handig platform/systeem) en de andere vele tools die voor JavaScript beschikbaar zijn.</p>
 <p>De template-engine is ingesteld op Liquid. Liquid is een templating language voor het inladen van dynamische content. Liquid werd ontwikkeld door Shopify, een dienst om webshops op te zetten.</p>
 <p>In een .liquid-bestand kan je gewonen HTML schrijven maar het is de manier van het aangeven waar de variabelen komen die dan bepaald wordt door liquid.</p>
 <p>Verder is er weinig configuratie gedaan buiten aangeven waar bepaalde folders komen. Hierover kan je meer lezen onder &quot;folderstructuur&quot;.</p>
 <p><a href="https://github.com/pgm-lenndery/case1-pgm-website-pgm-lenndery/blob/master/.eleventy.js">Hier</a> vind je de volledige configuratie van Eleventy.</p>
+<p>Meer over de Eleventy-configuratie kan je lezen op <a href="https://www.11ty.dev/docs/config/">11ty.dev</a>.</p>
 <h3>Folderstructuur</h3>
 <p>Ik heb de volgende folderstuctuur gehanteerd:</p>
 <ul>
@@ -155,6 +164,14 @@
 </ul>
 <p>Dit werkt voor alle linken die gelegd worden binnen Eleventy, ook naar bestanden en dergelijke.</p>
 <p>Ook belangrijk om te weten is dat Eleventy autmatisch de relatieve paden naar de bestemmingen telkens zal genereren.</p>
+<p>Meer over liquid kan je lezen op <a href="https://shopify.github.io/liquid/">shopify.github.io</a>.</p>
+<h5>Links toevoegen met markdown</h5>
+<pre><code class="language-markdown">[Zichtbare tekst die wordt toegevoegd](een url) 
+
+[Voorbeeld van een interne link met Liquid]({{ '/contact/bedrijven' | url}})
+
+[Bijvoorbeeld deze link naar een Markdown stylesheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+</code></pre>
 <h5>Interne en externe links</h5>
 <p>Het is opzich niet nodig bij het aanmaken van een link om aan te geven dat deze in een nieuw venster geopend moet worden, deze overweging wordt automatisch gemaakt door de JavaScript achter deze site.</p>
 <p>Een externe url (die naar een ander domein verwijst) zal altijd geopend worden in een nieuw venster, een interne altijd in een modal binnen deze site, net zoals deze handleiding.</p>
@@ -164,6 +181,11 @@
 <p>Normaal zou je een 404-pagina zien én zou je, wanneer je een specifiek bestand zoekt de url moeten gaan uitpluizen naar dat bestand aan de hand van waar je het geplaatst hebt.</p>
 <p>Dit heb ik opgelost door een script te schrijven dat een oplijsting genereert van alle bestanden binnen de <em>src</em>-folder. Het is dus zo simpel als copy-pasten van de link die je bij elk bestand vindt.</p>
 <p>Telkens wanneer er een nieuw bestand aan de repo wordt toegevoegd zal de lijst opnieuw gegenereerd worden door GitHub Actions. Dit detecteerd een nieuwe push naar de repo en zal mijn script uitvoeren. Na twee à drie minuuten zijn de bestanden beschikbaar via bovenstaande url.</p>
+<h5>Afbeeldingen toevoegen met markdown</h5>
+<pre><code class="language-markdown">![titel van een afbeelding](de volledige url naar een afbeelding)
+
+![Dit is het pgm-logo](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png)
+</code></pre>
 <hr>
 <h3>Data aanpassen</h3>
 <h5>Opleidingsinfo, contactinfo &amp; technologieën</h5>
@@ -175,7 +197,14 @@ De variabelen worden altijd geopend en gesloten met 2 accolades. Daarna begin je
 <p>Het curriculum wordt volledig gegenereerd door middel van Javascript. Het JSON-bestand hier voor is <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/curry.json">hier</a> te vinden.</p>
 <p>Hier worden alle vakken verdeeld onder de vijf opleidingsdomeinen in een array als object. Hier wordt dan per vak de nodige data meegegeven.</p>
 <h3>Pagina's aanpassen</h3>
-<p>De meeste pagina's bevinden zich in de <em>src/_pages</em>-folder. Voor het schrijven van pagina's wordt over het algemeen Markdown gebruikt. Markdown is een zeer eenvoudige en snel aan te leren taal. <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Hier vind je een cheatsheet</a>.</p>
+<p>Alle pagina's bevinden zich in de <em>src/_pages</em>-folder. Bij het aanmaken van een pagina volstaat het om deze toe te voegen aan deze folder en de basisconfiguratie toe te voegen (lees verder hieronder).</p>
+<h5>Markdown</h5>
+<p>Voor het schrijven van pagina's wordt over het algemeen Markdown gebruikt.</p>
+<p>Markdown is een zeer eenvoudige taal die en snel aan te leren is. Aangezien deze taal zo simpel is <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">vind je een cheatsheet</a>.</p>
+<blockquote>
+<p>Goed om te weten:
+In Markdown kan ook HTML geschreven worden</p>
+</blockquote>
 <p>Naast Markdown kunnen pagina's ook gewoon met pure HTML gemaakt worden, hier kan je een .html- of .liquid-bestand voor gebruiken.</p>
 <h5>Basisconfiguratie</h5>
 <p>Elke pagina krijgt een basisconfiguratie mee die eenvoudig op te zetten is, dit noemen we <strong>frontmatter</strong>. Zo herkent Elventy hoe de pagina moet gebuild worden.</p>
@@ -213,7 +242,7 @@ permalink: contact/bedrijven/index.html
 <p>Het kleurthema kan gewijzigd worden door de variabelen aan te passen in <em><a href="https://github.com/pgm-lenndery/case1-pgm-website-pgm-lenndery/blob/master/src/_sass/_variables.scss">src/_sass/_variables.scss</a></em></p>
 
                 </div>
-                <div class="col-12 col-lg-4" id="pageIndex" class="pageindex">
+                <div class="col-12 col-lg-4 mb-5 mb-lg-0" id="pageIndex" class="pageindex sesam sesam-hidden" data-sesam-target="pageIndex">
                     
                 </div>
             </div>

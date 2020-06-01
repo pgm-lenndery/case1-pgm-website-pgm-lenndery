@@ -58,13 +58,20 @@ export const uiControl = {
         
         try {
             this.$mainContent = document.querySelector('#mainContent');
-            
-            const indexList = document.createElement('ul'), indexListTitle = document.createElement('h5');
+    
+            const wrapper = document.createElement('div'), indexList = document.createElement('ul'), indexListTitle = document.createElement('div');
             indexList.className = 'pageindex-list';
-            indexListTitle.className = 'font-rhode';
-            indexListTitle.innerHTML = 'Inhoudsopgave';
-            indexList.appendChild(indexListTitle);
+            
+            // add title
+            indexListTitle.classList.add('pageindex-title', 'd-flex', 'align-items-center', 'justify-content-between', 'sesam', 'sesam-hidden', 'clickable', 'mb-3');
+            indexListTitle.setAttribute('data-sesam-trigger', 'pageIndex');
+            indexListTitle.innerHTML = `
+                <h5 class="font-rhode my-0">Inhoudsopgave</h5>
+                <i data-feather="chevron-down" class="d-lg-none"></i>
+            `;
+            wrapper.appendChild(indexListTitle);
 
+            // create items
             indexed.forEach(i => {
                 const indexItemId = i.innerHTML.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase();
                 
@@ -74,9 +81,9 @@ export const uiControl = {
                 li.innerHTML = `<a href="#${indexItemId}">${i.innerHTML}</>`;
                 indexList.appendChild(li);
             })
-            return indexList;
-        } catch (err) {
-            status.log(err);
-        }
+            wrapper.appendChild(indexList);
+            
+            return wrapper;
+        } catch (err) {null}
     }
 }

@@ -133,7 +133,6 @@ export const routingControl = {
                     </div>
                 `;
                 
-                
                 window.history.pushState({urlPath: ''}, '', requestedUrl);
                 modalControl.$pageModal.setAttribute('data-modal-href', requestedPath);
                 modalControl.$pageModalCrumbs.innerHTML = this.breadCrumbs({
@@ -144,6 +143,7 @@ export const routingControl = {
                 uiControl.addIdTitles();
             }).then(() => {
                 modalControl.removeTab({sesamName: 'page'});
+                sesamCollapse.initialize();
                 sesam({
                     target: 'page',
                     action: 'show',

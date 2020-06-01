@@ -75,6 +75,10 @@
     &-white {color: white;}
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 @for $i from 0 through 12 {
     .level-#{$i} {
         z-index: #{$i};
