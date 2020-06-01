@@ -102,41 +102,56 @@ export const modalControl = {
         
         const i = site.apiData.cases.cases.data.filter(idMatch)[0];
         status.log(i)
-        document.querySelector('[data-sesam-target="test"] .modal-content-wrapper').innerHTML = `
+        document.querySelector('[data-sesam-target="project"] .modal-content-wrapper').innerHTML = `
             <div class="modal-content-header box-b">
                 <img height="100%" width="100%" src="${i.img.tumbnail}" alt="">
             </div>
             <div class="modal-content-body">
-                <div class="row p-7">
-                    <div class="col-12 col-md-8">
-                        <h2 class="modal-title font-rhode mb-5">${i.title}</h2>
-                        <p class="text-modern">over deze opdracht</p>
-                        <p>${i.about}</p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at accusamus sed impedit veritatis, dolorem quam. Distinctio, aliquam.</p>
-                        <p>Saepe placeat fugit expedita delectus ea distinctio modi assumenda molestiae debitis, ut soluta eveniet enim perferendis nisi voluptatum ipsum aspernatur accusantium quaerat repudiandae iste quas dignissimos aperiam iusto. Quae, laborum ullam earum nulla iure corporis ex optio quos? Reiciendis eos ex facilis?</p>
+                <div class="container-fluid py-7">
+                    <div class="row">
+                        <div class="col-12"><h2 class="modal-title font-rhode mb-5">${i.title}</h2></div>
+                        <div class="col-12 col-md-6 col-lg-8">
+                            <p class="text-modern">over deze opdracht</p>
+                            <p>${i.about}</p>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at accusamus sed impedit veritatis, dolorem quam. Distinctio, aliquam.</p>
+                            <p>Saepe placeat fugit expedita delectus ea distinctio modi assumenda molestiae debitis, ut soluta eveniet enim perferendis nisi voluptatum ipsum aspernatur accusantium quaerat repudiandae iste quas dignissimos aperiam iusto. Quae, laborum ullam earum nulla iure corporis ex optio quos? Reiciendis eos ex facilis?</p>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-4">
+                            <p>
+                                <span class="text-modern">vak</span><br>
+                                ${i.course}
+                            </p>
+                            <p>
+                                <span class="text-modern">academiejaar</span><br>
+                                ${new Date(i.date)}
+                                <!-- if after september year +1 else -1 -->
+                            </p>
+                            <p>
+                                <span class="text-modern">technologieën</span><br>
+                                html, sass, javascript
+                            </p>
+                            <p>
+                                <span class="text-modern">studenten</span><br>
+                                Jaimy Van Gyseghem
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="bg-color-white text-color-black font-rhode px-7 py-2">
+                
+                <div class="bg-color-white text-color-black font-rhode container-fluid py-2">
                     ${i.tags.join('<span class="word-joint">・</span>')}
                 </div>
-                <div class="row mx-0 box-b">
-                    <div class="col-auto px-7 py-7">
-                        <p class="text-modern">vak</p>
-                        <p>web programming</p>
-                        <p class="text-modern">academiejaar</p>
-                        <p>${new Date(i.date)}</p>
-                        <!-- if after september year +1 else -1 -->
-                    </div>
-                    <div class="col-auto pl-0 pr-7 py-7">
-                        <p class="text-modern">technologieën</p>
-                        <p>html, sass, javascript</p>
-                        <p class="text-modern">studenten</p>
-                        <p>Jaimy Van Gyseghem</p>
-                    </div>
-                    <div class="d-none d-lg-block col-3 pr-0 ml-auto">
-                        <div class="box-l h-100">
-                            <div class="filter-purple-rain position-relative">
-                                <img class="h-100" style="max-width: 100%; max-height: 300px;" src="https://dl.airtable.com/.attachmentThumbnails/9e0a4860a1d429c55a0957a6a5cea48b/8a322593" alt="">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="modal-gallery glide mt-6">
+                            <div class="glide__track" data-glide-el="track">
+                                <ul class="glide__slides box-offset-l">
+                                    ${this.renderProjectGallery(i.img.gallery)}
+                                </ul>
+                            </div>
+                            <div class="glide__arrows container-fluid pl-0 py-2 d-flex justify-content-between" data-glide-el="controls">
+                                <button class="glide__arrow glide__arrow--left ml-2" data-glide-dir="<"><i data-feather="arrow-left"></i></button>
+                                <button class="glide__arrow glide__arrow--right mr-2" data-glide-dir=">"><i data-feather="arrow-right"></i></button>
                             </div>
                         </div>
                     </div>
@@ -145,15 +160,28 @@ export const modalControl = {
         `;
         
         feather.replace();
-        
         sesam({
-            target: 'test',
+            target: 'project',
             action: 'show',
             modal: {
                 backdrop: true,
                 scrollBlock: true
             }
         });        
+    },
+    
+    renderProjectGallery(input) {
+        let tempStr = '';
+        
+        input.forEach(i => {
+            tempStr += `
+                <li class="glide__slide container-fluid pl-0">
+                    <img class="box-all" src="${i.url}" width="100%" alt="afbeelding van project">
+                </li>
+            `;
+        })
+        
+        return tempStr;
     },
     
     async renderModalFromVisitedUrl() {       
@@ -191,5 +219,4 @@ export const modalControl = {
             site.start();
         });        
     },
-    
 }

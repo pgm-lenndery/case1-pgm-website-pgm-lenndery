@@ -35,11 +35,16 @@ export const listeners = {
             if (casesHighlightCard != null) {
                 // show case modal
                 modalControl.renderModal({ id: casesHighlightCard.dataset.id});
+                new Glide('.glide').mount({
+                    type: 'carousel',
+                    startAt: 2,
+                    perView: 3
+                });
                 
                 // remove current case tab
-                if (modalControl.tabs.querySelector(`[data-tab-trigger="test"]`) != null) {
+                if (modalControl.tabs.querySelector(`[data-tab-trigger="project"]`) != null) {
                     modalControl.removeTab({
-                        sesamName: 'test'
+                        sesamName: 'project'
                     })
                 }
             };

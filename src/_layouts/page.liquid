@@ -5,8 +5,14 @@ permalink: "/{{ page.filePathStem | remove: '_pages' }}/index.html"
 <main>
     <section>
         <div class="container-fluid py-5 box-b">
-            <h1 class="font-rhode modal-title display-4">{{ title }}</h1>
-            <p class="mb-0 text-modern">{{ subtitle }}</p>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <h1 class="font-rhode modal-title display-4">{{ title }}</h1>
+                </div>
+                <div class="col-12">
+                    <p class="mb-0 text-modern">{{ subtitle }}</p>
+                </div>
+            </div>
         </div>
     </section>
     <section id="mainContent">

@@ -10,6 +10,8 @@
 
 // plugins
 @import 'salvatore';
+@import './plugins/glide.core';
+@import './plugins/glide.theme';
 
 // reusable
 @import 'variables';

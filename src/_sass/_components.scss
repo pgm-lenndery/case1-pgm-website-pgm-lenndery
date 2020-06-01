@@ -9,6 +9,8 @@
     
     &-offset-t {margin-top: -2px;}
     &-offset-b {margin-bottom: -2px;}
+    &-offset-l {margin-left: -2px;}
+    &-offset-r {margin-right: -2px;}
     
     &-offset-y {
         margin-top: -2px;
@@ -102,7 +104,9 @@
     display: grid;
     grid-template-columns: min-content auto;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow-x: scroll;
+    
+    &::-webkit-scrollbar {display: none;}
     
     &-title {
         grid-column-start: 1;
@@ -110,11 +114,11 @@
         white-space: nowrap;
     }
     
-    &-options {
+    &-options {       
         display: flex;
         align-items: center;
         width: 100%;
-        overflow-x: scroll;
+        // overflow-x: scroll;
         
         .options-el {
             white-space: nowrap;
@@ -255,6 +259,8 @@
 }
 
 .modal {
+    $this: &;
+    
     --box-modal-offset: 2.3rem;
     position: fixed;
     @include position-spread;
@@ -273,7 +279,7 @@
         .modal-content {
             background-color: $mainBackground;
             display: block;
-            max-height: 84vh;
+            max-height: 74vh;
             overflow-y: scroll;
             
             .modal-content-header {
@@ -297,23 +303,25 @@
             background-color: $mainBackground;
             z-index: -1;
             transform: translate(calc(var(--box-modal-offset)*-1), var(--box-modal-offset));
+            transform: translate(calc(var(--box-modal-offset)*1), calc(var(--box-modal-offset)*-1));
         }
     }
     
     &.box-modal {
-        .modal-content {
+        #{$this}-content {
             position: relative;
         }
         
-        .modal-wrapper {
+        #{$this}-wrapper {
             width: 100%;
-            transform: translateY(calc((var(--box-modal-offset)*-1)/2));
+            transform: translateY(calc(var(--box-modal-offset)/2));
         }
         
-        .modal-controls {
+        #{$this}-controls {
             position: absolute;
-            top: calc(var(--box-modal-offset));
-            left: calc(var(--box-modal-offset)*-1);
+            display: flex;
+            top: calc(var(--box-modal-offset)*-1);
+            left: calc(var(--box-modal-offset));
             background-color: $mainBackground;
             
             > div {
@@ -325,13 +333,44 @@
                 height: calc(2.3rem + 2px);
                 
                 &:first-child {
-                    @extend .box-offset-b
+                    margin-right: -2px;
                 }
             }
         }
-        
-        .modal-title {
-            max-width: 480px;
+    }
+    
+    &[data-sesam-target="project"] {
+        .modal-gallery {
+            .glide__slides {
+                margin-bottom: 0;
+                // width: 100% !important;
+            }
+            
+            .glide__slide {
+                // width: 80% !important;
+                
+                img {
+                    height: 250px;
+                }
+            }
+            
+            .glide__arrow {
+                position: relative;
+                padding: 0;
+                top: unset;
+                left: unset;
+                right: unset;
+                border: none;
+                box-shadow: none;
+                transform: none;
+                
+                svg {
+                    --d: 40px;
+                    width: var(--d);
+                    height: var(--d);
+                    stroke-width: 1px;
+                }
+            }
         }
     }
     
@@ -451,6 +490,34 @@
     .cta-section-cta {
         text-align: right;
     }
+    
+    .modal.box-modal {
+        .modal-controls {
+            flex-direction: column;
+            top: calc(var(--box-modal-offset));
+            left: calc(var(--box-modal-offset)*-1);
+            
+            > div:first-child {
+                margin-bottom: -2px;
+                margin-right: 0px;
+            }
+        }
+        
+        .modal-wrapper {
+            transform: translateY(calc((var(--box-modal-offset)*-1)/2));
+            .modal-content {max-height: 84vh;}
+            
+            &::after {
+                transform: translate(calc(var(--box-modal-offset)*-1), var(--box-modal-offset));
+            }
+        }
+        &[data-sesam-target="project"] {
+            .modal-gallery .glide__slide img {
+                height: 400px;
+            }
+        }
+    }
+    
 }
 
 @media (min-width: 992px) {
