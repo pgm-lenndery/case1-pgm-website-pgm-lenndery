@@ -168,26 +168,6 @@ Het is opzich niet nodig bij het aanmaken van een link om aan te geven dat deze 
 
 Een externe url (die naar een ander domein verwijst) zal altijd geopend worden in een nieuw venster, een interne altijd in een modal binnen deze site, net zoals deze handleiding.
 
-### Media- en databestanden
-
-Alle media wordt voorlopig voor deze site op een apparte repo gehost via GitHub Pages. Het enige wat moet gebeuren is de bestanden toevoegen in de *src*-folder binnen die repo en de bestanden zullen na het builden van die repo (dat automatisch gebeurt) beschikbaar zijn.
-
-De bestanden zijn via [https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/) beschikbaar.
-
-Normaal zou je een 404-pagina zien én zou je, wanneer je een specifiek bestand zoekt de url moeten gaan uitpluizen naar dat bestand aan de hand van waar je het geplaatst hebt.
-
-Dit heb ik opgelost door een script te schrijven dat een oplijsting genereert van alle bestanden binnen de *src*-folder. Het is dus zo simpel als copy-pasten van de link die je bij elk bestand vindt.
-
-Telkens wanneer er een nieuw bestand aan de repo wordt toegevoegd zal de lijst opnieuw gegenereerd worden door GitHub Actions. Dit detecteerd een nieuwe push naar de repo en zal mijn script uitvoeren. Na twee à drie minuuten zijn de bestanden beschikbaar via bovenstaande url.
-
-##### Afbeeldingen toevoegen met markdown
-
-```markdown
-{% raw %}![titel van een afbeelding](de volledige url naar een afbeelding)
-
-![Dit is het pgm-logo](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png){% endraw %}
-```
-
 ---
 
 ### Data aanpassen
@@ -262,6 +242,26 @@ Cases worden allemaal met JavaScript gegenereerd. Dit JSON-bestand is hier te vi
 Voor studenten geldt hetzelfde principe: [https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json)
 
 Dit is allemaal pure JSON-data die zichzelf uitwijst.
+
+### Media- en databestanden
+
+Alle media wordt voorlopig voor deze site op een apparte repo gehost via GitHub Pages. Het enige wat moet gebeuren is de bestanden toevoegen in de *src*-folder binnen die repo en de bestanden zullen na het builden van die repo (dat automatisch gebeurt) beschikbaar zijn.
+
+De bestanden zijn via [https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/) beschikbaar.
+
+Normaal zou je een 404-pagina zien én zou je, wanneer je een specifiek bestand zoekt de url moeten gaan uitpluizen naar dat bestand aan de hand van waar je het geplaatst hebt.
+
+Dit heb ik opgelost door een script te schrijven dat een oplijsting genereert van alle bestanden binnen de *src*-folder. Het is dus zo simpel als copy-pasten van de link die je bij elk bestand vindt.
+
+Telkens wanneer er een nieuw bestand aan de repo wordt toegevoegd zal de lijst opnieuw gegenereerd worden door GitHub Actions. Dit detecteerd een nieuwe push naar de repo en zal mijn script uitvoeren. Na twee à drie minuuten zijn de bestanden beschikbaar via bovenstaande url.
+
+##### Afbeeldingen toevoegen met markdown
+
+```markdown
+{% raw %}![titel van een afbeelding](de volledige url naar een afbeelding)
+
+![Dit is het pgm-logo](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png){% endraw %}
+```
 
 ---
 

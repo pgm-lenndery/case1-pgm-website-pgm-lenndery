@@ -175,17 +175,6 @@ $ npm run build
 <h5>Interne en externe links</h5>
 <p>Het is opzich niet nodig bij het aanmaken van een link om aan te geven dat deze in een nieuw venster geopend moet worden, deze overweging wordt automatisch gemaakt door de JavaScript achter deze site.</p>
 <p>Een externe url (die naar een ander domein verwijst) zal altijd geopend worden in een nieuw venster, een interne altijd in een modal binnen deze site, net zoals deze handleiding.</p>
-<h3>Media- en databestanden</h3>
-<p>Alle media wordt voorlopig voor deze site op een apparte repo gehost via GitHub Pages. Het enige wat moet gebeuren is de bestanden toevoegen in de <em>src</em>-folder binnen die repo en de bestanden zullen na het builden van die repo (dat automatisch gebeurt) beschikbaar zijn.</p>
-<p>De bestanden zijn via <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/">https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/</a> beschikbaar.</p>
-<p>Normaal zou je een 404-pagina zien én zou je, wanneer je een specifiek bestand zoekt de url moeten gaan uitpluizen naar dat bestand aan de hand van waar je het geplaatst hebt.</p>
-<p>Dit heb ik opgelost door een script te schrijven dat een oplijsting genereert van alle bestanden binnen de <em>src</em>-folder. Het is dus zo simpel als copy-pasten van de link die je bij elk bestand vindt.</p>
-<p>Telkens wanneer er een nieuw bestand aan de repo wordt toegevoegd zal de lijst opnieuw gegenereerd worden door GitHub Actions. Dit detecteerd een nieuwe push naar de repo en zal mijn script uitvoeren. Na twee à drie minuuten zijn de bestanden beschikbaar via bovenstaande url.</p>
-<h5>Afbeeldingen toevoegen met markdown</h5>
-<pre><code class="language-markdown">![titel van een afbeelding](de volledige url naar een afbeelding)
-
-![Dit is het pgm-logo](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png)
-</code></pre>
 <hr>
 <h3>Data aanpassen</h3>
 <h5>Opleidingsinfo, contactinfo &amp; technologieën</h5>
@@ -232,6 +221,17 @@ permalink: contact/bedrijven/index.html
 <p>Cases worden allemaal met JavaScript gegenereerd. Dit JSON-bestand is hier te vinden: <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json">https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json</a></p>
 <p>Voor studenten geldt hetzelfde principe: <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json">https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json</a></p>
 <p>Dit is allemaal pure JSON-data die zichzelf uitwijst.</p>
+<h3>Media- en databestanden</h3>
+<p>Alle media wordt voorlopig voor deze site op een apparte repo gehost via GitHub Pages. Het enige wat moet gebeuren is de bestanden toevoegen in de <em>src</em>-folder binnen die repo en de bestanden zullen na het builden van die repo (dat automatisch gebeurt) beschikbaar zijn.</p>
+<p>De bestanden zijn via <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/">https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/</a> beschikbaar.</p>
+<p>Normaal zou je een 404-pagina zien én zou je, wanneer je een specifiek bestand zoekt de url moeten gaan uitpluizen naar dat bestand aan de hand van waar je het geplaatst hebt.</p>
+<p>Dit heb ik opgelost door een script te schrijven dat een oplijsting genereert van alle bestanden binnen de <em>src</em>-folder. Het is dus zo simpel als copy-pasten van de link die je bij elk bestand vindt.</p>
+<p>Telkens wanneer er een nieuw bestand aan de repo wordt toegevoegd zal de lijst opnieuw gegenereerd worden door GitHub Actions. Dit detecteerd een nieuwe push naar de repo en zal mijn script uitvoeren. Na twee à drie minuuten zijn de bestanden beschikbaar via bovenstaande url.</p>
+<h5>Afbeeldingen toevoegen met markdown</h5>
+<pre><code class="language-markdown">![titel van een afbeelding](de volledige url naar een afbeelding)
+
+![Dit is het pgm-logo](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png)
+</code></pre>
 <hr>
 <h3>Kleurthema wijzigen</h3>
 <p>Huidig kleurthema bestaat uit</p>
