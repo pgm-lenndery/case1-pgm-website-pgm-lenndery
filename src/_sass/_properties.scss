@@ -23,6 +23,7 @@
 
 .filter {
     &-purple-rain {
+        position: relative;
         display: block;
 
         &::before {
@@ -65,14 +66,14 @@
 }
 
 .bg-color {
-    &-purple {background-color: $purple500;}
-    &-black {background-color: black;}
-    &-white {background-color: white;}
+    &-purple {background-color: $purple500 !important;}
+    &-black {background-color: black !important;}
+    &-white {background-color: white !important;}
 }
 
 .text-color {
-    &-black {color: black;}
-    &-white {color: white;}
+    &-black {color: black !important;}
+    &-white {color: white !important;}
 }
 
 .clickable {

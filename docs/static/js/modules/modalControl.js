@@ -16,12 +16,13 @@ export const modalControl = {
         this.tabs = document.querySelector('[data-label="tabs"]');
         this.$pageModal = document.querySelector('[data-sesam-target="page"]');
         this.$pageModalWrapper = document.querySelector('[data-sesam-target="page"] .modal-content-wrapper');
+        this.$pageModalBody = document.querySelector('[data-sesam-target="page"] .modal-content-body');
         this.$pageModalCrumbs = document.querySelector('[data-sesam-target="page"] .modal-breadcrumbs');
         this.$pageModalPageIndex = document.querySelector('[data-sesam-target="page"] #pageIndex');
     },
 
     createTab({title, sesamName}) {
-        const currentPath = site.removeTrailingSlash(window.location.pathname);
+        const tabHref = site.removeTrailingSlash(window.location.pathname);
         
         const checks = [];
         this.tabs.querySelectorAll('.tab').forEach(tab => {
@@ -32,7 +33,7 @@ export const modalControl = {
             const tab = document.createElement('div');
             tab.classList.add('tab','animated', 'slideInUp', 'lightspeed');
             tab.setAttribute('data-tab-trigger',sesamName);
-            tab.setAttribute('data-tab-href',currentPath);
+            tab.setAttribute('data-tab-href', tabHref);
             tab.innerHTML = `
                 <i data-feather="plus"></i>
                 <span class="tab-title">${title}</span>
@@ -41,6 +42,7 @@ export const modalControl = {
             this.tabs.appendChild(tab);
             feather.replace();
         } else {
+            // if tab already exists, bounce existing tab
             const existingTab = this.tabs.querySelector(`[data-tab-trigger="${sesamName}"]`);
             existingTab.classList.remove('slideInUp', 'bounce');
             existingTab.classList.add('bounce');
@@ -94,6 +96,19 @@ export const modalControl = {
             sesamName: sesamTarget
         })
         routingControl.homeUrlInAddressBar();
+    },
+    
+    hideAllModals() {
+        status.add('hideAllModals');
+        const openModals = document.querySelectorAll('modal.sesam-show');
+        status.log(openModals)
+        openModals.forEach(i => {
+            status.log(i);
+            this.modalHide({
+                sesamTarget: i.dataset.sesamTarget, 
+                title: i.querySelector('.modal-title').innerHTML 
+            })
+        })
     },
     
     renderModal({id}) {

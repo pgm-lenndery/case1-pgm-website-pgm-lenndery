@@ -10,6 +10,7 @@
 
 // plugins
 @import 'salvatore';
+@import './plugins/flexy-cards';
 @import './plugins/glide.core';
 @import './plugins/glide.theme';
 
@@ -27,3 +28,4 @@
 
 // pages
 @import 'pages/home';
+@import 'pages/students';

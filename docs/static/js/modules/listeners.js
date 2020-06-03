@@ -23,15 +23,22 @@ export const listeners = {
         this.calculations();
         
         document.body.addEventListener('click', (event) => {
-            const modalActions = event.target.closest('.modal .modal-controls > div');      
-            const tab = event.target.closest('[data-label="tabs"] .tab');
-            const casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card');
-            const homeNav = event.target.closest('[data-label="homeNav"] .navbar-label');
+            const
+                modalActions = event.target.closest('.modal .modal-controls > div'),      
+                tab = event.target.closest('[data-label="tabs"] .tab'),
+                casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card'),
+                homeNav = event.target.closest('[data-label="homeNav"] .navbar-label'),
+                filterButton = event.target.closest('[data-label="filterCases"] input[name="type"]');
             
             const siteURL = window.location.origin;
-            // const internalLink = event.target.closest(`a[href*="${siteURL}"], a[href^="/"], a[href^="./"], a[href^="../"], a[href^="#"]`); 
-            const internalLink = event.target.closest(`a`); 
+            const internalLink = event.target.closest(`a`);
             
+            status.log(filterButton);
+            
+            if (filterButton != null) {
+                uiControl.filterCases(filterButton.value);
+            }
+
             if (casesHighlightCard != null) {
                 // show case modal
                 modalControl.renderModal({ id: casesHighlightCard.dataset.id});

@@ -1,4 +1,4 @@
-import {callerName, modalControl, sesamCollapse, sesam, listeners, fetchAPI, fetchPage, uiControl, routingControl} from './modules/index.js'
+import {main, callerName, modalControl, sesamCollapse, sesam, listeners, fetchAPI, fetchPage, uiControl, routingControl} from './modules/index.js'
 
 const status = new callerName('main');
 
@@ -25,6 +25,8 @@ export const site = {
         sesamCollapse.collectInitialProperties();
         routingControl.initialize();
         uiControl.addIdTitles();
+        
+        this.afterPageLoad()
     },
     
     cache() {
@@ -32,7 +34,15 @@ export const site = {
         this.marquee = document.querySelector('[data-label="marquee"] .marquee-content');
         this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options');
         this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore');
+        this.casesHighlightCards = [];
         this.homeNav = document.querySelector('[data-label="homeNav"]');
+    },
+    
+    afterPageLoad() {
+        status.add('afterPageLoad');
+        // if page is students overview
+        const paramIs = routingControl.getUrlParams('is');
+        if (window.location.pathname == `/${main.SITE_PREFIX}/studenten/` && paramIs != null ) uiControl.showStudentDetails(paramIs);
     },
     
     fillMarquee() {
@@ -52,7 +62,7 @@ export const site = {
     
     addFilterOptions() {
         status.add('addFilterOptions');
-        const options = ['all','design','animation','protoyping'];
+        const options = ['all','werkplekleren','Web Design','Web programming','UI / UX'];
         let dom = options.map((i, index) => {
             return `
                 <div class="options-el">
@@ -79,6 +89,7 @@ export const site = {
                 card.classList.add('salvatore-grid-item','card','box-all','mt-6','box-lazy');
                 card.setAttribute('data-id', i.id);
                 card.setAttribute('data-href', 'cases');
+                card.setAttribute('data-filter', `${i.tags.map(i => {return i.toLowerCase()}).join(',')},${i.course.toLowerCase()}`);
                 card.innerHTML = `
                     <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
                         <div class="font-rhode py-3"> 2 maanden geleden<span class="word-joint">・</span>webpgm</div><i data-feather="arrow-right"></i>
@@ -96,6 +107,7 @@ export const site = {
                     </div>
                 `;
                 salvattore.appendElements(this.casesHighlight, [card]);
+                this.casesHighlightCards.push(card);
             })
             
             feather.replace();
@@ -109,7 +121,7 @@ export const site = {
         const students = 10;
         
         if (listeners.studentsHighlight != null) {
-            await this.apiData.students.records.forEach((i, index) => {
+            await this.apiData.students.students[0].class.forEach((i, index) => {
                 i = i.fields;
                 if (students >= index+1) {
                     const card = document.createElement('div');
@@ -178,7 +190,7 @@ export const site = {
         }
         this.renderDomElements();
         this.lazyLoadingBoxes();
-        uiControl.curry()
+        uiControl.curry();
     },
     
     renderDomElements() {

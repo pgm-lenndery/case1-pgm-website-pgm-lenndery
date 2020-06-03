@@ -1,4 +1,4 @@
-import {callerName, main, modalControl, fetchPage, site, uiControl} from './index.js';
+import {callerName, main, modalControl, fetchPage, site, uiControl, listeners} from './index.js';
 import { sesam, sesamCollapse } from './sesamCollapse.js';
 
 const status = new callerName('routingControl');
@@ -19,6 +19,11 @@ export const routingControl = {
         const siteURL = window.location.origin;
 
         this.$internalLinks = document.querySelectorAll(`a[href*="${siteURL}"], a[href^="/"], a[href^="./"], a[href^="../"], a[href^="#"]`);
+    },
+    
+    getUrlParams(parameter) {
+        const url = new URL(window.location.href);
+        return url.searchParams.get(parameter);
     },
     
     homeUrlInAddressBar() {
@@ -65,7 +70,10 @@ export const routingControl = {
         
         // remove site prefix from path and remove empty array values
         location = location.replace(`/${main.SITE_PREFIX}`,'').split('/').filter(item => item);
-        location.splice(1, 1, pageTitle);
+        
+        // remove last item and add pagetitle
+        location.pop();
+        location.push(pageTitle.toLowerCase());
         location.unshift('pgm.gent');
         let dom = location.map((i, index) => {
             i = i.toLowerCase();
@@ -77,15 +85,20 @@ export const routingControl = {
     
     openClickedAnker(event) {
         status.add('openClickedAnker');
-        const currentPath = site.removeTrailingSlash(window.location.pathname);
-        const currentDomain = site.removeTrailingSlash(window.location.origin);
-        const requestedUrl = site.removeTrailingSlash(event.href);
-        const requestedPath = site.removeTrailingSlash(event.href).replace(currentDomain, '');
-        const requestedHash = requestedUrl.split('/').slice(-1)[0].split('#')[1]
         
+        const 
+            currentPath = site.removeTrailingSlash(window.location.pathname),
+            currentDomain = site.removeTrailingSlash(window.location.origin),
+            requestedUrl = site.removeTrailingSlash(event.href),
+            requestedPath = site.removeTrailingSlash(event.href).replace(currentDomain, ''),
+            requestedHash = requestedUrl.split('/').slice(-1)[0].split('#')[1],
+            paramIs = routingControl.getUrlParams('is');
+
         if (requestedUrl.startsWith(currentDomain) == false) {
+            // external url
             window.open(requestedUrl, "_blank")
         } else if (requestedUrl.startsWith(currentDomain) == true && requestedHash != undefined) {
+            // scroll to id
             document.querySelector(`#${requestedHash}`).scrollIntoView({
                 behavior: 'smooth'
             });
@@ -100,6 +113,9 @@ export const routingControl = {
                 }
             });
             modalControl.removeTab({sesamName: 'page'});
+        } else if (window.location.pathname == `/${main.SITE_PREFIX}/studenten/` && paramIs != null) {
+            window.history.pushState({urlPath: ''}, '', requestedUrl);
+            uiControl.showStudentDetails(paramIs)
         } else if (requestedUrl.endsWith(`${currentDomain}/${main.SITE_PREFIX}`) == true) {
             // hide modal if clicked link is home
             this.homeUrlInAddressBar();
@@ -139,11 +155,11 @@ export const routingControl = {
                     char: '❯', 
                     pageTitle: page.pageTitle
                 });
+                modalControl.removeTab({sesamName: 'page'});
+                sesamCollapse.initialize();
                 uiControl.initialize();
                 uiControl.addIdTitles();
             }).then(() => {
-                modalControl.removeTab({sesamName: 'page'});
-                sesamCollapse.initialize();
                 sesam({
                     target: 'page',
                     action: 'show',
@@ -152,7 +168,8 @@ export const routingControl = {
                         scrollBlock: true
                     }
                 });
-            }).catch(error => status.log(error));
+                site.lazyLoadingBoxes();
+            }).catch(error => window.open(`/${main.SITE_PREFIX}/404`, "_self"));
         }  
     }
 }
