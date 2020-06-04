@@ -3,8 +3,8 @@ layout: default
 permalink: "/{{ page.filePathStem | remove: '_pages' }}/index.html"
 ---
 <main>
-    <section>
-        <div class="container-fluid py-5 box-b">
+    <section data-label="pageHeader" class="box-b {% if thumbnail %}show-thumb{% endif %}">
+        <div class="modal-header container-fluid py-5">
             <div class="row">
                 <div class="col-12 col-md-8">
                     <h1 class="font-rhode modal-title display-4">{{ title }}</h1>
@@ -13,6 +13,9 @@ permalink: "/{{ page.filePathStem | remove: '_pages' }}/index.html"
                     <p class="mb-0 text-modern">{{ subtitle }}</p>
                 </div>
             </div>
+        </div>
+        <div class="modal-thumb filter-purple-rain">
+            <img class="modal-thumb-img" src="{{ thumbnail }}" alt="">
         </div>
     </section>
     <section id="mainContent">

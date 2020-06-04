@@ -1,0 +1,19 @@
+[data-label="pageHeader"] {
+    position: relative;
+    &.show-thumb {       
+        .modal-header {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .modal-thumb {
+            position: absolute;
+            @include position-spread;
+            
+            &-img {
+                max-height: 100%;
+                width: 100%;
+            }
+        }
+    }
+}

@@ -378,7 +378,7 @@
     #mainContent {
         p img {
             max-width: 100%;
-            @include box('all');
+            // @include box('all');
         }
     }
 }

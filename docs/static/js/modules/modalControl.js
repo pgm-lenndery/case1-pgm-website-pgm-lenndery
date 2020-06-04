@@ -19,6 +19,8 @@ export const modalControl = {
         this.$pageModalBody = document.querySelector('[data-sesam-target="page"] .modal-content-body');
         this.$pageModalCrumbs = document.querySelector('[data-sesam-target="page"] .modal-breadcrumbs');
         this.$pageModalPageIndex = document.querySelector('[data-sesam-target="page"] #pageIndex');
+        this.$studentModalBody = document.querySelector('[data-sesam-target="studentDetail"] .modal-content-body');
+        this.$studentModalCrumbs = document.querySelector('[data-sesam-target="studentDetail"] .modal-breadcrumbs');
     },
 
     createTab({title, sesamName}) {
@@ -117,7 +119,12 @@ export const modalControl = {
         function idMatch(input) {return input.id == id};
         
         const i = site.apiData.cases.cases.data.filter(idMatch)[0];
-        status.log(i)
+        let date = new Date(i.date);
+        date = {
+            month: date.getMonth(),
+            year: date.getFullYear(),
+        };  
+        
         document.querySelector('[data-sesam-target="project"] .modal-content-wrapper').innerHTML = `
             <div class="modal-content-header box-b">
                 <img height="100%" width="100%" src="${i.img.tumbnail}" alt="">
@@ -139,7 +146,7 @@ export const modalControl = {
                             </p>
                             <p>
                                 <span class="text-modern">academiejaar</span><br>
-                                ${new Date(i.date)}
+                                ${date.month <= 8 && date.month >= 11 ? `${date.year} - ${date.year + 1}` : `${date.year - 1} - ${date.year}`}
                                 <!-- if after september year +1 else -1 -->
                             </p>
                             <p>
@@ -157,18 +164,16 @@ export const modalControl = {
                 <div class="bg-color-white text-color-black font-rhode container-fluid py-2">
                     ${i.tags.join('<span class="word-joint">・</span>')}
                 </div>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="modal-gallery glide mt-6">
-                            <div class="glide__track" data-glide-el="track">
-                                <ul class="glide__slides box-offset-l">
-                                    ${this.renderProjectGallery(i.img.gallery)}
-                                </ul>
-                            </div>
-                            <div class="glide__arrows container-fluid pl-0 py-2 d-flex justify-content-between" data-glide-el="controls">
-                                <button class="glide__arrow glide__arrow--left ml-2" data-glide-dir="<"><i data-feather="arrow-left"></i></button>
-                                <button class="glide__arrow glide__arrow--right mr-2" data-glide-dir=">"><i data-feather="arrow-right"></i></button>
-                            </div>
+                <div class="">
+                    <div class="modal-gallery glide mt-5">
+                        <div class="glide__track" data-glide-el="track">
+                            <ul class="glide__slides box-offset-l">
+                                ${this.renderProjectGallery(i.img.gallery)}
+                            </ul>
+                        </div>
+                        <div class="glide__arrows container-fluid pl-0 py-2 d-flex justify-content-between" data-glide-el="controls">
+                            <button class="glide__arrow glide__arrow--left ml-2" data-glide-dir="<"><i data-feather="arrow-left"></i></button>
+                            <button class="glide__arrow glide__arrow--right mr-2" data-glide-dir=">"><i data-feather="arrow-right"></i></button>
                         </div>
                     </div>
                 </div>
@@ -183,7 +188,12 @@ export const modalControl = {
                 backdrop: true,
                 scrollBlock: true
             }
-        });        
+        });
+        new Glide('.modal-gallery').mount({
+            type: 'carousel',
+            startAt: 2,
+            perView: 3
+        });      
     },
     
     renderProjectGallery(input) {

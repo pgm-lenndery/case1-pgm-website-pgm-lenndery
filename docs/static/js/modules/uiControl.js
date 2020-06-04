@@ -1,4 +1,4 @@
-import {site, modalControl, sesam, sesamCollapse, callerName, fetchAPI } from './index.js';
+import {site, modalControl, sesam, sesamCollapse, callerName, fetchAPI, routingControl } from './index.js';
 
 const status = new callerName('uiControl');
 
@@ -7,7 +7,6 @@ export const uiControl = {
         status.init();
         
         this.cache();
-        this.curry();
     },
     
     cache() {
@@ -108,30 +107,43 @@ export const uiControl = {
         
         function nl2br (str) {
             return str.replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '<br>');
-        }
+        };
         
-        modalControl.$pageModalBody.innerHTML = `
+        modalControl.$studentModalBody.innerHTML = `
             <section>
-                <div class="container-fluid pr-0 py-5 box-b">
+                <div class="container-fluid pr-0">
                     <div class="row">
-                        <div class="col-8 col-md-8">
+                        <div class="col py-6">
                             <h3 class="font-rhode modal-title mb-4">${student.fields.name_first} ${student.fields.name_last}</h3>
                             <p class="text-modern">Over ${student.fields.name_first}</p>
                             <div class="text-box">${nl2br(student.fields.about)}</div>
                         </div>
                         <div class="col-4">
-                            <div class="filter-purple-rain">
-                                <img class="fit-to-wrapper h-100" style="max-height: 300px" src="${student.fields.img[0].thumbnails.large.url}">
+                            <div class="filter-purple-rain h-100 box-l">
+                                <img class="fit-to-wrapper h-100" src="${student.fields.img[0].thumbnails.large.url}">
                             </div>
                         </div>
-                        
                     </div>
                 </div>
+                <div class="bg-color-white text-color-black font-rhode container-fluid py-2">
+                    ${student.fields.interests.split(',').join('<span class="word-joint">・</span>')}
+                </div>
             </section>
-            <section>
         `;
+        modalControl.$studentModalCrumbs.innerHTML = routingControl.breadCrumbs({
+            char: '❯', 
+            pageTitle: 'studenten'
+        });
         sesam({
             target: 'page',
+            action: 'hide',
+            modal: {
+                backdrop: false,
+                scrollBlock: false
+            }
+        });
+        sesam({
+            target: 'studentDetail',
             action: 'show',
             modal: {
                 backdrop: true,

@@ -26,7 +26,7 @@ export const site = {
         routingControl.initialize();
         uiControl.addIdTitles();
         
-        this.afterPageLoad()
+        this.afterPageLoad();
     },
     
     cache() {
@@ -42,7 +42,8 @@ export const site = {
         status.add('afterPageLoad');
         // if page is students overview
         const paramIs = routingControl.getUrlParams('is');
-        if (window.location.pathname == `/${main.SITE_PREFIX}/studenten/` && paramIs != null ) uiControl.showStudentDetails(paramIs);
+        status.log(window.location.pathname == `/${main.SITE_PREFIX}/studenten/` && paramIs != null)
+        if (window.location.pathname == `/${main.SITE_PREFIX}/studenten/` && paramIs != null) uiControl.showStudentDetails(paramIs);
     },
     
     fillMarquee() {
@@ -190,7 +191,6 @@ export const site = {
         }
         this.renderDomElements();
         this.lazyLoadingBoxes();
-        uiControl.curry();
     },
     
     renderDomElements() {

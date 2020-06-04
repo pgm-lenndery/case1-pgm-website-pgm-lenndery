@@ -1,9 +1,32 @@
 ---
-layout: page
+layout: page-fluid
 title: Curriculum
 subtitle: Het opleidingsprogramma
+pageindex: false
 ---
 
-<div data-label="curriculum">
+<div data-label="curriculum" class="curriculum mb-n6">
+    {% for field in curriculum %}
+        <div class="curriculum-field mt-md-n2 mb-6">
+            <p class="text-modern small text-color-body mb-1">kennisdomein</p>
+            <h3 class="mt-0 mb-5">{{ field.name }}</h3>
+            <div class="row">
+                {% for course in field.courses %}
+                    <div class="curriculum-course mb-4 col-12 col-md-6">
+                        <h5 class="font-rhode mt-0 mb-2">{{ course.name }}</h5>
+                        <p class="mb-1">
+                            <span class="text-modern text-color-white small">docenten</span><br>
+                            {{ course.teachers | join: ', ' }}
+                        </p>
+                        <p>
+                            <span class="text-modern text-color-white small">ECTS</span><br>
+                            {{ course.credits }} studiepunten, {{ course.time }} uur per week
+                        </p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
 </div>
+<a href="https://www.arteveldehogeschool.be/opleidingen/graduaat/programmeren/ontdek-je-opleidingsprogramma" class="btn-arrow small">vindt hier een volledig overzicht</a>
 

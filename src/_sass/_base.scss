@@ -176,7 +176,56 @@ svg.feather {
         }
         
         &::after {
-            right: 100%;
+            right: 0%;
+        }
+    }
+    
+    &#{&}-reverse {
+        &::before {
+            transform: rotate(180deg);
+        }
+        
+        &::after {
+            transform: rotate(180deg);
+        }
+        
+        svg {
+            --d: 24px;
+            position: absolute;
+            top: calc(50% - (var(--d)/2));
+            transform-origin: center;
+            
+            polyline {
+                stroke-width: 2px;
+            }
+            
+            &.feather-chevron-right:last-child {
+                left: calc(0% - (var(--d)/2) + 2px);
+                transform: scale(0) rotate(180deg);
+                
+                polyline {
+                    stroke: white;
+                }
+            }
+            
+            &.feather-chevron-right:first-child {
+                left: calc(0% - (var(--d)/2) + 2px);
+                transform: scale(1) rotate(180deg);
+                
+                polyline {
+                    stroke: $purple500;
+                }
+            }
+        }
+        
+        &:hover {      
+            svg.feather-chevron-right:last-child {
+                transform: scale(1) rotate(180deg);
+            }
+            
+            svg.feather-chevron-right:first-child {
+                transform: scale(0) rotate(180deg);
+            }
         }
     }
 }

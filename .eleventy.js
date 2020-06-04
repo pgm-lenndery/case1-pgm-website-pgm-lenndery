@@ -31,6 +31,9 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addLayoutAlias('default', 'default.liquid');
     eleventyConfig.addLayoutAlias('page', 'page.liquid');
     eleventyConfig.addLayoutAlias('page-galery', 'page-galery.liquid');
+    eleventyConfig.addLayoutAlias('page-wide', 'page-wide.liquid');
+    eleventyConfig.addLayoutAlias('page-empty', 'page-empty.liquid');
+    eleventyConfig.addLayoutAlias('page-fluid', 'page-fluid.liquid');
     
     return {
         pathPrefix: '/case1-pgm-website-pgm-lenndery/',

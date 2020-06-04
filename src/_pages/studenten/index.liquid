@@ -3,6 +3,7 @@ layout: page-wide
 title: Studenten
 subtitle: Deze studenten kozen voor onze richting
 pageindex: false
+permalink: "/studenten/index.html"
 ---
 <section data-label="allStudents">
     <div class="container-fluid filter-section box-y box-offset-t" data-label="filterAllStudents">
@@ -25,12 +26,12 @@ pageindex: false
             <div class="flex-grid-wrapper mb-6">
                 <div class="flex-grid">
                     {% for student in generation.class %}
-                        <a href="{{ page.url | url }}?is={{ student.url }}" class="card box-all position-relative flex-grid-item box-lazy" data-filter="">
+                        <a href="{{ page.url | url }}{{ student.fields.generation | join: '-' }}-{{ student.fields.name_first | slug }}-{{ student.fields.name_last | slug }}" class="card box-all position-relative flex-grid-item box-lazy" data-filter="">
                             <div class="card-header p-4">
                                 <p class="card-title font-rhode my-0">{{ student.fields.name_first }}</p>
                                 <p class="text-modern small mb-0">{{ student.fields.name_last }}</p>
                             </div>
-                            <div class="card-body">
+                            <div class="card-body w-100">
                                 <div class="filter-purple-rain">
                                     <img class="w-100 card-thumbnail" src="{{ student.fields.img[0].thumbnails.large.url }}" alt="">
                                 </div>

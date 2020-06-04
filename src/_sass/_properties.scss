@@ -44,6 +44,29 @@
             filter: grayscale(1);
         }
     }
+    
+    &-black {
+        position: relative;
+        display: block;
+
+        &::before {
+            content: ' ';
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.342);
+            mix-blend-mode: multiply;
+            z-index: 1;
+        }
+        
+        img {
+            // filter: grayscale(1);
+        }
+    }
 }
 
 .animate, .animated {
@@ -72,6 +95,7 @@
 }
 
 .text-color {
+    &-grey {color: $textBody !important;}
     &-black {color: black !important;}
     &-white {color: white !important;}
 }

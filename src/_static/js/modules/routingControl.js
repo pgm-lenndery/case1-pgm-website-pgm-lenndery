@@ -113,9 +113,6 @@ export const routingControl = {
                 }
             });
             modalControl.removeTab({sesamName: 'page'});
-        } else if (window.location.pathname == `/${main.SITE_PREFIX}/studenten/` && paramIs != null) {
-            window.history.pushState({urlPath: ''}, '', requestedUrl);
-            uiControl.showStudentDetails(paramIs)
         } else if (requestedUrl.endsWith(`${currentDomain}/${main.SITE_PREFIX}`) == true) {
             // hide modal if clicked link is home
             this.homeUrlInAddressBar();

@@ -28,13 +28,11 @@ export const listeners = {
                 tab = event.target.closest('[data-label="tabs"] .tab'),
                 casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card'),
                 homeNav = event.target.closest('[data-label="homeNav"] .navbar-label'),
-                filterButton = event.target.closest('[data-label="filterCases"] input[name="type"]');
-            
+                filterButton = event.target.closest('[data-label="filterCases"] input[name="type"]'),
+                internalLink = event.target.closest(`a`);
+
             const siteURL = window.location.origin;
-            const internalLink = event.target.closest(`a`);
-            
-            status.log(filterButton);
-            
+
             if (filterButton != null) {
                 uiControl.filterCases(filterButton.value);
             }
@@ -42,11 +40,6 @@ export const listeners = {
             if (casesHighlightCard != null) {
                 // show case modal
                 modalControl.renderModal({ id: casesHighlightCard.dataset.id});
-                new Glide('.glide').mount({
-                    type: 'carousel',
-                    startAt: 2,
-                    perView: 3
-                });
                 
                 // remove current case tab
                 if (modalControl.tabs.querySelector(`[data-tab-trigger="project"]`) != null) {
@@ -128,12 +121,12 @@ export const listeners = {
         
         document.body.addEventListener('scroll', (event) => {
             status.log(event);
-        })
+        });
         
         document.addEventListener('mousemove', (event) => {
             if (!this.cursor.classList.contains('moved')) this.cursor.classList.add('moved');
             this.cursor.style.left = `${event.clientX - (this.cursorDimensions/2)}px`;
             this.cursor.style.top = `${event.clientY - (this.cursorDimensions/2)}px`;
-        })
+        });
     }
 };
