@@ -1,3 +1,15 @@
+.row.gutter-big {
+    --gutter-width: 30px;
+    
+    [class*="col-"], .col {
+        padding-right: var(--gutter-width);
+        padding-left: var(--gutter-width);
+    }
+    
+    margin-left: calc(var(--gutter-width) * -1);
+    margin-right: calc(var(--gutter-width) * -1);
+}
+
 .box {    
     $sides: 'l', 'r', 't', 'b', 'x', 'y', 'all', 'n';
 
@@ -256,6 +268,86 @@
     }
     100% {
         transform: translateX(-66.6%);
+    }
+}
+
+.cases-preview {
+    * {@include transition;}
+    
+    &.hovering {
+        @include transition;
+        --transition-time: .5s;
+        
+        .card {
+            filter: opacity(0.3);
+        }
+    }
+    
+    .column:not(:last-child) {
+        @extend .mr-6;
+    }
+    
+    .card {   
+        cursor: pointer;
+            
+        &-body {
+            position: relative;
+            
+            &-overlay {
+                position: absolute;
+                left: 0px;
+                right: 0px;
+                top: 0px;
+                bottom: 0px;
+                display: flex;
+                width: 100%;
+                flex-direction: column;
+                justify-content: center;
+                z-index: 2;
+                
+                p {
+                    display: none;
+                    font-size: 1.5rem;
+                }
+            }
+        }
+        
+        &-title {
+            max-width: 60%;
+        }
+        
+        &:hover {
+            filter: opacity(1);
+            overflow-x: visible;
+            
+            .card-body-overlay {
+                left: 100%;
+                z-index: 4;
+                
+                p {display: block;}
+            }
+        }
+    }
+    
+    .card:hover {
+        .filter-purple-rain {
+            &::before {
+                background: $purple000;  
+            }
+            
+            img {
+                filter: grayscale(0);
+            }
+        }
+    }
+    
+    .column:last-child .card:hover{
+        .card-body-overlay {
+            align-items: flex-end;
+            left: -100%;
+            
+            h2, p {text-align: right;}
+        }
     }
 }
 

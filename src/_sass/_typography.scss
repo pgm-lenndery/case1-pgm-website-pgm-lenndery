@@ -76,6 +76,7 @@ small, .small {
     
     p + h3 {margin-top: 2.5rem;}
     p + h4 {margin-top: 1.5rem;}
+    p img {margin: 2rem 0;}
     
     ul {padding-left: 20px;}
     
@@ -92,10 +93,7 @@ small, .small {
         }
     }
     
-    img {
-        width: 100%;
-        margin: 2rem 0;
-    }
+    img {width: 100%;}
     
     pre {color: $purple300;}
     
@@ -113,69 +111,6 @@ small, .small {
     }
 }
 
-#pageIndex {
-    position: relative;
-    
-    * {@include transition;}
-    
-    > div {
-        position: sticky;
-        top: 2rem;
-    }
-    
-    .pageindex-title svg {
-        --d: 30px;
-        width: var(--d);
-        height: var(--d);
-    }
-    
-    .pageindex-list {
-        display: none;
-        padding-left: 0;
-        height: fit-content;
-        list-style: none;
-        
-        li {
-            &.tagname-H3 {
-                margin-top: 1rem;
-                margin-bottom: .2rem;
-                
-                a {
-                    text-transform: lowercase;
-                    @include font-rhode;
-                }
-            }
-            
-            &.tagname-H4, &.tagname-H5 {
-                padding-left: 13px;
-                margin-bottom: 0.4rem;
-                line-height: 110%;
-                
-                a {
-                    --letter-spacing: 3px;
-                    @include text-modern;
-                    color: $textBody;
-                    font-size: .8rem;
-                }
-            }
-        }
-        
-        a {
-            text-decoration: none;
-        }
-    }
-    
-    &.sesam-show {
-        .pageindex-list {
-            display: block;
-        }
-        
-        .pageindex-title svg {
-            transform: rotate(-180deg);
-        }
-    }
-}
-
 @media (min-width: 499px) {
     h1 {
         font-size: calc(1rem + 3.9vw);
@@ -187,10 +122,6 @@ small, .small {
 @media (min-width: 768px) {
     h1 {
         font-size: calc(1.2rem + 3.9vw);
-    }
-    
-    #pageIndex.sesam-hidden .pageindex-list, #pageIndex.sesam-show .pageindex-list {
-        display: block;
     }
 }
 

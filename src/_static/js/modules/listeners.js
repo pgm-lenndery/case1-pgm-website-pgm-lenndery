@@ -8,10 +8,9 @@ export const listeners = {
         this.tabsContainer = document.querySelector('[data-label="tabs"]')
         this.casesHighlightFilter = document.querySelector('[data-label="filterCases"] .filter-section-options');
         this.casesHighlight = document.querySelector('[data-label="casesHighlight"] .salvatore');
-        this.caseCardHoverTarget = '[data-label="casesHighlight"] .salvatore .card:hover';
+        this.caseCardHoverTarget = '[data-label="casesHighlight"] .salvatore .card:hover, .cases-preview .salvatore .card:hover';
         this.studentsHighlight = document.querySelector('[data-label="studentsHighlight"] .collection');
-        this.cursor = document.querySelector('#cursor');
-        
+        this.cursor = document.querySelector('#cursor');        
     },
     
     calculations() {
@@ -28,14 +27,14 @@ export const listeners = {
                 tab = event.target.closest('[data-label="tabs"] .tab'),
                 casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card'),
                 homeNav = event.target.closest('[data-label="homeNav"] .navbar-label'),
-                filterButton = event.target.closest('[data-label="filterCases"] input[name="type"]'),
+                filterCasesHighlighted = event.target.closest('[data-label="casesHighlight"] [data-label="filterCases"] input[name="type"]'),
+                filterCases = event.target.closest('[data-label="allCases"] [data-label="filterAllCases"] input[name="type"]'),
                 internalLink = event.target.closest(`a`);
 
             const siteURL = window.location.origin;
 
-            if (filterButton != null) {
-                uiControl.filterCases(filterButton.value);
-            }
+            if (filterCasesHighlighted != null) uiControl.filterHighlightedCases(filterCasesHighlighted.value);
+            if (filterCases != null) uiControl.filterCases(filterCases.value);
 
             if (casesHighlightCard != null) {
                 // show case modal
@@ -108,11 +107,13 @@ export const listeners = {
         })
         
         document.body.addEventListener('mouseover', (event) => {
-            if (this.caseCardHoverTarget != null && event.target.closest(this.caseCardHoverTarget) != null) {
-                this.casesHighlight.classList.add('hovering');
-            } else if (this.casesHighlight != null) {
-                this.casesHighlight.classList.remove('hovering');
-            }
+            const
+                casesWrapper = event.target.closest('.cases-preview'),
+                casesWrapperHovered = document.querySelector('.cases-preview.hovering'),
+                hoverCard = event.target.closest('.cases-preview .card:hover');
+            
+            if (hoverCard != null) casesWrapper.classList.add('hovering');
+            else if (casesWrapperHovered != null) casesWrapperHovered.classList.remove('hovering');
         });
         
         document.body.addEventListener('focusout', () => {
@@ -127,6 +128,14 @@ export const listeners = {
             if (!this.cursor.classList.contains('moved')) this.cursor.classList.add('moved');
             this.cursor.style.left = `${event.clientX - (this.cursorDimensions/2)}px`;
             this.cursor.style.top = `${event.clientY - (this.cursorDimensions/2)}px`;
+        });
+        
+        window.addEventListener('resize', (event) => {
+            console.log('resize')
+            uiControl.salvattoreInit();
+            // uiControl.salvattoreGrids.forEach(i => {
+            //     salvattore.recreateColumns(i);
+            // })
         });
     }
 };

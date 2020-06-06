@@ -13,16 +13,8 @@
 	
 	/* These are the classes that are going to be applied: */
 	.column { 
-		// float: left;
-		// padding: 15px;
-			
-		&:first-child {
-			padding-left: 0px;
-		}
-		
-		&:last-child {
-			padding-right: 0px;
-		}
+		&:first-child {padding-left: 0px;}
+		&:last-child {padding-right: 0px;}
 	}
 	
 	.size-1of1 { width: 100%; }
@@ -30,30 +22,82 @@
 	.size-1of3 { width: 33.333%; }
 }
 
-@media screen and (max-width: 576px){
-	.salvatore-grid[data-columns]::before {
-		content: '1 .column.size-1of1';
+@media screen and (min-width: 0px) and (max-width: 576px) {
+	.salvatore-grid[data-columns]::before {content: '1 .column.size-1of1';}
+	
+	.salvatore[data-columns].salvatore {
+		&-grid-3c::before {
+			content: '3 .column.size-1of3' !important;
+		}
+		&-grid-2c::before {
+			content: '2 .column.size-1of2' !important;
+		}
+		&-grid-1c::before {
+			content: '1 .column.size-1of1' !important;
+		}
 	}
 }
 
-@media screen and (min-width: 576px) and (max-width: 768px) {
-	.salvatore-grid[data-columns]::before {
-		content: '1 .column.size-1of1';
+@media screen and (min-width: 576px) {
+	.salvatore-grid[data-columns]::before {content: '1 .column.size-1of1';}
+	
+	.salvatore[data-columns].salvatore {
+		&-grid-sm-3c::before {
+			content: '3 .column.size-1of3' !important;
+		}
+		&-grid-sm-2c::before {
+			content: '2 .column.size-1of2' !important;
+		}
+		&-grid-sm-1c::before {
+			content: '1 .column.size-1of1' !important;
+		}
 	}
 }
 
-@media screen and (min-width: 769px) and (max-width: 992px) {
-	.salvatore {
-		&[data-columns]::before {
-			content: '2 .column.size-1of2';
+@media screen and (min-width: 769px) {
+	.salvatore[data-columns]::before {content: '2 .column.size-1of2';}
+	
+	.salvatore[data-columns].salvatore {
+		&-grid-md-3c::before {
+			content: '3 .column.size-1of3' !important;
+		}
+		&-grid-md-2c::before {
+			content: '2 .column.size-1of2' !important;
+		}
+		&-grid-md-1c::before {
+			content: '1 .column.size-1of1' !important;
 		}
 	}
 }
 
 @media screen and (min-width: 993px) {
-	.salvatore {
-		&[data-columns]::before {
-			content: '3 .column.size-1of3';
+	.salvatore[data-columns]::before {content: '3 .column.size-1of3';}
+	
+	.salvatore[data-columns].salvatore {
+		&-grid-lg-3c::before {
+			content: '3 .column.size-1of3' !important;
+		}
+		&-grid-lg-2c::before {
+			content: '2 .column.size-1of2' !important;
+		}
+		&-grid-lg-1c::before {
+			content: '1 .column.size-1of1' !important;
+		}
+	}
+}
+
+@media screen and (min-width: 993px) {
+	.salvatore[data-columns]::before {content: '3 .column.size-1of3';}
+	
+	.salvatore[data-columns].salvatore {
+		&-grid-xl-3c::before {
+			content: '3 .column.size-1of3' !important;
+		}
+		&-grid-xl-2c::before {
+			content: '2 .column.size-1of2' !important;
+		}
+		&-grid-xl-1c::before {
+			content: '1 .column.size-1of1' !important;
 		}
 	}
 }

@@ -4,10 +4,10 @@ title: Studenten
 subtitle: Deze studenten kozen voor onze richting
 pageindex: false
 pagination:
-    data: students[0].class
+    data: cases
     size: 1
-    alias: student
-permalink: "studenten/{{ students[0].generation | join: '-' }}-{{ student.fields.name_first | slug }}-{{ student.fields.name_last | slug }}/"
+    alias: case
+permalink: "cases/{{ case.title | slug}}/index.html"
 ---
 
 <section>
@@ -17,7 +17,7 @@ permalink: "studenten/{{ students[0].generation | join: '-' }}-{{ student.fields
                 <a href="{{ '/studenten' | url }}" class="btn-arrow btn-arrow-reverse small mb-5">terug naar overzicht</a>
                 <h3 class="font-rhode modal-title mb-0">{{student.fields.name_first}} {{student.fields.name_last}}</h3>
                 <p class="text-modern">Over {{student.fields.name_first}}</p>
-                <div class="text-box mb-4 text-color-grey">{{student.fields.about}}</div>
+                <div class="text-box mb-4 text-color-grey">{{ student.fields.about }}</div>
                 <p class="text-modern small mb-0">Interesses</p>
                 <p class="text-color-grey">{{student.fields.interests}}</p>
                 <p class="text-modern small mb-0">Mijn favoriete vak</p>

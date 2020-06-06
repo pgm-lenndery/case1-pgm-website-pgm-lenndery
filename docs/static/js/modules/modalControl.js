@@ -113,18 +113,24 @@ export const modalControl = {
         })
     },
     
-    renderModal({id}) {
+    async renderModal({id}) {
         status.add('renderModal')
 
-        function idMatch(input) {return input.id == id};
-        
+        const idMatch = (input) => {return input.id == id};
         const i = site.apiData.cases.cases.data.filter(idMatch)[0];
         let date = new Date(i.date);
         date = {
             month: date.getMonth(),
             year: date.getFullYear(),
-        };  
+        };
         
+        // get students by id
+        const studentsData = site.apiData.students.students;
+        let students = await i.students
+        .map((i) => {return studentsData.find(x => x.id == i)})
+        .map(d => {return `${d.fields.name_first} ${d.fields.name_last}`})
+        .join(', ');
+
         document.querySelector('[data-sesam-target="project"] .modal-content-wrapper').innerHTML = `
             <div class="modal-content-header box-b">
                 <img height="100%" width="100%" src="${i.img.tumbnail}" alt="">
@@ -135,28 +141,27 @@ export const modalControl = {
                         <div class="col-12"><h2 class="modal-title font-rhode mb-5">${i.title}</h2></div>
                         <div class="col-12 col-md-6 col-lg-8">
                             <p class="text-modern">over deze opdracht</p>
-                            <p>${i.about}</p>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at accusamus sed impedit veritatis, dolorem quam. Distinctio, aliquam.</p>
-                            <p>Saepe placeat fugit expedita delectus ea distinctio modi assumenda molestiae debitis, ut soluta eveniet enim perferendis nisi voluptatum ipsum aspernatur accusantium quaerat repudiandae iste quas dignissimos aperiam iusto. Quae, laborum ullam earum nulla iure corporis ex optio quos? Reiciendis eos ex facilis?</p>
+                            <div class="text-box">
+                                <p>${i.about}</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at accusamus sed impedit veritatis, dolorem quam. Distinctio, aliquam.</p>
+                                <p>Saepe placeat fugit expedita delectus ea distinctio modi assumenda molestiae debitis, ut soluta eveniet enim perferendis nisi voluptatum ipsum aspernatur accusantium quaerat repudiandae iste quas dignissimos aperiam iusto. Quae, laborum ullam earum nulla iure corporis ex optio quos? Reiciendis eos ex facilis?</p>
+                            </div>
                         </div>
                         <div class="col-12 col-md-6 col-lg-4">
+                            <p class="text-modern small text-color-grey mb-0">vak</p>
+                            <p>${i.course}</p>
+                            
+                            <p class="text-modern small text-color-grey mb-0">academiejaar</p>
                             <p>
-                                <span class="text-modern">vak</span><br>
-                                ${i.course}
-                            </p>
-                            <p>
-                                <span class="text-modern">academiejaar</span><br>
-                                ${date.month <= 8 && date.month >= 11 ? `${date.year} - ${date.year + 1}` : `${date.year - 1} - ${date.year}`}
+                                ${date.month >= 8 && date.month >= 11 ? `${date.year} - ${date.year + 1}` : `${date.year - 1} - ${date.year}`}
                                 <!-- if after september year +1 else -1 -->
                             </p>
-                            <p>
-                                <span class="text-modern">technologieën</span><br>
-                                html, sass, javascript
-                            </p>
-                            <p>
-                                <span class="text-modern">studenten</span><br>
-                                Jaimy Van Gyseghem
-                            </p>
+                            
+                            <p class="text-modern small text-color-grey mb-0">technologieën</p>
+                            <p>${i.technologie.join(', ')}</p>
+                            
+                            <p class="text-modern small text-color-grey mb-0">studenten</p>
+                            <p>${students}</p>
                         </div>
                     </div>
                 </div>

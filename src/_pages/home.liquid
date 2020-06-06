@@ -31,7 +31,7 @@ permalink: index.html
         </div>
     </div>
     <div class="container-fluid box-lazy py-6" data-lazy-animation="fadeInUp">
-        <div class="row">
+        <div class="row gutter-big">
             <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0 box-md-r text-center">
                 <i data-feather="briefcase" class="feather-size-big mb-3"></i>
                 <h3 class="font-rhode">120 studiepunten</h3>
@@ -41,14 +41,14 @@ permalink: index.html
             <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0 text-center">
                 <i data-feather="tool" class="feather-size-big mb-3"></i>
                 <h3 class="font-rhode">Veel praktijk</h3>
-                <h5>Je krijgt 1200 uren praktijk waaronder<br>echte cases en werkplekleren</h5>
+                <h5>Je krijgt 1200 uren praktijk waaronder echte cases en werkplekleren</h5>
                 <a href="{{ '/onze-opleiding/werkplekleren' | url }}" class="btn-arrow">kom meer te weten</a>
             </div>
             <div class="col-12 col-xl-4 box-xl-l text-center">
                 <i data-feather="award" class="feather-size-big mb-3"></i>
                 <h3 class="font-rhode">Knelpuntberoep</h3>
-                <h5>Een door VDAB erkent knelpunt beroep<br> en veel werkgelegenheid</h5>
-                <a href="{{ '/onze-opleiding' | url }}" class="btn-arrow">lees meer</a>
+                <h5>Een door VDAB erkent knelpunt beroep en veel werkgelegenheid</h5>
+                <a href="{{ '/onze-opleiding/waarom' | url }}" class="btn-arrow">lees meer</a>
             </div>
         </div>
     </div>
@@ -72,7 +72,7 @@ permalink: index.html
     </div>
 </section>
 
-<section data-label="casesHighlight" class="mb-8">
+<section data-label="casesHighlight" class="mb-8 cases-preview">
     <div class="box-lazy" data-lazy-animation="fadeInUp">
         <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
             <div class="row">
@@ -81,10 +81,10 @@ permalink: index.html
                         cases &<br>opdrachten
                     </h2>
                 </div>
-                <div class="col-12 col-lg-4 cta-section-cta">
+                <a href="{{ '/cases' | url }}" class="col-12 col-lg-4 cta-section-cta">
                     ontdek ze <br>allemaal
                     <i data-feather="arrow-right"></i>
-                </div>
+                </a>
             </div>
         </div>
         <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases" data-section-href="cases">
@@ -94,8 +94,31 @@ permalink: index.html
             <div class="filter-section-options pl-4"></div>
         </div> 
     </div>
-    <div class="container-fluid salvatore salvatore-grid" data-columns="3">
-        <!-- highlighted cases -->
+    <div class="container-fluid salvatore salvatore-grid salvatore-grid-1c salvatore-grid-lg-2c salvatore-grid-xl-3c" data-columns>
+        {% for case in cases %}
+            {% if case.higlighted == true %}
+                <div class="salvatore-grid-item card box-all mt-5 mt-md-6 box-lazy animated lightspeed" data-filter="{{ case.tags | join: ',' | downcase }},{{ case.technologie | join: ',' | downcase }},{{ case.course | downcase }}">
+                    <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
+                        <div class="font-rhode py-3">
+                            <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ case.date }}{% endmomentify %}</p>
+                            <span class="word-joint d-none">・</span>{{ case.course }}
+                        </div>
+                        <i data-feather="arrow-right"></i>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-body-overlay px-4">
+                            <h2 class="card-title font-rhode hyphens-false">{{ case.title }}</h2>
+                            <p>
+                                {{ case.about }}
+                            </p>
+                        </div>
+                        <div class="filter-purple-rain">
+                            <img class="w-100" src="{{ case.img.tumbnail }}" alt="">
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
     </div>
 </section>
 

@@ -1,6 +1,6 @@
 ---
 layout: default
-permalink: "/{{ page.filePathStem | remove: '_pages' }}/index.html"
+permalink: "/{{ page.filePathStem | remove: '_pages' | replace: ' ', '-'  }}/index.html"
 ---
 <main>
     <section>
@@ -21,7 +21,7 @@ permalink: "/{{ page.filePathStem | remove: '_pages' }}/index.html"
                 <div class="col-12">
                     {{ content }}
                 </div>
-                <div class=" d-none" id="pageIndex" class="pageindex sesam sesam-hidden" data-sesam-target="pageIndex">
+                <div class=" d-none" id="pageIndex" class="pageindex">
                     
                 </div>
             </div>

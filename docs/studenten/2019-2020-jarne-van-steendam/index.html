@@ -47,31 +47,58 @@
     <div id="cursor"></div>
     <main>
     
-<section>
-    <div class="container-fluid pr-0">
-        <div class="row">
-            <div class="col pt-5 pb-6">
-                <a href="/case1-pgm-website-pgm-lenndery/studenten" class="btn-arrow btn-arrow-reverse small mb-5">terug naar overzicht</a>
-                <h3 class="font-rhode modal-title mb-0">Jarne Van Steendam</h3>
-                <p class="text-modern">Over Jarne</p>
-                <div class="text-box mb-4 text-color-grey">Ik ben Jarne, ik hou van gamen, slapen en eten. Ik ben een metal fan. Natuurlijk heb ik ook grote interesse in coderen.
+<div class="modal-content-header box-b">
+    <img height="100%" width="100%" src="${i.img.tumbnail}" alt="">
 </div>
-                <p class="text-modern small mb-0">Interesses</p>
-                <p class="text-color-grey">Gamen, concerten, festivals</p>
-                <p class="text-modern small mb-0">Mijn favoriete vak</p>
-                <p class="text-color-grey">WEBPGM</p>
-            </div>
-            <div class="col-4">
-                <div class="filter-purple-rain h-100 box-l">
-                    <img class="fit-to-wrapper h-100" src="https://dl.airtable.com/.attachmentThumbnails/61f1a9f92fbf0bde5cfd93a83f3b913f/5142a7ec">
+<div class="modal-content-body">
+    <div class="container-fluid py-7">
+        <div class="row">
+            <div class="col-12"><h2 class="modal-title font-rhode mb-5">${i.title}</h2></div>
+            <div class="col-12 col-md-6 col-lg-8">
+                <p class="text-modern">over deze opdracht</p>
+                <div class="text-box">
+                    <p>${i.about}</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at accusamus sed impedit veritatis, dolorem quam. Distinctio, aliquam.</p>
+                    <p>Saepe placeat fugit expedita delectus ea distinctio modi assumenda molestiae debitis, ut soluta eveniet enim perferendis nisi voluptatum ipsum aspernatur accusantium quaerat repudiandae iste quas dignissimos aperiam iusto. Quae, laborum ullam earum nulla iure corporis ex optio quos? Reiciendis eos ex facilis?</p>
                 </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-4">
+                <p class="text-modern small text-color-grey mb-0">vak</p>
+                <p>${i.course}</p>
+                
+                <p class="text-modern small text-color-grey mb-0">academiejaar</p>
+                <p>
+                    ${date.month >= 8 && date.month >= 11 ? `${date.year} - ${date.year + 1}` : `${date.year - 1} - ${date.year}`}
+                    <!-- if after september year +1 else -1 -->
+                </p>
+                
+                <p class="text-modern small text-color-grey mb-0">technologieën</p>
+                <p>${i.technologie.join(', ')}</p>
+                
+                <p class="text-modern small text-color-grey mb-0">studenten</p>
+                <p>${students}</p>
             </div>
         </div>
     </div>
-    <div class="d-none" id="pageIndex" class="pageindex sesam sesam-hidden" data-sesam-target="pageIndex">
-                    
+    
+    <div class="bg-color-white text-color-black font-rhode container-fluid py-2">
+        ${i.tags.join('<span class="word-joint">・</span>')}
     </div>
-</section>
+    <div class="">
+        <div class="modal-gallery glide mt-5">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides box-offset-l">
+                    ${this.renderProjectGallery(i.img.gallery)}
+                </ul>
+            </div>
+            <div class="glide__arrows container-fluid pl-0 py-2 d-flex justify-content-between" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left ml-2" data-glide-dir="<"><i data-feather="arrow-left"></i></button>
+                <button class="glide__arrow glide__arrow--right mr-2" data-glide-dir=">"><i data-feather="arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
     <div id="loader">
     </div>
     <style>

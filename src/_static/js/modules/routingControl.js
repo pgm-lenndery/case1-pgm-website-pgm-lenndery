@@ -77,7 +77,7 @@ export const routingControl = {
         location.unshift('pgm.gent');
         let dom = location.map((i, index) => {
             i = i.toLowerCase();
-            return `<a href="/${main.SITE_PREFIX}/${location.slice(1, index+1).join('/')}" class="font-rhode">${i}</a>`
+            return `<a href="/${main.SITE_PREFIX}/${location.slice(1, index+1).join('/').replace(/[^a-zA-Z0-9]/g, '-')}" class="font-rhode">${i.replace(/-/, ' ')}</a>`
         });
         dom = dom.join(`<span class="word-joint">${char}</span>`);
         return dom;
@@ -157,6 +157,7 @@ export const routingControl = {
                 uiControl.initialize();
                 uiControl.addIdTitles();
             }).then(() => {
+                uiControl.salvattoreInit()
                 sesam({
                     target: 'page',
                     action: 'show',

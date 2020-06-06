@@ -80,35 +80,36 @@ export const site = {
         status.add('renderCases');
         const cases = 10;
         
-        salvattore.registerGrid(this.casesHighlight);
         // salvattore.recreateColumns();
         
         if (listeners.casesHighlight != null) {
             const apiData = await fetchAPI('https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json');
             await apiData.cases.data.forEach((i, index) => {
-                const card = document.createElement('div');
-                card.classList.add('salvatore-grid-item','card','box-all','mt-6','box-lazy');
-                card.setAttribute('data-id', i.id);
-                card.setAttribute('data-href', 'cases');
-                card.setAttribute('data-filter', `${i.tags.map(i => {return i.toLowerCase()}).join(',')},${i.course.toLowerCase()}`);
-                card.innerHTML = `
-                    <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
-                        <div class="font-rhode py-3"> 2 maanden geleden<span class="word-joint">・</span>webpgm</div><i data-feather="arrow-right"></i>
-                    </div>
-                    <div class="card-body">
-                        <div class="card-body-overlay px-4">
-                            <h2 class="card-title font-rhode">${i.title}</h2>
-                            <p>
-                                ${i.about}
-                            </p>
+                if (i.higlighted == true) {
+                    const card = document.createElement('div');
+                    card.classList.add('salvatore-grid-item','card','box-all','mt-6','box-lazy');
+                    card.setAttribute('data-id', i.id);
+                    card.setAttribute('data-href', 'cases');
+                    card.setAttribute('data-filter', `${i.tags.map(i => {return i.toLowerCase()}).join(',')},${i.course.toLowerCase()}`);
+                    card.innerHTML = `
+                        <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
+                            <div class="font-rhode py-3"> 2 maanden geleden<span class="word-joint">・</span>webpgm</div><i data-feather="arrow-right"></i>
                         </div>
-                        <div class="filter-purple-rain">
-                            <img class="w-100" src="${i.img.tumbnail}" alt="">
+                        <div class="card-body">
+                            <div class="card-body-overlay px-4">
+                                <h2 class="card-title font-rhode hyphens-false">${i.title}</h2>
+                                <p>
+                                    ${i.about}
+                                </p>
+                            </div>
+                            <div class="filter-purple-rain">
+                                <img class="w-100" src="${i.img.tumbnail}" alt="">
+                            </div>
                         </div>
-                    </div>
-                `;
-                salvattore.appendElements(this.casesHighlight, [card]);
-                this.casesHighlightCards.push(card);
+                    `;
+                    salvattore.appendElements(this.casesHighlight, [card]);
+                    this.casesHighlightCards.push(card);
+                }
             })
             
             feather.replace();
@@ -122,7 +123,7 @@ export const site = {
         const students = 10;
         
         if (listeners.studentsHighlight != null) {
-            await this.apiData.students.students[0].class.forEach((i, index) => {
+            await this.apiData.students.students.forEach((i, index) => {
                 i = i.fields;
                 if (students >= index+1) {
                     const card = document.createElement('div');
@@ -197,7 +198,7 @@ export const site = {
         status.add('renderDomElements');
         
         listeners.cache();
-        this.renderCases();
+        // this.renderCases();
         this.renderStudents();
     },
     

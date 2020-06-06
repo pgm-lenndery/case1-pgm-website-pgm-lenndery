@@ -17,3 +17,76 @@
         }
     }
 }
+
+#pageIndex {
+    position: relative;
+    
+    * {@include transition;}
+    
+    > div {
+        position: sticky;
+        top: 2rem;
+    }
+    
+    .pageindex-title svg {
+        --d: 30px;
+        width: var(--d);
+        height: var(--d);
+    }
+    
+    .pageindex-list {
+        display: none;
+        padding-left: 0;
+        height: fit-content !important;
+        list-style: none;
+        
+        li {
+            &.tagname-H3 {
+                margin-top: 1rem;
+                margin-bottom: .2rem;
+                
+                a {
+                    text-transform: lowercase;
+                    @include font-rhode;
+                }
+            }
+            
+            &.tagname-H4, &.tagname-H5 {
+                padding-left: 13px;
+                margin-bottom: 0.4rem;
+                line-height: 110%;
+                
+                a {
+                    --letter-spacing: 3px;
+                    @include text-modern;
+                    color: $textBody;
+                    font-size: .8rem;
+                }
+            }
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        &.sesam-show {
+            display: block;
+            
+            svg {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+}
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {
+    #pageIndex .pageindex-list.sesam-hidden, #pageIndex .pageindex-list.sesam-show {
+        display: block;
+    }
+}
+
+@media (min-width: 1200px) {}

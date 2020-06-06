@@ -76,6 +76,7 @@ const sesamCollapse = {
                 // this.optionsMap.has('parent') == true ? this.hideOtherChildren(this.optionsMap.get('parent')) : null;
             }
         } else if (element.dataset.sesamTarget != undefined && itemState == false) {
+            this.targetOptions(element);
             (this.optionsMap.get('backdrop') == 'true' || element.dataset.sesamBackdrop) && this.optionsMap.get('backdrop') != undefined == 'true' ? this.itemHide(this.backdrop) : null;
             this.scrollBlock({ block: false });
             this.cleanCollapse(element);
@@ -87,9 +88,12 @@ const sesamCollapse = {
     },
     
     targetOptions(element) {
-        const options = element.dataset.sesamOptions.split(',');
-        this.optionsMap = new Map();
+        element = document.querySelector(`[data-sesam-target="${element.dataset.sesamTrigger || element.dataset.sesamTarget}"]`);
         
+        let options = [];
+        try {options = element.dataset.sesamOptions.split(',')} 
+        catch {null}
+        this.optionsMap = new Map();
         options.forEach(i => {
             i = i.split(':');
             this.optionsMap.set(i[0].replace(' ',''), i[1]);

@@ -7,10 +7,12 @@ export const uiControl = {
         status.init();
         
         this.cache();
+        uiControl.salvattoreInit();
     },
     
     cache() {
         status.add('cache');
+        this.casesHighlightCards = document.querySelectorAll('[data-label="casesHighlight"] .salvatore-grid .card');
     },
     
     curry() {
@@ -59,10 +61,11 @@ export const uiControl = {
             this.$mainContent = document.querySelector('#mainContent');
     
             const wrapper = document.createElement('div'), indexList = document.createElement('ul'), indexListTitle = document.createElement('div');
-            indexList.className = 'pageindex-list';
+            indexList.classList.add('pageindex-list', 'sesam', 'sesam-hidden');
+            indexList.setAttribute('data-sesam-target', 'pageIndex');
             
             // add title
-            indexListTitle.classList.add('pageindex-title', 'd-flex', 'align-items-center', 'justify-content-between', 'sesam', 'sesam-hidden', 'clickable', 'mb-3');
+            indexListTitle.classList.add('pageindex-title', 'd-flex', 'align-items-center', 'justify-content-between', 'sesam', 'sesam-hidden', 'clickable', 'mb-3', 'd-md-none');
             indexListTitle.setAttribute('data-sesam-trigger', 'pageIndex');
             indexListTitle.innerHTML = `
                 <h5 class="font-rhode my-0">Inhoudsopgave</h5>
@@ -86,14 +89,29 @@ export const uiControl = {
         } catch (err) {null}
     },
     
-    filterCases(value) {
-        status.add('filterCases');
+    filterHighlightedCases(value) {
+        status.add('filterHighlightedCases');
+        value = value.toLowerCase();
         
         // remove existing cards
         site.casesHighlight.querySelectorAll('.column .card').forEach(i => i.remove());
         
         // if value is all, show all cards, else only append cards that match value
-        site.casesHighlightCards.forEach(i => {
+        this.casesHighlightCards.forEach(i => {
+            if (value == 'all') salvattore.appendElements(site.casesHighlight, [i])
+            else if (i.dataset.filter.includes(value)) salvattore.appendElements(site.casesHighlight, [i]);
+        });
+    },
+    
+    filterCases(value) {
+        status.add('filterCases');
+        value = value.toLowerCase();
+        
+        // remove existing cards
+        site.casesHighlight.querySelectorAll('.column .card').forEach(i => i.remove());
+        
+        // if value is all, show all cards, else only append cards that match value
+        this.casesHighlightCards.forEach(i => {
             if (value == 'all') salvattore.appendElements(site.casesHighlight, [i])
             else if (i.dataset.filter.includes(value)) salvattore.appendElements(site.casesHighlight, [i]);
         });
@@ -150,5 +168,18 @@ export const uiControl = {
                 scrollBlock: true
             }
         });
+    },
+    
+    salvattoreInit() {
+        salvattore.rescanMediaQueries();
+        const salvattoreGrids = document.querySelectorAll('.salvatore-grid');
+        salvattoreGrids.forEach(grid => {
+            const cards = grid.querySelectorAll('.salvatore-grid-item');
+            try {
+                cards.forEach(card => {card.remove()});
+                salvattore.registerGrid(grid);
+                salvattore.appendElements(grid, cards);
+            } catch (err) {status.log(err)};
+        })
     }
 }
