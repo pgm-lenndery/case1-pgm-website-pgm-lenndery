@@ -35,7 +35,7 @@ permalink: "/studenten/index.html"
                         {% for student in students %}
                             {% assign gen = student.fields.generation | join: '-' %}
                             {% if gen == generation %}
-                                <a href="{{ page.url | url }}/{{ student.fields.generation | join: '-' }}-{{ student.url }}" class="card box-all position-relative flex-grid-item box-lazy" data-filter="">
+                                <a href="{{ page.url | url }}{{ student.fields.generation | join: '-' }}-{{ student.url }}" class="card box-all position-relative flex-grid-item box-lazy" data-filter="">
                                     <div class="card-header p-4">
                                         <p class="card-title font-rhode my-0">{{ student.fields.name_first }}</p>
                                         <p class="text-modern small mb-0">{{ student.fields.name_last }}</p>

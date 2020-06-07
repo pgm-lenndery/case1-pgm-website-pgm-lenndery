@@ -80,7 +80,7 @@ permalink: index.html
                     blog & <br>nieuws
                 </h2>
             </div>
-            <a href="{{ '/studenten' | url }}" class="col-12 col-lg-4 cta-section-cta">
+            <a href="{{ '/nieuws' | url }}" class="col-12 col-lg-4 cta-section-cta">
                 lees <br>meer
                 <i data-feather="arrow-right"></i>
             </a>
@@ -92,7 +92,7 @@ permalink: index.html
                 <ul class="glide__slides mb-0">
                     {% for post in posts %}
                         <li class="glide__slide box-r">
-                            <a href="/studenten" class="card">
+                            <a href="{{ '/nieuws' | url }}{{ post.title | slug }}" class="card">
                                 <div class="card-header py-5 container-fluid">
                                     <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ post.createdAt }}{% endmomentify %}</p>
                                     <h3 class="font-rhode mb-0 balance-text">{{ post.title }}</h3>

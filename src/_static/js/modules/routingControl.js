@@ -136,8 +136,9 @@ export const routingControl = {
                 };
             }).then(page => {
                 // pageindexing
-                const indexed = page.pageContent.querySelectorAll('#mainContent h3, #mainContent h4, #mainContent h5');
-                page.pageContent.querySelector('#pageIndex').appendChild(uiControl.pageIndexing(indexed));
+                // const indexed = page.pageContent.querySelectorAll('#mainContent h3, #mainContent h4, #mainContent h5');
+                // page.pageContent.querySelector('#pageIndex').appendChild(uiControl.pageIndexing(indexed));
+                // uiControl.addIdTitles();
 
                 // filling page
                 modalControl.$pageModalWrapper.innerHTML = `
@@ -155,9 +156,7 @@ export const routingControl = {
                 modalControl.removeTab({sesamName: 'page'});
                 sesamCollapse.initialize();
                 uiControl.initialize();
-                uiControl.addIdTitles();
             }).then(() => {
-                uiControl.salvattoreInit()
                 sesam({
                     target: 'page',
                     action: 'show',
@@ -167,12 +166,9 @@ export const routingControl = {
                     }
                 });
                 site.lazyLoadingBoxes();
-                // new Glide('.modal-gallery').mount({
-                //     type: 'carousel',
-                //     startAt: 0,
-                //     perView: 1
-                // }); 
-            }).catch(error => window.open(`/${main.SITE_PREFIX}/404`, "_self"));
+            }).catch(error => {
+                window.open(`/${main.SITE_PREFIX}/404`, "_self")
+            });
         }  
     }
 }

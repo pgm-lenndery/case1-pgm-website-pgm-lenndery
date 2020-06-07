@@ -33,8 +33,8 @@ export const main = {
                     pageTitle: originalPageTitle
                 });
                 
-                modalControl.cache();
-                modalControl.$pageModalPageIndex.innerHTML = uiControl.pageIndexing(indexed).outerHTML;
+                // modalControl.cache();
+                // document.querySelector('[data-sesam-target="page"] #pageIndex').innerHTML = uiControl.pageIndexing(indexed).outerHTML;
                 
                 sesamCollapse.initialize(), site.initialize(), site.start(), site.arrowButtons();;
                 feather.replace();

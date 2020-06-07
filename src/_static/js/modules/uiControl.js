@@ -197,7 +197,7 @@ export const uiControl = {
         
         try {
             const homePostsGlide = new Glide('.glide-posts', {
-                type: 'slider',
+                type: 'carousel',
                 startAt: 0,
                 perView: 1,
                 autoplay: 5000,
@@ -209,6 +209,9 @@ export const uiControl = {
                         perView: 1,
                     },
                     992: {
+                        perView: 1,
+                    },
+                    1200: {
                         perView: 1,
                     },
                     3000: {
