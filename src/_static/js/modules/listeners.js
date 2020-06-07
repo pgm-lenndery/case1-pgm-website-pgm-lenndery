@@ -28,25 +28,13 @@ export const listeners = {
                 casesHighlightCard = event.target.closest('[data-label="casesHighlight"] .card'),
                 homeNav = event.target.closest('[data-label="homeNav"] .navbar-label'),
                 filterCasesHighlighted = event.target.closest('[data-label="casesHighlight"] [data-label="filterCases"] input[name="type"]'),
-                filterCases = event.target.closest('[data-label="allCases"] [data-label="filterAllCases"] input[name="type"]'),
+                filterCases = event.target.closest('[data-label="filterAllCases"] input[name="type"]'),
                 internalLink = event.target.closest(`a`);
 
             const siteURL = window.location.origin;
 
             if (filterCasesHighlighted != null) uiControl.filterHighlightedCases(filterCasesHighlighted.value);
             if (filterCases != null) uiControl.filterCases(filterCases.value);
-
-            if (casesHighlightCard != null) {
-                // show case modal
-                modalControl.renderModal({ id: casesHighlightCard.dataset.id});
-                
-                // remove current case tab
-                if (modalControl.tabs.querySelector(`[data-tab-trigger="project"]`) != null) {
-                    modalControl.removeTab({
-                        sesamName: 'project'
-                    })
-                }
-            };
             
             // show or hide modals, and show or hide tabs
             if (modalActions != null && modalActions.dataset.action == 'modalClose') {
@@ -110,10 +98,15 @@ export const listeners = {
             const
                 casesWrapper = event.target.closest('.cases-preview'),
                 casesWrapperHovered = document.querySelector('.cases-preview.hovering'),
-                hoverCard = event.target.closest('.cases-preview .card:hover');
+                hoverCard = event.target.closest('.cases-preview .card:hover'),
+                glider = event.target.closest('.glide');
             
             if (hoverCard != null) casesWrapper.classList.add('hovering');
             else if (casesWrapperHovered != null) casesWrapperHovered.classList.remove('hovering');
+            
+            if (glider != null) {
+                uiControl.glideInit();
+            }
         });
         
         document.body.addEventListener('focusout', () => {

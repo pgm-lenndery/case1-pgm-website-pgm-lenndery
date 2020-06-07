@@ -18,7 +18,7 @@ permalink: "/{{ page.filePathStem | remove: '_pages' | replace: ' ', '-'  }}/ind
             <img class="modal-thumb-img" src="{{ thumbnail }}" alt="">
         </div>
     </section>
-    <section id="mainContent">
+    <section id="mainContent" class="{% if contentstyle == 'ignore' %}contentstyle-ignore{% endif %}">
         <div class="">
             <div class="">
                 <div class="">

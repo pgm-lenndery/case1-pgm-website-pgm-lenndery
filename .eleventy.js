@@ -45,8 +45,18 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addLayoutAlias('page-fluid', 'page-fluid.liquid');
     
     eleventyConfig.addPairedShortcode("momentify", (content) => {
+      content = parseInt(content)
       const time = moment(new Date(content));
-      return time.fromNow()
+      return time.fromNow();
+    });
+    
+    eleventyConfig.addPairedShortcode("academicPeriod", (content) => {
+      let date = new Date(content);
+      date = {
+          month: date.getMonth(),
+          year: date.getFullYear(),
+      };
+      return date.month >= 8 && date.month >= 11 ? `${date.year} - ${date.year + 1}` : `${date.year - 1} - ${date.year}`
     });
     
     return {

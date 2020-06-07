@@ -72,6 +72,47 @@ permalink: index.html
     </div>
 </section>
 
+<section data-label="postsHighlight" data-section-href="blog">
+    <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col-12 col-lg">
+                <h2 class="font-rhode display-4">
+                    blog & <br>nieuws
+                </h2>
+            </div>
+            <a href="{{ '/studenten' | url }}" class="col-12 col-lg-4 cta-section-cta">
+                lees <br>meer
+                <i data-feather="arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="collection collection-horizontal collection-items-wide pt-5 box-lazy" data-lazy-animation="fadeInUp">
+        <div class="glide glide-posts">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides mb-0">
+                    {% for post in posts %}
+                        <li class="glide__slide box-r">
+                            <a href="/studenten" class="card">
+                                <div class="card-header py-5 container-fluid">
+                                    <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ post.createdAt }}{% endmomentify %}</p>
+                                    <h3 class="font-rhode mb-0 balance-text">{{ post.title }}</h3>
+                                </div>
+                                <div class="card-img filter-purple-rain filter-hover-none">
+                                    <img src="{{ post.thumbnailUrl }}" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="glide__arrows container-fluid py-3 d-flex justify-content-between" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left ml-2" data-glide-dir="<"><i data-feather="arrow-left"></i><span class="text-modern ml-0 ml-md-3 d-none d-md-inline">vorige</span></button>
+                <button class="glide__arrow glide__arrow--right mr-2" data-glide-dir=">"><span class="text-modern text-color-grey mr-0 mr-md-3 d-none d-md-inline">volgende</span><i data-feather="arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section data-label="casesHighlight" class="mb-8 cases-preview">
     <div class="box-lazy" data-lazy-animation="fadeInUp">
         <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
@@ -97,26 +138,28 @@ permalink: index.html
     <div class="container-fluid salvatore salvatore-grid salvatore-grid-1c salvatore-grid-lg-2c salvatore-grid-xl-3c" data-columns>
         {% for case in cases %}
             {% if case.higlighted == true %}
-                <div class="salvatore-grid-item card box-all mt-5 mt-md-6 box-lazy animated lightspeed" data-filter="{{ case.tags | join: ',' | downcase }},{{ case.technologie | join: ',' | downcase }},{{ case.course | downcase }}">
-                    <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
-                        <div class="font-rhode py-3">
-                            <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ case.date }}{% endmomentify %}</p>
-                            <span class="word-joint d-none">・</span>{{ case.course }}
+                <a  href="{{ '/cases' | url }}/{{ case.title | slug }}" class="salvatore-grid-item box-lazy animated lightspeed card mt-5 mt-md-6">
+                    <div class="box-all" data-filter="{{ case.tags | join: ',' | downcase }},{{ case.technologie | join: ',' | downcase }},{{ case.course | downcase }}">
+                        <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
+                            <div class="py-3">
+                                <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ case.date }}{% endmomentify %}</p>
+                                <p class="mb-0 text-color-white font-rhode "><span class="word-joint d-none">・</span>{{ case.course }}</p>
+                            </div>
+                            <i data-feather="arrow-right"></i>
                         </div>
-                        <i data-feather="arrow-right"></i>
+                        <div class="card-body">
+                            <div class="card-body-overlay px-4">
+                                <h2 class="card-title font-rhode hyphens-false">{{ case.title }}</h2>
+                                <p>
+                                    {{ case.about }}
+                                </p>
+                            </div>
+                            <div class="filter-purple-rain">
+                                <img class="w-100" src="{{ case.img.tumbnail }}" alt="">
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="card-body-overlay px-4">
-                            <h2 class="card-title font-rhode hyphens-false">{{ case.title }}</h2>
-                            <p>
-                                {{ case.about }}
-                            </p>
-                        </div>
-                        <div class="filter-purple-rain">
-                            <img class="w-100" src="{{ case.img.tumbnail }}" alt="">
-                        </div>
-                    </div>
-                </div>
+                </a>
             {% endif %}
         {% endfor %}
     </div>

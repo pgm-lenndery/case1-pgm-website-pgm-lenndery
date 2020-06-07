@@ -167,6 +167,11 @@ export const routingControl = {
                     }
                 });
                 site.lazyLoadingBoxes();
+                // new Glide('.modal-gallery').mount({
+                //     type: 'carousel',
+                //     startAt: 0,
+                //     perView: 1
+                // }); 
             }).catch(error => window.open(`/${main.SITE_PREFIX}/404`, "_self"));
         }  
     }

@@ -25,6 +25,7 @@
     &-purple-rain {
         position: relative;
         display: block;
+        @include transition;
 
         &::before {
             content: ' ';
@@ -38,10 +39,12 @@
             background-color: $purple500;
             mix-blend-mode: multiply;
             z-index: 1;
+            @include transition;
         }
         
         img {
             filter: grayscale(1);
+            @include transition;
         }
     }
     
@@ -62,9 +65,19 @@
             mix-blend-mode: multiply;
             z-index: 1;
         }
+    }
+    
+    &-hover-none:hover [class*="filter-"], &-hover-none:hover .filter-purple-rain {
+        @include transition;
         
         img {
-            // filter: grayscale(1);
+            filter: none;
+            @include transition;
+        }
+        
+        &::before {
+            opacity: 0;
+            @include transition;
         }
     }
 }

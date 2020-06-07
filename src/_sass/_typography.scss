@@ -38,7 +38,11 @@ small, .small {
     }
 }
 
-#mainContent, .text-box {
+.balance-text {
+    text-wrap: balance;  /* Apply (proposed) CSS style */
+}
+
+#mainContent:not(.contentstyle-ignore), .text-box {
     @for $i from 1 through 4 {
         h#{$i} {
             @include font-rhode;

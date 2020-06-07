@@ -7,12 +7,17 @@ export const uiControl = {
         status.init();
         
         this.cache();
-        uiControl.salvattoreInit();
+        feather.replace();
+        this.salvattoreInit();
+        this.glideInit();
+        this.balanceText();
     },
     
     cache() {
         status.add('cache');
         this.casesHighlightCards = document.querySelectorAll('[data-label="casesHighlight"] .salvatore-grid .card');
+        this.casesCards = document.querySelectorAll('[data-label="allCases"] .salvatore-grid .card');
+        this.casesAll = document.querySelector('[data-label="allCases"] .salvatore');
     },
     
     curry() {
@@ -44,6 +49,12 @@ export const uiControl = {
             `;
         })
         return tempStr;
+    },
+    
+    balanceText() {
+        status.add('balanceText');
+        const balancedItems = document.querySelectorAll('.balance-text')
+        balanceText(balancedItems, {watch: true});
     },
     
     addIdTitles() {
@@ -107,13 +118,15 @@ export const uiControl = {
         status.add('filterCases');
         value = value.toLowerCase();
         
+        console.log(value)
+        
         // remove existing cards
-        site.casesHighlight.querySelectorAll('.column .card').forEach(i => i.remove());
+        this.casesAll.querySelectorAll('.column .card').forEach(i => i.remove());
         
         // if value is all, show all cards, else only append cards that match value
-        this.casesHighlightCards.forEach(i => {
-            if (value == 'all') salvattore.appendElements(site.casesHighlight, [i])
-            else if (i.dataset.filter.includes(value)) salvattore.appendElements(site.casesHighlight, [i]);
+        this.casesCards.forEach(i => {
+            if (value == 'all') salvattore.appendElements(this.casesAll, [i])
+            else if (i.dataset.filter.includes(value)) salvattore.appendElements(this.casesAll, [i]);
         });
     },
     
@@ -168,6 +181,43 @@ export const uiControl = {
                 scrollBlock: true
             }
         });
+    },
+    
+    glideInit() {
+        status.add('glideInit');
+        try {
+            const caseGlide = new Glide('.modal-gallery', {
+                type: 'carousel',
+                startAt: 0,
+                perView: 1,
+                gap: 0
+            })
+            caseGlide.mount();
+        } catch {null}
+        
+        try {
+            const homePostsGlide = new Glide('.glide-posts', {
+                type: 'slider',
+                startAt: 0,
+                perView: 1,
+                autoplay: 5000,
+                breakpoints: {
+                    576: {
+                        perView: 1,
+                    },
+                    768: {
+                        perView: 1,
+                    },
+                    992: {
+                        perView: 1,
+                    },
+                    3000: {
+                        perView: 2,
+                    }
+                }
+            })
+            homePostsGlide.mount();
+        } catch (err) {console.log(err)}
     },
     
     salvattoreInit() {

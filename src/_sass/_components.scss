@@ -225,6 +225,12 @@
             margin: 0px 25px;
         }
     }
+    
+    &-items-wide {
+        .card {
+            width: 100%;
+        }
+    }
 }
 
 .marquee {
@@ -289,6 +295,10 @@
     
     .card {   
         cursor: pointer;
+        
+        * {
+            text-decoration: none;
+        }
             
         &-body {
             position: relative;
@@ -432,45 +442,43 @@
         }
     }
     
-    &[data-sesam-target="project"] {
-        .modal-gallery {
-            .glide__slides {
-                margin-bottom: 0;
-                // width: 100% !important;
-            }
-            
-            .glide__slide {
-                // width: 80% !important;
-                
-                img {
-                    height: 250px;
-                }
-            }
-            
-            .glide__arrow {
-                position: relative;
-                padding: 0;
-                top: unset;
-                left: unset;
-                right: unset;
-                border: none;
-                box-shadow: none;
-                transform: none;
-                
-                svg {
-                    --d: 40px;
-                    width: var(--d);
-                    height: var(--d);
-                    stroke-width: 1px;
-                }
-            }
-        }
-    }
-    
     #mainContent {
         p img {
             max-width: 100%;
             // @include box('all');
+        }
+    }
+}
+
+.modal-gallery {
+    .glide__slides {
+        margin-bottom: 0;
+        // width: 100% !important;
+    }
+    
+    .glide__slide {
+        // width: 80% !important;
+        
+        img {
+            height: 400px;
+        }
+    }
+    
+    .glide__arrow {
+        position: relative;
+        padding: 0;
+        top: unset;
+        left: unset;
+        right: unset;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        
+        svg {
+            --d: 40px;
+            width: var(--d);
+            height: var(--d);
+            stroke-width: 1px;
         }
     }
 }
@@ -643,6 +651,10 @@
             
             * {stroke-width: 1px;}
         }
+    }
+    
+    .header-section .row [class*="col"] {
+        margin-bottom: 0;
     }
 }
 

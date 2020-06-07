@@ -118,11 +118,6 @@ export const modalControl = {
 
         const idMatch = (input) => {return input.id == id};
         const i = site.apiData.cases.cases.data.filter(idMatch)[0];
-        let date = new Date(i.date);
-        date = {
-            month: date.getMonth(),
-            year: date.getFullYear(),
-        };
         
         // get students by id
         const studentsData = site.apiData.students.students;

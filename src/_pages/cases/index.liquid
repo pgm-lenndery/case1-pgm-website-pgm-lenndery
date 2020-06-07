@@ -3,10 +3,11 @@ layout: page-wide
 title: Cases & opdrachten
 subtitle: Werk van onze studenten
 pageindex: false
+contentstyle: ignore
 permalink: "/cases/index.html"
 ---
 
-{% capture filterItems %}{% for case in cases %}{{ case.course }},{% endfor %}{% endcapture %}
+{% capture filterItems %}all,{% for case in cases %}{{ case.course }},{% endfor %}{% endcapture %}
 {% assign filters = {{ filterItems | strip | split: ","  | uniq }} %}
 
 <section data-label="allCases">
@@ -30,17 +31,18 @@ permalink: "/cases/index.html"
     <div class="my-5 cases-preview">
         <div class="container-fluid salvatore salvatore-grid salvatore-grid-1c salvatore-grid-lg-2c" data-columns>
             {% for case in cases %}
-                <div class="salvatore-grid-item card box-all mt-5 mt-md-6 box-lazy animated lightspeed" data-filter="{{ case.tags | join: ',' | downcase }},{{ case.technologie | join: ',' | downcase }},{{ case.course | downcase }}">
+            <a href="{{ '/cases' | url }}/{{ case.title | slug }}" class="salvatore-grid-item card box-lazy animated lightspeed mt-5 mt-md-6" data-filter="{{ case.tags | join: ',' | downcase }},{{ case.technologie | join: ',' | downcase }},{{ case.course | downcase }}">
+                <div class="box-all">
                     <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
-                        <div class="font-rhode py-3">
+                        <div class="py-3">
                             <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ case.date }}{% endmomentify %}</p>
-                            <span class="word-joint d-none">・</span>{{ case.course }}
+                            <p class="mb-0 text-color-white font-rhode "><span class="word-joint d-none">・</span>{{ case.course }}</p>
                         </div>
                         <i data-feather="arrow-right"></i>
                     </div>
                     <div class="card-body">
                         <div class="card-body-overlay px-4">
-                            <h2 class="card-title font-rhode hyphens-false">{{ case.title }}</h2>
+                            <h2 class="card-title font-rhode hyphens-false text-color-white">{{ case.title }}</h2>
                             <p>
                                 {{ case.about }}
                             </p>
@@ -50,6 +52,7 @@ permalink: "/cases/index.html"
                         </div>
                     </div>
                 </div>
+            </a>
             {% endfor %}
         </div>
     </div>
