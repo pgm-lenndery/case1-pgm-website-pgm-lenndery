@@ -92,7 +92,7 @@ permalink: index.html
                 <ul class="glide__slides mb-0">
                     {% for post in posts %}
                         <li class="glide__slide box-r">
-                            <a href="{{ '/nieuws' | url }}{{ post.title | slug }}" class="card">
+                            <a href="{{ '/nieuws' | url }}/{{ post.title | slug }}" class="card">
                                 <div class="card-header py-5 container-fluid">
                                     <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ post.createdAt }}{% endmomentify %}</p>
                                     <h3 class="font-rhode mb-0 balance-text">{{ post.title }}</h3>
@@ -216,12 +216,6 @@ permalink: index.html
                 </form>
             </div>
         </div>
-    </div>
-</section>
-
-<section>
-    <div class="container-fluid">
-        <a href="{{ '/buscom/handleiding' | url }}">Buscom handleiding</a>
     </div>
 </section>
 

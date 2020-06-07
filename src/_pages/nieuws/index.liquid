@@ -10,7 +10,7 @@ contentstyle: ignore
 <section data-label="allPosts">
     <div class="collection collection-vertical collection-items-wide">     
         {% for post in posts %}
-            <a href="{{ '/nieuws' | url }}{{ post.title | slug }}" class="card d-block box-lazy mb-5" data-lazy-animation="fadeInUp">
+            <a href="{{ '/nieuws' | url }}/{{ post.title | slug }}" class="card d-block box-lazy mb-5" data-lazy-animation="fadeInUp">
                 <div class="card-header py-5 container-fluid">
                     <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ post.createdAt }}{% endmomentify %}</p>
                     <h3 class="font-rhode mt-0 balance-text">{{ post.title }}</h3>

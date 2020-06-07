@@ -59,6 +59,8 @@ small, .small {
             margin-bottom: 0rem;
         }
     }
+    
+    *:first-child {margin-top: 0;}
 
     h3 + p {margin-top: 1rem;}
     h3 + h4 {margin-top: 1rem;}
