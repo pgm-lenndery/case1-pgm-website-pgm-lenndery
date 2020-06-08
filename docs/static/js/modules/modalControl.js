@@ -3,6 +3,7 @@ import {site} from '../app.js'
 import {main} from '../main.js'
 
 const status = new callerName('modalControl');
+status.pause();
 
 export const modalControl = {
     initialize() {

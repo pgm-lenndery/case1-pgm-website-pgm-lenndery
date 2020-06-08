@@ -2,7 +2,7 @@ import {callerName, main, modalControl, fetchPage, site, uiControl, listeners} f
 import { sesam, sesamCollapse } from './sesamCollapse.js';
 
 const status = new callerName('routingControl');
-modalControl
+status.pause();
 
 export const routingControl = {
     initialize() {

@@ -1,6 +1,7 @@
 import {site, modalControl, sesam, sesamCollapse, callerName, fetchAPI, routingControl } from './index.js';
 
 const status = new callerName('uiControl');
+status.pause();
 
 export const uiControl = {
     initialize() {

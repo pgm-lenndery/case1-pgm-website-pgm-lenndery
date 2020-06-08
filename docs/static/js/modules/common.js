@@ -1,18 +1,23 @@
 export class callerName {
     constructor(file) {
         this.file = file + '.js';
+        this.pauseLogging = false;
+    }
+    
+    pause() {
+        this.pauseLogging = true
     }
     
     init() {
-        console.log(`\n%c[service] ${this.file} running! \n` + ' ', 'color: #00d400; font-weight: bold')
+        if (this.pauseLogging == false) console.log(`\n%c[service] ${this.file} running! \n` + ' ', 'color: #00d400; font-weight: bold')
     }
     
     add(funct) {
-        console.log(`%c[service] ${this.file}:${funct}()`, 'font-weight: bold');
+        if (this.pauseLogging == false) console.log(`%c[service] ${this.file}:${funct}()`, 'font-weight: bold');
     }
     
     log(logged) {
-        console.log('\t', logged);
+        if (this.pauseLogging == false) console.log('\t' + logged);
     }
 }
 

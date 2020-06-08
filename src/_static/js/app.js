@@ -1,6 +1,7 @@
 import {main, callerName, modalControl, sesamCollapse, sesam, listeners, fetchAPI, fetchPage, uiControl, routingControl} from './modules/index.js'
 
 const status = new callerName('main');
+status.pause();
 
 export const site = {
     async initialize() {

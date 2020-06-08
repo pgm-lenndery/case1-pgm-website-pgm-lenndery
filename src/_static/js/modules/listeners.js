@@ -1,6 +1,7 @@
 import { modalControl, sesam, sesamCollapse, callerName, uiControl, routingControl } from './index.js';
 
 const status = new callerName('listeners');
+status.pause();
 
 export const listeners = {
     cache() {
