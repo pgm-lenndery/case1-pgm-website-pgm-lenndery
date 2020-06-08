@@ -46,54 +46,33 @@
     <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png" alt="" id="seoBanner">
     <div id="cursor"></div>
     <main>
-    
-<div class="modal-content-header box-b">
-    <img height="100%" width="100%" src="${i.img.tumbnail}" alt="">
-</div>
-<div class="modal-content-body">
-    <div class="container-fluid py-7">
+    <div class="modal-content-body">
+    <div class="container-fluid px-0">
         <div class="row">
-            <div class="col-12"><h2 class="modal-title font-rhode mb-5">${i.title}</h2></div>
-            <div class="col-12 col-md-6 col-lg-8">
-                <p class="text-modern">over deze opdracht</p>
-                <div class="text-box">
-                    <p>${i.about}</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at accusamus sed impedit veritatis, dolorem quam. Distinctio, aliquam.</p>
-                    <p>Saepe placeat fugit expedita delectus ea distinctio modi assumenda molestiae debitis, ut soluta eveniet enim perferendis nisi voluptatum ipsum aspernatur accusantium quaerat repudiandae iste quas dignissimos aperiam iusto. Quae, laborum ullam earum nulla iure corporis ex optio quos? Reiciendis eos ex facilis?</p>
+            <div class="col-12 col-lg-8 py-7">
+                <div class="container-fluid">
+                    <h2 class="modal-title font-rhode mb-1">Jesse Vandermeersch</h2>
+                    <p class="text-modern mb-4">over Jesse</p>
+                    
+                    <p class="text-modern small text-color-grey mb-0">favoriete vak</p>
+                    <p>WEBPGM</p>
+                    
+                    <p class="text-modern small text-color-grey mb-0">academiejaar</p>
+                    <p>2020 - 2021</p>
+                    
+                    <p class="text-modern small text-color-grey mb-0">Interesses</p>
+                    <p>Games, Metal, Code</p>
+                    
+                    <div class="text-box">
+                        
+                        Ik ben 23 lentes jong en afkomstig uit West-Vlaanderen. Mijn 3 groote liefdes in het leven zijn games, heavy metal en code. Ik probeer deze drie interesses zoveel mogelijk met elkaar te combineren bij alles wat ik doe.<br /><br />Coole dingen maken met harde tunes op de achtergrond, zo wil ik mijn dagen doorbrengen!<br />
+                    </div>
                 </div>
             </div>
-            <div class="col-12 col-md-6 col-lg-4">
-                <p class="text-modern small text-color-grey mb-0">vak</p>
-                <p>${i.course}</p>
-                
-                <p class="text-modern small text-color-grey mb-0">academiejaar</p>
-                <p>
-                    ${date.month >= 8 && date.month >= 11 ? `${date.year} - ${date.year + 1}` : `${date.year - 1} - ${date.year}`}
-                    <!-- if after september year +1 else -1 -->
-                </p>
-                
-                <p class="text-modern small text-color-grey mb-0">technologieën</p>
-                <p>${i.technologie.join(', ')}</p>
-                
-                <p class="text-modern small text-color-grey mb-0">studenten</p>
-                <p>${students}</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="bg-color-white text-color-black font-rhode container-fluid py-2">
-        ${i.tags.join('<span class="word-joint">・</span>')}
-    </div>
-    <div class="">
-        <div class="modal-gallery glide mt-5">
-            <div class="glide__track" data-glide-el="track">
-                <ul class="glide__slides box-offset-l">
-                    ${this.renderProjectGallery(i.img.gallery)}
-                </ul>
-            </div>
-            <div class="glide__arrows container-fluid pl-0 py-2 d-flex justify-content-between" data-glide-el="controls">
-                <button class="glide__arrow glide__arrow--left ml-2" data-glide-dir="<"><i data-feather="arrow-left"></i></button>
-                <button class="glide__arrow glide__arrow--right mr-2" data-glide-dir=">"><i data-feather="arrow-right"></i></button>
+            <div class="col-12 col-lg-4">
+                <div class="filter-purple-rain h-100">
+                    <img class="h-100 w-100" src="https://dl.airtable.com/.attachmentThumbnails/9cdd13820994c9582d8d1ec7d4ee52a0/7b99bc56" alt="">
+                </div>
             </div>
         </div>
     </div>
