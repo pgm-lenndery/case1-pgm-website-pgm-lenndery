@@ -187,7 +187,7 @@ export const uiControl = {
         status.add('glideInit');
         try {
             const caseGlide = new Glide('.modal-gallery', {
-                type: 'carousel',
+                type: 'slider',
                 startAt: 0,
                 perView: 1,
                 gap: 0

@@ -18,7 +18,7 @@ permalink: "nieuws/{{ post.title | slug }}/index.html"
         <div class="container-fluid py-7">
             <div class="row">
                 <div class="col-12">
-                    <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ post.createdAt }}{% endmomentify %}</p>
+                    <p class="text-modern small text-color-grey mb-1">{% momentifyUnix %}{{ post.createdAt }}{% endmomentifyUnix%}</p>
                     <h2 class="modal-title font-rhode mb-4 balance-text">{{ post.title }}</h2>
                     <div class="text-box balance-text">
                         <p>{{ post.synopsis }}</p>

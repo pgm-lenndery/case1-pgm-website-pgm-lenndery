@@ -45,11 +45,12 @@ module.exports = (eleventyConfig) => {
     eleventyConfig.addLayoutAlias('page-fluid', 'page-fluid.liquid');
     
     eleventyConfig.addPairedShortcode("momentify", (content) => {
-      if (typeof content == 'string') return moment(new Date(content)).fromNow();
-      else {
-        moment(new Date(content)).fromNow();
-        return content = parseInt(content);
-      }
+      return moment(new Date(content)).fromNow();
+    });
+    
+    eleventyConfig.addPairedShortcode("momentifyUnix", (content) => {
+      content = parseFloat(content);
+      return moment(content).utc().fromNow();
     });
     
     eleventyConfig.addPairedShortcode("academicPeriod", (content) => {

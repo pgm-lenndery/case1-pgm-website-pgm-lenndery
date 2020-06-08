@@ -94,7 +94,7 @@ permalink: index.html
                         <li class="glide__slide box-r">
                             <a href="{{ '/nieuws' | url }}/{{ post.title | slug }}" class="card">
                                 <div class="card-header py-5 container-fluid">
-                                    <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ post.createdAt }}{% endmomentify %}</p>
+                                    <p class="text-modern small text-color-grey mb-1">{% momentifyUnix %}{{ post.createdAt }}{% endmomentifyUnix %}</p>
                                     <h3 class="font-rhode mb-0 balance-text">{{ post.title }}</h3>
                                 </div>
                                 <div class="card-img filter-purple-rain filter-hover-none">
@@ -182,7 +182,7 @@ permalink: index.html
     <div class="container-fluid box-y box-lazy box-offset-b" data-lazy-animation="fadeInUp">
         <div class="row">
             <div class="col-12 col-md-6 mb-5 mb-xl-0 pt-6 py-lg-6 box-md-r">
-                <h3 class="font-rhode">opleidingsverantwoordelijke</h3>
+                <h3 class="font-rhode">Verantwoordelijke curriculum</h3>
                 <h5 class="text-modern">Olivier Parent</h5>
                 <a href="mailto:olivier.parent@arteveldehs.be" class="d-block btn-arrow small mb-5">olivier.parent@arteveldehs.be</a>
                 
