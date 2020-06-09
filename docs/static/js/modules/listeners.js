@@ -30,7 +30,7 @@ export const listeners = {
                 homeNav = event.target.closest('[data-label="homeNav"] .navbar-label'),
                 filterCasesHighlighted = event.target.closest('[data-label="casesHighlight"] [data-label="filterCases"] input[name="type"]'),
                 filterCases = event.target.closest('[data-label="filterAllCases"] input[name="type"]'),
-                internalLink = event.target.closest(`a`);
+                anker = event.target.closest(`a`);
 
             const siteURL = window.location.origin;
 
@@ -88,10 +88,9 @@ export const listeners = {
                 // modalControl.openTab({sesamName}) // replace functions above
             }
             
-            if (internalLink != null) {
-                status.log(event)
+            if (anker != null) {
                 event.preventDefault();
-                routingControl.openClickedAnker(internalLink);
+                routingControl.openClickedAnker(anker);
             };
         })
         

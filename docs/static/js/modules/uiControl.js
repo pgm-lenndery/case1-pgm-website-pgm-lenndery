@@ -110,8 +110,9 @@ export const uiControl = {
         
         // if value is all, show all cards, else only append cards that match value
         this.casesHighlightCards.forEach(i => {
+            const filterElement = i.querySelector('[data-filter]');
             if (value == 'all') salvattore.appendElements(site.casesHighlight, [i])
-            else if (i.dataset.filter.includes(value)) salvattore.appendElements(site.casesHighlight, [i]);
+            else if (filterElement.dataset.filter.includes(value)) salvattore.appendElements(site.casesHighlight, [i]);
         });
     },
     
