@@ -126,9 +126,6 @@ export const listeners = {
         window.addEventListener('resize', (event) => {
             console.log('resize')
             uiControl.salvattoreInit();
-            // uiControl.salvattoreGrids.forEach(i => {
-            //     salvattore.recreateColumns(i);
-            // })
         });
     }
 };
