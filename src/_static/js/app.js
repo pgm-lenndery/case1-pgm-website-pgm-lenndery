@@ -157,21 +157,13 @@ export const site = {
         // source: https://medium.com/@filipvitas/lazy-load-images-with-zero-javascript-2c5bcb691274
         
         let lazyBoxes = document.querySelectorAll('.box-lazy');
-
-        const interactSettings = {
-            threshold: 0.1
-        }
-
+        const interactSettings = {threshold: 0.1}
         const onIntersection = (boxes) => {
             boxes.forEach(box => {
                 if (box.isIntersecting) {
                     observer.unobserve(box.target);
-                    
-                    let animation;
-                    box.target.dataset.lazyAnimation != undefined ? animation = box.target.dataset.lazyAnimation : animation = 'zoomIn';
+                    const animation = box.target.dataset.lazyAnimation || 'zoomIn';
                     box.target.classList.add('box-lazy-ready', animation);
-                    // box.target.src = box.target.dataset.src;
-                    // box.target.onload = () => box.target.classList.add('loaded');
                 }
             })
         }
