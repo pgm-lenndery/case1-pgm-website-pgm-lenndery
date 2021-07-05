@@ -1,0 +1,56 @@
+---
+layout: default
+permalink: "/{{ page.filePathStem | remove: '_pages' | replace: ' ', '-' }}/index.html"
+---
+<main>
+    <section data-label="pageHeader" class="box-b {% if thumbnail %}show-thumb{% endif %}">
+        <div class="modal-header container-fluid py-5">
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <h1 class="font-rhode modal-title display-4">{{ title }}</h1>
+                </div>
+                <div class="col-12">
+                    <p class="mb-0 text-modern">{{ subtitle }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-thumb filter-purple-rain">
+            <img class="modal-thumb-img" src="{{ thumbnail }}" alt="">
+        </div>
+    </section>
+    <section id="mainContent">
+        <div class="container-fluid mt-8 mb-5">
+            <div class="row gutter-big flex-column-reverse flex-lg-row">
+                <div class="col-12 mb-4 {% unless precontent %}d-none{% endunless %}">
+                    {{ precontent }}
+                </div>
+                <div class="col-12 col-lg-8">
+                    {{ content }}
+                </div>
+                <div class="col-12 col-lg-4 mb-5 mb-lg-0 {% if pageindex == false %}d-none{% endif %}" id="pageIndex" class="pageindex">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="loader">
+    </div>
+    <style>
+        #loader {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            /* width: 100vw;
+            height: 100vh; */
+            background-color: black;
+            z-index: 7;
+        }
+        
+        .modal #loader {
+            display: none;
+        }
+    </style>
+</main>
+{% include modal-page %}

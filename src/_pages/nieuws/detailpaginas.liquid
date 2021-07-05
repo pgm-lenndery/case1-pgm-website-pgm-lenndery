@@ -1,0 +1,39 @@
+---
+layout: page-empty
+title: Nieuws
+subtitle: Een korte beschrijving
+pageindex: false
+pagination:
+    data: posts
+    size: 1
+    alias: post
+permalink: "nieuws/{{ post.title | slug }}/index.html"
+---
+
+<section>
+    <div class="modal-content-header box-b">
+        <img height="100%" width="100%" src="{{ post.thumbnailUrl }}" alt="">
+    </div>
+    <div class="modal-content-body">
+        <div class="container-fluid py-7">
+            <div class="row">
+                <div class="col-12">
+                    <p class="text-modern small text-color-grey mb-1">{% momentifyUnix %}{{ post.createdAt }}{% endmomentifyUnix%}</p>
+                    <h2 class="modal-title font-rhode mb-4 balance-text">{{ post.title }}</h2>
+                    <div class="text-box balance-text">
+                        <p>{{ post.synopsis }}</p>
+                    </div>
+                    <hr class="mt-5 mb-4">
+                </div>
+                <div class="col-12 col-md-10 col-lg-8">
+                    <div class="text-box">
+                        <p>{{ post.body }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-none" id="pageIndex" class="pageindex sesam sesam-hidden" data-sesam-target="pageIndex">
+                    
+    </div>
+</section>

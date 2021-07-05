@@ -1,0 +1,35 @@
+// bootstrap
+@import "./bootstrap/functions";
+@import "./bootstrap/variables";
+@import "./bootstrap/mixins";
+@import "./bootstrap/reboot";
+@import "./bootstrap/type";
+@import "./bootstrap/code";
+@import "./bootstrap/grid";
+@import "./bootstrap/utilities";
+
+// plugins
+@import 'salvatore';
+@import './plugins/flexy-cards';
+@import './plugins/glide.core';
+@import './plugins/glide.theme';
+
+// reusable
+@import 'variables';
+@import 'mixins';
+@import 'properties';
+
+// general
+@import 'typography';
+@import 'base';
+@import 'header';
+@import 'components';
+@import 'forms';
+
+// layouts
+@import 'layouts/page';
+
+// pages
+@import 'pages/home';
+@import 'pages/students';
+@import 'pages/404';

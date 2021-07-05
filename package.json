@@ -1,0 +1,38 @@
+{
+  "name": "case1-pgm-website-pgm-lenndery",
+  "version": "1.0.0",
+  "description": "case1-pgm-website-pgm-lenndery created by GitHub Classroom",
+  "main": "index.js",
+  "scripts": {
+    "baas:edit": "code ../01-case-1-baas",
+    "baas:update": "cd ../01-case-1-baas && git pull & git add . && git commit -m 'Updated assets' && git push",
+    "baas:open": "open '../01-case-1-baas'",
+    "baas:browse": "open 'https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/'",
+    "11ty:build": "npx @11ty/eleventy",
+    "11ty:dev": "npx @11ty/eleventy --serve --quiet",
+    "sass:build": "sass --style=compressed --no-source-map src/_sass:src/_static/css",
+    "sass:dev": "sass --watch --style=compressed --no-source-map src/_sass:src/_static/css",
+    "build": "npm run 11ty:build && npm run sass:build",
+    "dev": "npm run 11ty:dev & npm run sass:dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pgmgent-1920-students/case1-pgm-website-pgm-lenndery.git"
+  },
+  "author": "Lennert De Ryck",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pgmgent-1920-students/case1-pgm-website-pgm-lenndery/issues"
+  },
+  "homepage": "https://github.com/pgmgent-1920-students/case1-pgm-website-pgm-lenndery#readme",
+  "dependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "moment": "^2.26.0",
+    "node-fetch": "^2.6.0",
+    "popper.js": "^1.16.1",
+    "sass": "^1.26.5"
+  }
+}

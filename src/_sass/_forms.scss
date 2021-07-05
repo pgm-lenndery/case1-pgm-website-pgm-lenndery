@@ -1,0 +1,58 @@
+.form {
+    &-group {
+        position: relative;
+        
+        &::after {
+            content: ' ';
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            right: 100%;
+            height: 2px;
+            background-color: $purple500;
+            
+            @include transition;
+        }
+        
+        &:focus-within {
+            &::after {right: 0%;}
+            @include transition;
+        }
+    }
+    
+    input#{&}-item {
+        display: block;
+        background-color: transparent;
+        border: none;
+        color: rgb(187, 187, 187);
+        font-size: 3rem;
+        @include font-rhode;
+        
+        &::placeholder {
+            color: rgb(53, 53, 53);
+            @include font-rhode;
+        }
+        
+        @include no-focus;
+    }
+    
+    textarea#{&}-item {
+        display: block;
+        width: 100%;
+        background-color: transparent;
+        border: none;
+        font-size: 1.4rem;
+        color: rgb(187, 187, 187);
+        
+        &::placeholder {
+            color: rgb(53, 53, 53);
+            @include font-rhode;
+        }
+        
+        @include no-focus;
+    }
+    
+    // hr {
+    //     border-color: $purple500;
+    // }
+}

@@ -1,0 +1,14 @@
+.header {
+    * {
+        @include transition;
+        --transition-time: .3s;
+    }
+    
+    &-brand {
+        filter: grayscale(0);
+    }
+    
+    &:hover &-brand {
+        filter: grayscale(0);
+    }
+}

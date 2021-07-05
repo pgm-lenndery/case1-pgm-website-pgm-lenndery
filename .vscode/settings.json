@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "*.njk": "html",
+        "*.liquid": "html"
+    },
+    "files.exclude": {
+        "**/.git": true,
+        "**/.github": true,
+        "**/.vscode": true
+    },
+}

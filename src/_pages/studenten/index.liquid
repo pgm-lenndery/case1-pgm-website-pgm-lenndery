@@ -1,0 +1,56 @@
+---
+layout: page-wide
+title: Studenten
+subtitle: Deze studenten kozen voor onze richting
+pageindex: false
+permalink: "/studenten/index.html"
+---
+{% capture generationsArray %}{% for student in students %}{{ student.fields.generation | join: '-' }},{% endfor %}{% endcapture %}
+{% assign generations = {{ generationsArray | strip | split: ","  | uniq }} %}
+
+<section data-label="allStudents">
+    <div class="container-fluid filter-section box-y box-offset-t" data-label="filterAllStudents">
+        <div class="filter-section-title box-r py-3 pr-3">
+            <p class="text-modern mb-0 text-color-white">zoek op jaar</p>
+        </div>
+        <div class="filter-section-options pl-4">
+            {% for generation in generations %}
+                {% if generation != '' %}
+                    <div class="options-el">
+                        <a href="#generation-{{ generation }}" class="font-rhode text-color-white">{{ generation }}</a>
+                    </div>
+                    <div class="word-joint">・</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="container-fluid mt-5">
+        {% for generation in generations %}
+            {% if generation != '' %}
+                <p class="mb-0 text-modern small" id="generation-{{ generation }}">academiejaar</p>
+                <h3 class="mt-0 mb-4">{{ generation }}</h3>
+                <div class="flex-grid-wrapper mb-6">
+                    <div class="flex-grid">
+                        {% for student in students %}
+                            {% assign gen = student.fields.generation | join: '-' %}
+                            {% if gen == generation %}
+                                <a href="{{ page.url | url }}{{ student.fields.generation | join: '-' }}-{{ student.url }}" class="card box-all position-relative flex-grid-item box-lazy" data-filter="">
+                                    <div class="card-header p-4">
+                                        <p class="card-title font-rhode my-0">{{ student.fields.name_first }}</p>
+                                        <p class="text-modern small mb-0">{{ student.fields.name_last }}</p>
+                                    </div>
+                                    <div class="card-body w-100">
+                                        <div class="filter-purple-rain">
+                                            <img class="w-100 card-thumbnail" src="{{ student.fields.img[0].thumbnails.large.url }}" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>

@@ -1,0 +1,121 @@
+.hero {
+    position: relative;
+    
+    &-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    &-background-wrapper {
+        position: absolute;
+        @include position-spread;
+        overflow: hidden;
+        
+        img {
+            position: relative;
+            top: 47%;
+            left: -49%;
+            width: 990px;
+            opacity: .4;
+            user-select: none;
+            z-index: 0;
+        }
+    }
+}
+
+[data-label="homeNav"] {
+    background-color: black;
+    z-index: 12;
+    overflow-x: scroll;
+    min-width: fit-content;
+    
+    .navbar-nav {
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+        transition: all .3s ease;
+        width: fit-content;
+    }
+    
+    .navbar-label {
+        padding: .7rem .8rem;
+    }
+
+    .nav-item {
+        width: 100%;
+        padding: .7rem .8rem;
+        white-space: nowrap;
+        
+        .word-joint {
+            margin: 0 -9px;
+        }
+    }
+}
+
+[data-section-href="contact"] {
+    .form input.form-item {
+        max-width: 100vw;
+        max-width: 100%;
+        font-size: calc(1.575rem + 1vw);
+    }
+}
+
+[data-label="postsHighlight"] {
+    .glide__arrow {
+        position: relative;
+        padding: 0;
+        top: unset;
+        left: unset;
+        right: unset;
+        border: none;
+        box-shadow: none;
+        transform: none;
+        
+        svg {
+            --d: 40px;
+            width: var(--d);
+            height: var(--d);
+            stroke-width: 1px;
+        }
+    }
+}
+
+[data-label="postsHighlight"] {
+    * {@include transition;}
+    
+    .collection {
+        .glide__slide .filter-hover-none::before{@include transition;}
+        .glide__slide:hover .filter-hover-none {
+            img {
+                filter: none;
+                @include transition;
+            }
+            
+            &::before {
+                opacity: 0;
+                @include transition;
+            }
+        }
+        
+        .card {
+            height: 350px;
+        }
+    }
+}
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+    .hero-background-wrapper img {
+        position: relative;
+        top: 5%;
+        left: 60%;
+        opacity: .4;
+        z-index: 0;
+        width: 990px;
+    }
+}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}

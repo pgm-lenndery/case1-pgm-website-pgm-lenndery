@@ -1,0 +1,141 @@
+* {
+    @include font-poppins;
+}
+
+h1 {
+    font-size: 1.8rem;
+    
+    & +  h4 {
+        line-height: 130%;
+        font-size: 1.2;
+    }
+}
+
+h3, h4 {
+    line-height: 2.5rem;
+}
+
+@for $i from 1 through 6 {
+    h#{$i}:not(.hyphens-false) {
+        hyphens: auto;
+    }
+}
+
+
+p.text-modern {
+    font-weight: 600;
+}
+
+.medium {
+    font-size: 90% !important;
+}
+
+small, .small {
+    font-size: 80% !important;
+    
+    &.text-modern {
+        --letter-spacing: 3px;
+    }
+}
+
+.balance-text {
+    text-wrap: balance;  /* Apply (proposed) CSS style */
+}
+
+#mainContent:not(.contentstyle-ignore), .text-box {
+    @for $i from 1 through 4 {
+        h#{$i} {
+            @include font-rhode;
+            // margin-bottom: 1rem;
+            margin-bottom: 0rem;
+        }
+    }
+    @for $i from 5 through 6 {
+        h#{$i} {
+            // @include text-modern;
+            font-weight: 400;
+            letter-spacing: 2px;
+            // margin-bottom: 1.5rem;
+            margin-bottom: 0rem;
+        }
+    }
+    
+    *:first-child {margin-top: 0;}
+
+    h3 + p {margin-top: 1rem;}
+    h3 + h4 {margin-top: 1rem;}
+    
+    h4 {
+        line-height: 150%;
+        font-size: 1.2rem;
+    }
+    
+    h4 + p {margin-top: .5rem;}
+    h5 + p {margin-top: .5rem;}
+    
+    p, ul {
+        color: #bdbdbd;
+        line-height: 150%;
+        
+        a {display: inline;}
+    }
+    
+    p + h3 {margin-top: 2.5rem;}
+    p + h4 {margin-top: 1.5rem;}
+    p img {margin: 2rem 0;}
+    
+    ul {padding-left: 20px;}
+    
+    a {
+        color: $purple400;
+        text-decoration: underline;
+        
+        svg.feather {stroke-width: 2px;}
+        
+        &.btn-arrow-link, &.btn-arrow {
+            font-weight: 500;
+            color: white;
+            text-decoration: none;
+        }
+    }
+    
+    img {width: 100%;}
+    
+    pre {color: $purple300;}
+    
+    blockquote {
+        margin-bottom: 2rem;
+        padding-left: 1rem;
+        border-left: 2px solid $purple300;
+        
+        * {
+            font-size: 0.9rem;
+            color: $purple300;
+            @include font-rhode;
+        }        
+        *:last-child {margin-bottom: 0;}
+    }
+}
+
+@media (min-width: 499px) {
+    h1 {
+        font-size: calc(1rem + 3.9vw);
+    }
+}
+
+@media (min-width: 576px) {}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: calc(1.2rem + 3.9vw);
+    }
+}
+
+@media (min-width: 992px) {
+    h1 {
+        font-size: calc(1.575rem + 3.9vw);
+    }
+}
+
+@media (min-width: 1200px) {}
+

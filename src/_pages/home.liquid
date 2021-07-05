@@ -1,0 +1,274 @@
+---
+title: home
+layout: no-modal
+permalink: index.html
+---
+<section class="box-lazy hero" data-label="hero" data-lazy-animation="fadeInUp" data-section-href="">
+    <div class="container-fluid py-8 hero-content">
+        <h1 class="font-rhode mb-4 hyphens-false">
+            graduaat<br>programmeren<br>front end development
+        </h1>
+        <h4 class="text-modern font-weight-normal">leer knappe websites en apps maken</h4>
+        <a href="{{ '/onze-opleiding/opleidingsvideo' | url }}" class="btn-arrow">bekijk onze video</a>
+    </div>
+    <div class="hero-background-wrapper">
+        <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/pgm_branding/logos/logo_pgm_klein_wit.svg" alt="">
+    </div>
+</section>
+
+<section data-section-href="onze-opleiding">
+    <div class="container-fluid box-lazy animate-delay-04 box-y header-section" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col-12 col-lg">
+                <h2 class="font-rhode display-4">
+                    onze<br>opleiding
+                </h2>
+            </div>
+            <a href="{{ '/onze-opleiding' | url }}" class="col-12 col-lg-4 cta-section-cta">
+                ontdek onze <br>opleiding
+                <i data-feather="arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="container-fluid box-lazy py-6" data-lazy-animation="fadeInUp">
+        <div class="row gutter-big">
+            <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0 box-md-r text-center">
+                <i data-feather="briefcase" class="feather-size-big mb-3"></i>
+                <h3 class="font-rhode">120 studiepunten</h3>
+                <h5>verspreid over 2 academiejaren</h5>
+                <a href="{{ '/onze-opleiding/curriculum' | url }}" class="btn-arrow">curriculum</a>
+            </div>
+            <div class="col-12 col-md-6 col-xl-4 mb-5 mb-xl-0 text-center">
+                <i data-feather="tool" class="feather-size-big mb-3"></i>
+                <h3 class="font-rhode">Veel praktijk</h3>
+                <h5>Je krijgt 1200 uren praktijk waaronder echte cases en werkplekleren</h5>
+                <a href="{{ '/onze-opleiding/werkplekleren' | url }}" class="btn-arrow">kom meer te weten</a>
+            </div>
+            <div class="col-12 col-xl-4 box-xl-l text-center">
+                <i data-feather="award" class="feather-size-big mb-3"></i>
+                <h3 class="font-rhode">Knelpuntberoep</h3>
+                <h5>Een door VDAB erkent knelpunt beroep en veel werkgelegenheid</h5>
+                <a href="{{ '/onze-opleiding/waarom' | url }}" class="btn-arrow">lees meer</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-label="studentsHighlight" data-section-href="studenten">
+    <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col-12 col-lg">
+                <h2 class="font-rhode display-4">
+                    onze<br>studenten
+                </h2>
+            </div>
+            <a href="{{ '/studenten' | url }}" class="col-12 col-lg-4 cta-section-cta">
+                ontdek ze <br>allemaal
+                <i data-feather="arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="collection collection-horizontal py-5">
+    </div>
+</section>
+
+<section data-label="postsHighlight" data-section-href="blog">
+    <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col-12 col-lg">
+                <h2 class="font-rhode display-4">
+                    blog & <br>nieuws
+                </h2>
+            </div>
+            <a href="{{ '/nieuws' | url }}" class="col-12 col-lg-4 cta-section-cta">
+                lees <br>meer
+                <i data-feather="arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="collection collection-horizontal collection-items-wide pt-5 box-lazy" data-lazy-animation="fadeInUp">
+        <div class="glide glide-posts">
+            <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides mb-0">
+                    {% for post in posts %}
+                        <li class="glide__slide box-r">
+                            <a href="{{ '/nieuws' | url }}/{{ post.title | slug }}" class="card">
+                                <div class="card-header py-5 container-fluid">
+                                    <p class="text-modern small text-color-grey mb-1">{% momentifyUnix %}{{ post.createdAt }}{% endmomentifyUnix %}</p>
+                                    <h3 class="font-rhode mb-0 balance-text">{{ post.title }}</h3>
+                                </div>
+                                <div class="card-img filter-purple-rain filter-hover-none">
+                                    <img src="{{ post.thumbnailUrl }}" alt="">
+                                </div>
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="glide__arrows container-fluid py-3 d-flex justify-content-between" data-glide-el="controls">
+                <button class="glide__arrow glide__arrow--left ml-2" data-glide-dir="<"><i data-feather="arrow-left"></i><span class="text-modern ml-0 ml-md-3 d-none d-md-inline">vorige</span></button>
+                <button class="glide__arrow glide__arrow--right mr-2" data-glide-dir=">"><span class="text-modern text-color-grey mr-0 mr-md-3 d-none d-md-inline">volgende</span><i data-feather="arrow-right"></i></button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section data-label="casesHighlight" class="mb-8 cases-preview">
+    <div class="box-lazy" data-lazy-animation="fadeInUp">
+        <div class="container-fluid box-lazy box-y box-offset-t header-section" data-lazy-animation="fadeInUp">
+            <div class="row">
+                <div class="col-12 col-lg">
+                    <h2 class="font-rhode display-4">
+                        cases &<br>opdrachten
+                    </h2>
+                </div>
+                <a href="{{ '/cases' | url }}" class="col-12 col-lg-4 cta-section-cta">
+                    ontdek ze <br>allemaal
+                    <i data-feather="arrow-right"></i>
+                </a>
+            </div>
+        </div>
+        <div class="container-fluid filter-section box-y box-offset-t" data-label="filterCases" data-section-href="cases">
+            <div class="filter-section-title box-r py-3 pr-3">
+                <p class="text-modern mb-0">filter cases</p>
+            </div>
+            <div class="filter-section-options pl-4"></div>
+        </div> 
+    </div>
+    <div class="container-fluid salvatore salvatore-grid salvatore-grid-1c salvatore-grid-lg-2c salvatore-grid-xl-3c" data-columns>
+        {% for case in cases %}
+            {% if case.higlighted == true %}
+                <a  href="{{ '/cases' | url }}/{{ case.title | slug }}" class="salvatore-grid-item box-lazy animated lightspeed card mt-5 mt-md-6">
+                    <div class="box-all" data-filter="{{ case.tags | join: ',' | downcase }},{{ case.technologie | join: ',' | downcase }},{{ case.course | downcase }}">
+                        <div class="card-header box-b d-flex align-items-center justify-content-between px-3">
+                            <div class="py-3">
+                                <p class="text-modern small text-color-grey mb-1">{% momentify %}{{ case.date }}{% endmomentify %}</p>
+                                <p class="mb-0 text-color-white font-rhode "><span class="word-joint d-none">・</span>{{ case.course }}</p>
+                            </div>
+                            <i data-feather="arrow-right"></i>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-body-overlay px-4">
+                                <h2 class="card-title font-rhode hyphens-false">{{ case.title }}</h2>
+                                <p>
+                                    {{ case.about }}
+                                </p>
+                            </div>
+                            <div class="filter-purple-rain">
+                                <img class="w-100" src="{{ case.img.tumbnail }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<section data-section-href="contact">
+    <div class="container-fluid box-lazy box-offset-b box-y header-section" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col-12 col-lg">
+                <h2 class="font-rhode display-4">
+                    contact
+                </h2>
+            </div>
+            <a class="col-12 col-lg-4 cta-section-cta" href="{{ '/contact/bedrijven' | url }}">
+                voor <br>bedrijven
+                <i data-feather="arrow-right"></i>
+            </a>
+        </div>
+    </div>
+    <div class="container-fluid box-y box-lazy box-offset-b" data-lazy-animation="fadeInUp">
+        <div class="row">
+            <div class="col-12 col-md-6 mb-5 mb-xl-0 pt-6 py-lg-6 box-md-r">
+                <h3 class="font-rhode">Verantwoordelijke curriculum</h3>
+                <h5 class="text-modern">Olivier Parent</h5>
+                <a href="mailto:olivier.parent@arteveldehs.be" class="d-block btn-arrow small mb-5">olivier.parent@arteveldehs.be</a>
+                
+                <h3 class="font-rhode">trajectbeheer</h3>
+                <h5 class="text-modern">Maaike Callens</h5>
+                <a href="mailto:maaike.callens@arteveldehs.be" class="d-block btn-arrow small mb-5">maaike.callens@arteveldehs.be</a>
+                
+                <h3 class="font-rhode">werkplekleren</h3>
+                <h5 class="text-modern">Philippe De Pauw - Waterschoot</h5>
+                <a href="mailto:philippe.depauw@arteveldehs.be" class="d-block btn-arrow small">philippe.depauw@arteveldehs.be</a>
+            </div>
+            <div class="col d-md-none">
+                <hr>
+            </div>
+            <div class="col-12 col-md-6 mb-5 mb-xl-0 pt-6 py-lg-6 pl-lg-6">
+                <h3 class="font-rhode mb-2">contactformulier</h3>
+                <form data-label="contactMain" class="form">
+                    <div class="form-group">
+                        <input class="form-item" type="text" required name="" id="contactMain_name" placeholder="naam" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-item" type="email" required name="" id="contactMain_email" placeholder="email" autocomplete="off">
+                    </div>
+                    <div class="form-group">
+                        <input class="form-item" type="text" required name="" id="contactMain_subject" placeholder="onderwerp" autocomplete="off">
+                    </div>
+                    <div class="form-group mt-4">
+                        <textarea class="form-item" name="" id="contactMain_msg" rows="2" placeholder="bericht"></textarea>
+                    </div>
+                    <button class="btn-arrow d-block mx-auto mt-4" type="submit">versturen</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- modals -->
+<div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="project">
+    <div class="modal-wrapper">
+        <div class="modal-controls">
+            <div data-action="modalClose"><i data-feather="x"></i></div>
+            <div data-action="modalHide"><i data-feather="minus"></i></div>
+        </div>
+        <div class="modal-content box-all">
+            <div class="modal-content-wrapper">
+                <div class="modal-content-header d-none">
+                    <img height="100%" width="100%" src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/cases/quiz/thumb.jpg" alt="">
+                </div>
+                <div class="modal-content-body">
+                    <button class="btn-arrow" data-sesam-trigger="project">meer weten?</button>
+                    <div class="row p-7">
+                        <div class="col-12 col-md-8">
+                            <h2 class="modal-title font-rhode mb-5">triviaquiz met opendb api</h2>
+                            <p class="text-modern">over deze opdracht</p>
+                            <p>Dit was een examenopdracht waarbij een quizapplicatie ontwikkeld moest worden.</p>
+                            <p>Het was de bedoeling dat de gebruiker 10 vragen beantwoord en nadien een score te zien krijgt. Deze score moest bijgehouden worden, ook wanneer de gebruiker de browser afsluit.</p>
+                            <p>Als laatste moest het ook mogelijk zijn om voorkeuren op te geven zoals de moeilijkheidsgraad en de categorie.</p>
+                        </div>
+                    </div>
+                    <div class="bg-color-white text-color-black font-rhode px-7 py-2">
+                        webpack<span class="word-joint">・</span>babel<span class="word-joint">・</span>sass<span class="word-joint">・</span>github<span class="word-joint">・</span>api’s
+                    </div>
+                    <div class="row mx-0 box-b">
+                        <div class="col-auto px-7 py-7">
+                            <p class="text-modern">vak</p>
+                            <p>web programming</p>
+                            <p class="text-modern">academiejaar</p>
+                            <p>2019 - 2020</p>
+                        </div>
+                        <div class="col-auto pl-0 pr-7 py-7">
+                            <p class="text-modern">technologieën</p>
+                            <p>html, sass, javascript</p>
+                            <p class="text-modern">studenten</p>
+                            <p>Jaimy Van Gyseghem</p>
+                        </div>
+                        <div class="d-none d-lg-block col-3 pr-0 ml-auto">
+                            <div class="box-l h-100">
+                                <div class="filter-purple-rain position-relative">
+                                    <img class="h-100" style="max-width: 100%; max-height: 300px;" src="https://dl.airtable.com/.attachmentThumbnails/9e0a4860a1d429c55a0957a6a5cea48b/8a322593" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-breadcrumbs"></div>
+            </div>
+        </div>
+    </div>
+</div>

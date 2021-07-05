@@ -1,0 +1,76 @@
+:root {
+    --transition-prop: all;
+    --transition-time: .3s;
+    --transition-bezier: ease;
+    --letter-spacing: 7px;
+    --object-position: center;
+}
+
+@mixin font-poppins {
+    font-family: 'Poppins', sans-serif;
+}
+
+@mixin font-rhode {
+    font-family: rhode-wide,sans-serif;
+    // 500, 600, 700, 800
+}
+
+@mixin transition {
+    transition: var(--transition-prop) var(--transition-time) var(--transition-bezier);
+}
+
+@mixin text-modern {
+    @include font-poppins;
+    letter-spacing: var(--letter-spacing);
+    text-transform: uppercase;
+}
+
+@mixin object-fit {
+    object-fit: cover;
+    object-position: var(--object-position);
+}
+
+@mixin position-spread {
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+}
+
+@mixin no-focus {
+    &:focus, &:focus-within {
+        border: none !important;
+        outline: none !important;
+        box-shadow: none !important;
+    }
+}
+
+@mixin box($sides) {
+    border-width: 0px;
+    border-style: solid;
+    border-color: white;
+    
+    @if $sides == 'a' or  $sides == 'all' {
+        border-width: 2px !important;
+    }
+    
+    @if $sides == 'n' or  $sides == 'null' or $sides == 0 {
+        border-width: 0px !important;
+    }
+  
+    @if $sides == 't' {border-top-width: 2px !important;}
+    @if $sides == 'b' {border-bottom-width: 2px !important;}
+    @if $sides == 'l' {border-left-width: 2px !important;}
+    @if $sides == 'r' {border-right-width: 2px !important;}
+    
+    @if $sides == 'x' {
+        border-left-width: 2px !important;
+        border-right-width: 2px !important;
+    }
+    
+    @if $sides == 'y' {
+        border-top-width: 2px !important;
+        border-bottom-width: 2px !important;
+    }
+}
+

@@ -1,0 +1,69 @@
+---
+layout: page-empty
+title: Case
+subtitle: Deze studenten kozen voor onze richting
+pageindex: false
+pagination:
+    data: cases
+    size: 1
+    alias: case
+permalink: "cases/{{ case.title | slug }}/index.html"
+---
+
+<section>
+    <div class="modal-content-header box-b">
+        <img height="100%" width="100%" src="{{ case.img.tumbnail }}" alt="">
+    </div>
+    <div class="modal-content-body">
+        <div class="container-fluid py-7">
+            <div class="row">
+                <div class="col-12"><h2 class="modal-title font-rhode mb-5">{{ case.title }}</h2></div>
+                <div class="col-12 col-md-6 col-lg-8">
+                    <p class="text-modern">over deze opdracht</p>
+                    <div class="text-box">
+                        <p>{{ case.about }}</p>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae at accusamus sed impedit veritatis, dolorem quam. Distinctio, aliquam.</p>
+                        <p>Saepe placeat fugit expedita delectus ea distinctio modi assumenda molestiae debitis, ut soluta eveniet enim perferendis nisi voluptatum ipsum aspernatur accusantium quaerat repudiandae iste quas dignissimos aperiam iusto. Quae, laborum ullam earum nulla iure corporis ex optio quos? Reiciendis eos ex facilis?</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <p class="text-modern small text-color-grey mb-0">vak</p>
+                    <p>{{ case.course }}</p>
+                    
+                    <p class="text-modern small text-color-grey mb-0">academiejaar</p>
+                    <p>{% academicPeriod %}{{ case.date }}{% endacademicPeriod %}</p>
+                    
+                    <p class="text-modern small text-color-grey mb-0">technologieën</p>
+                    <p>{{case.technologie | join:', '}}</p>
+                    
+                    <p class="text-modern small text-color-grey mb-0">studenten</p>
+                    <p>{{ case.students | join:', ' }}</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-color-white text-color-black font-rhode container-fluid py-2">
+            {{ case.tags | join: '<span class="word-joint">・</span>' }}
+        </div>
+        <div class="">
+            <div class="modal-gallery glide mt-5">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides box-offset-l">
+                        {% for img in case.img.gallery %}
+                            <li class="glide__slide container-fluid pl-0">
+                                <img class="box-all" src="{{ img.url }}" width="100%" alt="afbeelding van project">
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="glide__arrows container-fluid pl-0 py-2 d-flex justify-content-between" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left ml-2" data-glide-dir="<"><i data-feather="arrow-left"></i></button>
+                    <button class="glide__arrow glide__arrow--right mr-2" data-glide-dir=">"><i data-feather="arrow-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="d-none" id="pageIndex" class="pageindex sesam sesam-hidden" data-sesam-target="pageIndex">
+                    
+    </div>
+</section>

@@ -1,0 +1,124 @@
+.font-poppins {
+    @include font-poppins;
+}
+
+.font-rhode {
+    @include font-rhode;
+    line-height: 108%;
+    text-transform: lowercase;
+}
+
+.text-modern {
+    @include text-modern;
+    
+    a svg {
+        margin: 0 -10px 0 0;
+        stroke: $purple500;
+    }
+}
+
+.word-joint {
+    margin: 0px 21px;
+}
+
+.filter {
+    &-purple-rain {
+        position: relative;
+        display: block;
+        @include transition;
+
+        &::before {
+            content: ' ';
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: $purple500;
+            mix-blend-mode: multiply;
+            z-index: 1;
+            @include transition;
+        }
+        
+        img {
+            filter: grayscale(1);
+            @include transition;
+        }
+    }
+    
+    &-black {
+        position: relative;
+        display: block;
+
+        &::before {
+            content: ' ';
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.342);
+            mix-blend-mode: multiply;
+            z-index: 1;
+        }
+    }
+    
+    &-hover-none:hover [class*="filter-"], &-hover-none:hover .filter-purple-rain {
+        @include transition;
+        
+        img {
+            filter: none;
+            @include transition;
+        }
+        
+        &::before {
+            opacity: 0;
+            @include transition;
+        }
+    }
+}
+
+.animate, .animated {
+    &.fastest {--animation-duration: .2s;}
+    &.lightspeed {--animation-duration: .1s;}
+    
+    &-delay {
+        &-02 {animation-delay: .2s;}
+        &-04 {animation-delay: .4s;}
+        &-06 {animation-delay: .6s;}
+        &-08 {animation-delay: .8s;}
+        &-1 {animation-delay: 1s;}
+        &-2 {animation-delay: 2s;}
+    }
+}
+
+.box-lazy:not(.box-lazy-ready) {
+    // visibility: hidden;
+    opacity: 0;
+}
+
+.bg-color {
+    &-purple {background-color: $purple500 !important;}
+    &-black {background-color: black !important;}
+    &-white {background-color: white !important;}
+}
+
+.text-color {
+    &-grey {color: $textBody !important;}
+    &-black {color: black !important;}
+    &-white {color: white !important;}
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+@for $i from 0 through 12 {
+    .level-#{$i} {
+        z-index: #{$i};
+    }
+}

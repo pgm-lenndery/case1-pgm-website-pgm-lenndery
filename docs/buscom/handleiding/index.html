@@ -1,0 +1,343 @@
+<!-- http: //pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/ -->
+
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pgm.gent | Graduaat Programmeren Arteveldehogeschool</title>
+
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type='image/png' href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/favicon_2.png"/>
+    <!-- <meta name="theme-color" content="#662B32">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="#662B32">
+    -->
+    
+    <!-- seo -->
+    <meta name="robots" content="noindex, nofollow, nosnippet">
+    <meta name="description" content="pgm.gent | Graduaat Programmeren Arteveldehogeschool">
+    <meta name="keywords" content="graduaat, programmeren, pgm, gent, artevelde, arteveldehogeschool">
+    
+    <!-- open graph -->
+    <meta property="og:type" content="website"/>
+    <meta property="og:url" content="pgm.gent"/>
+    <meta property="og:title" content="pgm.gent | Graduaat Programmeren Arteveldehogeschool"/>
+    <meta property="og:image" content="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png"/>
+    
+    <!-- integrations -->
+    <!-- <script src="https://ce.lennertderyck.be/library/elements.js"></script> -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.compat.css">
+    
+    <!-- webfonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.typekit.net/wjg3qhe.css">
+    
+    <!-- local assets -->
+    <link rel="stylesheet" href="/case1-pgm-website-pgm-lenndery/static/css/main.css">
+    <!-- <link rel="stylesheet" href="./static/css/salvatore.css"> -->
+    <link rel="stylesheet" href="https://lib.lennertderyck.be/assets/min/flexy-cards.css">
+</head>
+<body data-page="Handleiding">
+    <img src="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png" alt="" id="seoBanner">
+    <div id="cursor"></div>
+    <main>
+    <section data-label="pageHeader" class="box-b ">
+        <div class="modal-header container-fluid py-5">
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    <h1 class="font-rhode modal-title display-4">Handleiding</h1>
+                </div>
+                <div class="col-12">
+                    <p class="mb-0 text-modern">Hoe deze site bewerken</p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-thumb filter-purple-rain">
+            <img class="modal-thumb-img" src="" alt="">
+        </div>
+    </section>
+    <section id="mainContent">
+        <div class="container-fluid mt-8 mb-5">
+            <div class="row gutter-big flex-column-reverse flex-lg-row">
+                <div class="col-12 mb-4 d-none">
+                    
+                </div>
+                <div class="col-12 col-lg-8">
+                    <blockquote>
+<p>Enige basiskennis van HTML, CSS en JavaScript is gewenst om deze handleiding goed te kunnen begrijpen</p>
+</blockquote>
+<h3>Eleventy</h3>
+<p>Deze site werd gebouwd op Eleventy, een &quot;Static Site Generator&quot;. Eleventy is een op JavaScript gebaseerde package die een combinatie van data en bestanden met content omvormt in webpagina's.</p>
+<h5>Basiswerking</h5>
+<p>Er worden een aantal templates aangemaakt waar er op bepaalde plaatsen aan de hand van variabelen bepaalde content zal komen. Dan heb je een aantal folders binnen je project met bestanden die deze content bevatten. In Eleventy is er heel wat keuze wat betreft het soort bestand dat je gebruikt voor je content. De meest gebruikte data-types zijn HTML, Nunjucks, Liquid, Markdown en meer.</p>
+<h5>Het &quot;builden&quot;</h5>
+<p>Bij het builden zal Eleventy desbetreffende template ophalen en het bestand met de content in &quot;mergen&quot; met het template. In sé zal Eleventy de variabelen vervangen met die content. In dat content-bestand moet je natuurlijk wel aangeven welke variabele met welke content vervangen wordt.</p>
+<p>Builden gebeurt door gebruik te maken van de ingebouwde functies in de commandoprompt of terminal:</p>
+<pre><code class="language-bash"># voor een gewone build
+$ npm run build 
+
+# om een live preview te krijgen tijdens het aanpassen en builden van de site
+$ npm run build
+</code></pre>
+<p>Je kan ook gebruik maken van de ingebouwde npm functionaliteit in Visual Studio Code om deze scripts uit te voeren.</p>
+<p>Meer over npm kan je lezen op <a href="https://www.npmjs.com/">npmjs.com</a>.</p>
+<h5>Configuratie</h5>
+<p>Het voordeel aan Eleventy is dat het heel makkelijk en uitgebreid te configureren is. Aangezien het gebruik maakt van JavaScript als basis kan je gebruiken van node packages (best te omschrijven als plug en play JavaScript-functies die andere developers ter beschikking stellen via een handig platform/systeem) en de andere vele tools die voor JavaScript beschikbaar zijn.</p>
+<p>De template-engine is ingesteld op Liquid. Liquid is een templating language voor het inladen van dynamische content. Liquid werd ontwikkeld door Shopify, een dienst om webshops op te zetten.</p>
+<p>In een .liquid-bestand kan je gewonen HTML schrijven maar het is de manier van het aangeven waar de variabelen komen die dan bepaald wordt door liquid.</p>
+<p>Verder is er weinig configuratie gedaan buiten aangeven waar bepaalde folders komen. Hierover kan je meer lezen onder &quot;folderstructuur&quot;.</p>
+<p><a href="https://github.com/pgm-lenndery/case1-pgm-website-pgm-lenndery/blob/master/.eleventy.js">Hier</a> vind je de volledige configuratie van Eleventy.</p>
+<p>Meer over de Eleventy-configuratie kan je lezen op <a href="https://www.11ty.dev/docs/config/">11ty.dev</a>.</p>
+<h3>Folderstructuur</h3>
+<p>Ik heb de volgende folderstuctuur gehanteerd:</p>
+<ul>
+<li>De Eleventy-build komt in /docs</li>
+<li>Alle bronbestanden die door Eleventy worden gebruikt staan in /src</li>
+</ul>
+<p>In de <em>src</em>-folder staat zoveel mogelijk op het zelfde niveau zodat het makkelijker wordt om een bepaalde folder terug te vinden. Volgens de basis-configuratie zoude bijvoorbeeld de <em>_data</em> en de <em>_layouts</em> folders in <em>_includes</em> zitten, maar het leek me overzichtelijker om die op het zelfde niveau te zetten en de <em>_includes</em>-folder ook effectief enkel voor include-bestanden (meer info bij Includes) te houden.</p>
+<p>Uiteindelijk krijg je onderstaande folderstructuur:</p>
+<pre><code>project root
+├── docs
+└── src
+│   ├── _data
+│   ├── _includes
+│   ├── _layouts
+│   ├── _pages
+│   ├── _sass
+│   └── _static
+│       ├── css
+│       └── js
+│           ├── modules
+│           └── plugins
+├── .eleventy.js
+└── package.json
+</code></pre>
+<h5>Docs-folder</h5>
+<p>De <em>docs</em>-folder is waar het resultaat van de build in te vinden zal zijn.</p>
+<p>Het is belangrijk dat wijzigingen alleen in de <em>src</em>-folder worden aangebracht aangezien alle wijzigingen in de <em>docs</em>-folder overschreven worden bij een volgende build.</p>
+<p><strong>Wijzigen van build-directory</strong></p>
+<p>Wanneer je de naam van de build-folder wilt wijzigen zoek je naar het volgende code:</p>
+<pre><code class="language-js">return {
+    pathPrefix: '/case1-pgm-website-pgm-lenndery/',
+    dir: {
+        output: 'docs',// output folder
+        input: 'src/',
+        data: '_data',
+        pages: '_pages',
+        includes: '_includes',
+        layouts: '_layouts'
+    },
+    markdownTemplateEngine: 'liquid',
+    htmlTemplateEngine: 'liquid',
+}
+</code></pre>
+<p>De <em>output</em>-instelling vind je op de eerste regel in het dir-object, hier kan je 'docs' vervangen door iets anders.</p>
+<h3>Url's</h3>
+<h5>Pad-prefix</h5>
+<p>Het gebeurt regelmatig dat een statische website gehost wordt op GitHub Pages en dan is het belangrijk dat je rekening houdt met die url.</p>
+<p>Een url ziet er meestal zo uit: <code>https://username.github.io/repository-naam</code></p>
+<p>Met de repository-naam moet rekening gehouden worden bij het gebruik van url's. Een url naar de homepage zou er normaal uitzien als <code>href=&quot;/&quot;</code>, dit verwijst naar de root van het domein waar de site gehost wordt.</p>
+<p>Maar wanneer de site gehost wordt onder een apparte directory die op GitHub Pages de naar van de repository meekrijgt moet hier rekening mee gehouden worden, want dan zal <code>href=&quot;/&quot;</code> verwijzen naar <code>https://username.github.io</code>, maar eigenlijk moeten we naar <code>https://username.github.io/repository-naam</code>.</p>
+<p>Dit lossen we op door een prefix in te stellen in het eleventy-config bestand.</p>
+<h5>Instellen via .eleventy.js</h5>
+<p>Onderaan het bestand vind je de <code>return</code>-functie, daaronder heb je <code>pathPrefix</code>, hier zal je de slug na het domein invullen.</p>
+<p>In dit geval wordt de site gehost op <code>https://pgmgent-1920-students.github.io/case1-pgm-website-pgm-lenndery</code>, dus vul je als pathPrefix <code>'/case1-pgm-website-pgm-lenndery/'</code> in.</p>
+<pre><code class="language-js">return {
+    pathPrefix: '/case1-pgm-website-pgm-lenndery/', // pad-prefix
+    dir: {
+        output: 'docs',
+        input: 'src/',
+        data: '_data',
+        pages: '_pages',
+        includes: '_includes',
+        layouts: '_layouts'
+    },
+    markdownTemplateEngine: 'liquid',
+    htmlTemplateEngine: 'liquid',
+}
+</code></pre>
+<h5>Gebruik van url's in Liquid</h5>
+<p>Om naar een pagina binnen deze site te verwijzen maak je gebruik van een Liquid variabele en de url filter. Deze filter zal automatisch de prefix toevoegen aan elke url met deze filter.</p>
+<p>Stel je wilt naar de contactpagina op deze site verwijzen:</p>
+<ul>
+<li>Binnen een ander systeem zou je normaal het volgende doen <code>href=&quot;case1-pgm-website-baas-pgm-lenndery/contact&quot;</code></li>
+<li>Binnen Eleventy, met behulp van Liquid kan je dit eenvoudiger doen: <code>href=&quot;{{ '/contact' | url }}&quot;</code></li>
+</ul>
+<p>Dit werkt voor alle linken die gelegd worden binnen Eleventy, ook naar bestanden en dergelijke.</p>
+<p>Ook belangrijk om te weten is dat Eleventy autmatisch de relatieve paden naar de bestemmingen telkens zal genereren.</p>
+<p>Meer over liquid kan je lezen op <a href="https://shopify.github.io/liquid/">shopify.github.io</a>.</p>
+<h5>Links toevoegen met markdown</h5>
+<pre><code class="language-markdown">[Zichtbare tekst die wordt toegevoegd](een url) 
+
+[Voorbeeld van een interne link met Liquid]({{ '/contact/bedrijven' | url}})
+
+[Bijvoorbeeld deze link naar een Markdown stylesheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)
+</code></pre>
+<h5>Interne en externe links</h5>
+<p>Het is opzich niet nodig bij het aanmaken van een link om aan te geven dat deze in een nieuw venster geopend moet worden, deze overweging wordt automatisch gemaakt door de JavaScript achter deze site.</p>
+<p>Een externe url (die naar een ander domein verwijst) zal altijd geopend worden in een nieuw venster, een interne altijd in een modal binnen deze site, net zoals deze handleiding.</p>
+<hr>
+<h3>Data aanpassen</h3>
+<h5>Opleidingsinfo, contactinfo &amp; technologieën</h5>
+<p>De contactinformatie is de vinden in de Eleventy-repo onder <code>src/_data/opleiding.json</code>.</p>
+<p>Deze data is beschikbaar via liquid-variabelen, bijvoorbeeld: <code>{{ opleiding.contact.email }}</code>.
+De variabelen worden altijd geopend en gesloten met 2 accolades. Daarna begin je met de naam van het json-bestand, bijvoorbeeld 'opleiding', gevolgd door javascript selectoren zoals je dat normaal doet bij JSON-data.</p>
+<p>Nog een voorbeeld: <code>{{ opleiding.contact.personen[0].naam }}</code> geeft uiteindelijk &quot;Olvier Parent&quot;.</p>
+<h5>Curriculum</h5>
+<p>Het curriculum wordt volledig gegenereerd door middel van Javascript. Het JSON-bestand hier voor is <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/curry.json">hier</a> te vinden.</p>
+<p>Hier worden alle vakken verdeeld onder de vijf opleidingsdomeinen in een array als object. Hier wordt dan per vak de nodige data meegegeven.</p>
+<h3>Pagina's aanpassen</h3>
+<p>Alle pagina's bevinden zich in de <em>src/_pages</em>-folder. Bij het aanmaken van een pagina volstaat het om deze toe te voegen aan deze folder en de basisconfiguratie toe te voegen (lees verder hieronder).</p>
+<h5>Markdown</h5>
+<p>Voor het schrijven van pagina's wordt over het algemeen Markdown gebruikt.</p>
+<p>Markdown is een zeer eenvoudige taal die en snel aan te leren is. Aangezien deze taal zo simpel is <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">vind je een cheatsheet</a>.</p>
+<blockquote>
+<p>Goed om te weten:
+In Markdown kan ook HTML geschreven worden</p>
+</blockquote>
+<p>Naast Markdown kunnen pagina's ook gewoon met pure HTML gemaakt worden, hier kan je een .html- of .liquid-bestand voor gebruiken.</p>
+<h5>Basisconfiguratie</h5>
+<p>Elke pagina krijgt een basisconfiguratie mee die eenvoudig op te zetten is, dit noemen we <strong>frontmatter</strong>. Zo herkent Elventy hoe de pagina moet gebuild worden.</p>
+<p>Dit moet bovenaan elke pagina worden toegevoegd ...</p>
+<pre><code class="language-yaml">---
+layout: page
+title: Handleiding
+subtitle: Hoe deze site bewerken
+--- 
+</code></pre>
+<p>Standaard zal een interne link geopend worden in een modal, als je dit wilt overschrijven verander je de layout naar <em>no-modal</em>.</p>
+<p>De andere instellingen wijzen zichzelf uit.</p>
+<h5>Pagina-url</h5>
+<p>De pagina-url wordt standaard gegenereerd op basis van de naam dat het bestand heeft en de locatie waar het zich bevindt.</p>
+<p>Als het bestand <em>bedrijven.liquid</em> zich in de folder <em>contact</em> bevindt (in de <em>_pages</em>-folder) dan zal de url van die pagina <em>contact/bedrijven</em> worden.</p>
+<p>Dit kan je overschrijven door in de frontmatter een variable <code>permalink</code> mee te geven.</p>
+<pre><code class="language-yaml">---
+layout: page
+title: Bedrijven
+subtitle: Samenwerken met ons
+permalink: contact/bedrijven/index.html
+---
+</code></pre>
+<h3>Cases, portfolio, etc.</h3>
+<p>Cases worden allemaal met JavaScript gegenereerd. Dit JSON-bestand is hier te vinden: <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json">https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/cases.json</a></p>
+<p>Voor studenten geldt hetzelfde principe: <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json">https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/data/students.json</a></p>
+<p>Dit is allemaal pure JSON-data die zichzelf uitwijst.</p>
+<h3>Media- en databestanden</h3>
+<p>Alle media wordt voorlopig voor deze site op een apparte repo gehost via GitHub Pages. Het enige wat moet gebeuren is de bestanden toevoegen in de <em>src</em>-folder binnen die repo en de bestanden zullen na het builden van die repo (dat automatisch gebeurt) beschikbaar zijn.</p>
+<p>De bestanden zijn via <a href="https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/">https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/</a> beschikbaar.</p>
+<p>Normaal zou je een 404-pagina zien én zou je, wanneer je een specifiek bestand zoekt de url moeten gaan uitpluizen naar dat bestand aan de hand van waar je het geplaatst hebt.</p>
+<p>Dit heb ik opgelost door een script te schrijven dat een oplijsting genereert van alle bestanden binnen de <em>src</em>-folder. Het is dus zo simpel als copy-pasten van de link die je bij elk bestand vindt.</p>
+<p>Telkens wanneer er een nieuw bestand aan de repo wordt toegevoegd zal de lijst opnieuw gegenereerd worden door GitHub Actions. Dit detecteerd een nieuwe push naar de repo en zal mijn script uitvoeren. Na twee à drie minuuten zijn de bestanden beschikbaar via bovenstaande url.</p>
+<h5>Afbeeldingen toevoegen met markdown</h5>
+<pre><code class="language-markdown">![titel van een afbeelding](de volledige url naar een afbeelding)
+
+![Dit is het pgm-logo](https://pgmgent-1920-students.github.io/case1-pgm-website-baas-pgm-lenndery/src/images/banner_seo_1.png)
+</code></pre>
+<hr>
+<h3>Kleurthema wijzigen</h3>
+<p>Huidig kleurthema bestaat uit</p>
+<ul>
+<li>$purple500: #7f47dd;</li>
+<li>$mainBackground: black;</li>
+</ul>
+<p>Het kleurthema kan gewijzigd worden door de variabelen aan te passen in <em><a href="https://github.com/pgm-lenndery/case1-pgm-website-pgm-lenndery/blob/master/src/_sass/_variables.scss">src/_sass/_variables.scss</a></em></p>
+
+                </div>
+                <div class="col-12 col-lg-4 mb-5 mb-lg-0 " id="pageIndex" class="pageindex">
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="loader">
+    </div>
+    <style>
+        #loader {
+            position: absolute;
+            top: 0px;
+            bottom: 0px;
+            left: 0px;
+            right: 0px;
+            /* width: 100vw;
+            height: 100vh; */
+            background-color: black;
+            z-index: 7;
+        }
+        
+        .modal #loader {
+            display: none;
+        }
+    </style>
+</main>
+<div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="page">
+    <div class="modal-wrapper">
+        <div class="modal-controls">
+            <div data-action="modalClose"><i data-feather="x"></i></div>
+            <div data-action="modalHide"><i data-feather="minus"></i></div>
+        </div>
+        <div class="modal-content box-all">
+            <div class="modal-content-wrapper">
+                <div class="modal-content-header d-none">
+                </div>
+                <div class="modal-content-body">
+                </div>
+            </div>
+        </div>
+        <div class="modal-breadcrumbs box-x box-b bg-color-black font-rhode px-4 py-2 medium">
+        </div>
+    </div>
+</div>
+    <div class="modal box-modal container" data-sesam-options="animateIn:fadeInUp, animateOut:fadeInDown, backdrop:true, scrollBlock:true" data-sesam-target="studentDetail">
+    <div class="modal-wrapper">
+        <div class="modal-controls">
+            <div data-action="modalClose"><i data-feather="x"></i></div>
+            <div data-action="modalHide"><i data-feather="minus"></i></div>
+        </div>
+        <div class="modal-content box-all">
+            <div class="modal-content-wrapper">
+                <div class="modal-content-header d-none">
+                </div>
+                <div class="modal-content-body">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="modal-breadcrumbs box-x box-b bg-color-black font-rhode px-4 py-2 medium">
+        </div>
+    </div>
+</div>
+    <!-- bootstrap scripts -->
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script> -->
+    
+    <!-- scripts -->
+    <!-- <script src="/case1-pgm-website-pgm-lenndery/static/js/plugins/glide.min.js"></script> -->
+    <script type="module" src="/case1-pgm-website-pgm-lenndery/static/js/main.js"></script>
+    <script src="/case1-pgm-website-pgm-lenndery/static/js/plugins/salvatore.js"></script>
+    <script type="module" src="/case1-pgm-website-pgm-lenndery/static/js/app.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/balance-text/3.3.0/balancetext.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+    <!-- <script type="module" src="/case1-pgm-website-pgm-lenndery/static/js/plugins/sesamCollapse.js"></script> -->
+    
+    <script>
+        /* Initialize feather icons */
+        /* more info on https://feathericons.com/ and https://github.com/feathericons/feather#feather */
+        feather.replace()
+
+        /* Enable for bootstrap tooltips 👇 */
+        // $('[data-toggle="tooltip"]').tooltip()
+
+        /* Enable for bootstrap toasts 👇 */
+        // $('[data-toggle="tooltip"]').tooltip()
+    </script>
+</body>
+</html>
+
+<!-- template from https://github.com/lennertderyck/start-template -->
